@@ -1,0 +1,277 @@
+---
+title: Theming
+description: Customize frakment with CSS variables and theme tokens.
+---
+
+frakment uses **CSS variables** for theming. Every component references semantic tokens like `bg-background`, `text-foreground`, `border-border` — never hardcoded colors. Change the tokens, change the entire look of your app.
+
+<Callout type="info" title="No build step required">
+
+Theme tokens live in your `globals.css`. There is no config file, no build step, and no runtime dependency — just CSS.
+
+</Callout>
+
+## Token convention
+
+Each surface token has a matching `-foreground` token for text on that surface. Components use both, so you only change two values per surface.
+
+- `primary` → `primary-foreground`
+- `secondary` → `secondary-foreground`
+- `muted` → `muted-foreground`
+- `card` → `card-foreground`
+- `popover` → `popover-foreground`
+- `accent` → `accent-foreground`
+- `destructive` — no `-foreground`; always uses white text
+
+<Callout title="Why pairs?">
+
+`primary` controls the background of a surface. `primary-foreground` controls the text on it. This keeps contrast automatic and makes light/dark mode trivial.
+
+</Callout>
+
+
+## Theme tokens
+
+Define these in `:root` (light) and `.dark` (dark mode) in your `globals.css`:
+
+| Token | Controls | Used by |
+|:--|:--|:--|
+| `background` / `foreground` | Page background and text | Page shell, sections |
+| `card` / `card-foreground` | Elevated surfaces | Card, panels |
+| `popover` / `popover-foreground` | Floating surfaces | Popover, DropdownMenu |
+| `primary` / `primary-foreground` | High-emphasis actions | Default Button, selected states |
+| `secondary` / `secondary-foreground` | Lower-emphasis actions | Secondary buttons |
+| `muted` / `muted-foreground` | Subtle surfaces | Descriptions, placeholders |
+| `accent` / `accent-foreground` | Hover and focus surfaces | Ghost buttons, hover rows |
+| `destructive` | Errors and destructive actions | Destructive buttons, error states |
+| `border` | Borders and separators | Cards, Separator, inputs |
+| `input` | Form control borders | Input, Textarea |
+| `ring` | Focus rings | Buttons, inputs |
+| `radius` | Base corner radius | All rounded elements |
+| `surface` / `surface-foreground` | Docs surface tokens | Callout, LinkedCard |
+| `code` / `code-foreground` | Code block background and text | Code Block, inline code |
+| `sidebar-*` | Sidebar tokens | Sidebar, docs navigation |
+
+## Radius scale
+
+`--radius` is the base. Smaller and larger radii are derived from it by the components:
+
+```css title="globals.css"
+:root {
+  --radius: 0.625rem;
+  /* Components reference: */
+  /* radius-sm = calc(var(--radius) - 4px) */
+  /* radius-md = calc(var(--radius) - 2px) */
+  /* radius-lg = var(--radius) */
+  /* radius-xl = calc(var(--radius) + 4px) */
+}
+```
+
+Change `--radius` once and the entire radius scale updates across all components.
+
+## Adding a new token
+
+Define it under `:root` and `.dark`, then expose it with `@theme inline`:
+
+```css title="globals.css"
+:root {
+  --warning: oklch(0.84 0.16 84);
+  --warning-foreground: oklch(0.28 0.07 46);
+}
+
+.dark {
+  --warning: oklch(0.41 0.11 46);
+  --warning-foreground: oklch(0.99 0.02 95);
+}
+
+@theme inline {
+  --color-warning: var(--warning);
+  --color-warning-foreground: var(--warning-foreground);
+}
+```
+
+Now you can use `bg-warning` and `text-warning-foreground` in your components.
+
+## Base colors
+
+frakment works with any OKLCH palette. These base colors all work with the default theme without changes:
+
+| Base | Character |
+|:--|:--|
+| Neutral | Pure gray |
+| Stone | Warm gray |
+| Zinc | Cool gray |
+| Mauve | Purple-tinted gray |
+| Olive | Green-tinted gray |
+| Mist | Blue-tinted gray |
+| Taupe | Brown-tinted gray |
+
+Swap the OKLCH values in `:root` and `.dark` for any of these — frakment components don't care which base you choose, they only read tokens.
+
+## Dark mode
+
+frakment components only reference CSS variables — they work with **any** dark mode setup. The docs site uses `next-themes`, but you can use anything that toggles a `.dark` class on `<html>`.
+
+<CodeCollapsibleWrapper>
+
+```tsx title="components/theme-provider.tsx"
+"use client";
+
+import { ThemeProvider as NextThemesProvider } from "next-themes";
+
+export function ThemeProvider({ children, ...props }: React.ComponentProps<typeof NextThemesProvider>) {
+  return <NextThemesProvider {...props}>{children}</NextThemesProvider>;
+}
+```
+
+```tsx title="app/layout.tsx"
+import { ThemeProvider } from "@/components/theme-provider";
+
+export default function RootLayout({ children }: { children: React.ReactNode }) {
+  return (
+    <html lang="en" suppressHydrationWarning>
+      <body>
+        <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
+          {children}
+        </ThemeProvider>
+      </body>
+    </html>
+  );
+}
+```
+
+</CodeCollapsibleWrapper>
+
+## Default theme
+
+A starting point that matches the docs. Copy into `globals.css` and adjust:
+
+<CodeCollapsibleWrapper>
+
+```css title="globals.css"
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+:root {
+  --radius: 0.625rem;
+  --background: oklch(1 0 0);
+  --foreground: oklch(0.145 0 0);
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.145 0 0);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.145 0 0);
+  --primary: oklch(0.205 0 0);
+  --primary-foreground: oklch(0.985 0 0);
+  --secondary: oklch(0.97 0 0);
+  --secondary-foreground: oklch(0.205 0 0);
+  --muted: oklch(0.97 0 0);
+  --muted-foreground: oklch(0.556 0 0);
+  --accent: oklch(0.97 0 0);
+  --accent-foreground: oklch(0.205 0 0);
+  --destructive: oklch(0.577 0.245 27.325);
+  --border: oklch(0.922 0 0);
+  --input: oklch(0.922 0 0);
+  --ring: oklch(0.708 0 0);
+  --surface: oklch(0.98 0 0);
+  --surface-foreground: var(--foreground);
+  --code: var(--surface);
+  --code-foreground: var(--surface-foreground);
+}
+
+.dark {
+  --background: oklch(0.145 0 0);
+  --foreground: oklch(0.985 0 0);
+  --card: oklch(0.205 0 0);
+  --card-foreground: oklch(0.985 0 0);
+  --popover: oklch(0.269 0 0);
+  --popover-foreground: oklch(0.985 0 0);
+  --primary: oklch(0.922 0 0);
+  --primary-foreground: oklch(0.205 0 0);
+  --secondary: oklch(0.269 0 0);
+  --secondary-foreground: oklch(0.985 0 0);
+  --muted: oklch(0.269 0 0);
+  --muted-foreground: oklch(0.708 0 0);
+  --accent: oklch(0.371 0 0);
+  --accent-foreground: oklch(0.985 0 0);
+  --destructive: oklch(0.704 0.191 22.216);
+  --border: oklch(1 0 0 / 10%);
+  --input: oklch(1 0 0 / 15%);
+  --ring: oklch(0.556 0 0);
+  --surface: oklch(0.2 0 0);
+  --surface-foreground: oklch(0.708 0 0);
+  --code: var(--surface);
+  --code-foreground: var(--surface-foreground);
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-surface: var(--surface);
+  --color-surface-foreground: var(--surface-foreground);
+  --color-code: var(--code);
+  --color-code-foreground: var(--code-foreground);
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+}
+```
+
+</CodeCollapsibleWrapper>
+
+## FAQ
+
+<Accordion type="single" collapsible>
+
+<AccordionItem value="why-oklch">
+<AccordionTrigger>Why OKLCH instead of hex or HSL?</AccordionTrigger>
+<AccordionContent>
+
+OKLCH is a perceptual color space — colors with the same lightness value look equally bright. This makes theme tokens consistent across hues and lets dark mode swap lightness without changing hue.
+
+</AccordionContent>
+</AccordionItem>
+
+<AccordionItem value="custom-base">
+<AccordionTrigger>Can I use my own brand color?</AccordionTrigger>
+<AccordionContent>
+
+Yes. Set `--primary` and `--primary-foreground` to your brand colors. Keep the contrast ratio at WCAG AA (4.5:1 minimum) and everything else stays consistent.
+
+</AccordionContent>
+</AccordionItem>
+
+<AccordionItem value="css-vars-off">
+<AccordionTrigger>Can I disable CSS variables?</AccordionTrigger>
+<AccordionContent>
+
+Not out of the box. frakment components reference semantic tokens (`bg-background`, `text-foreground`). You would need to rewrite each component to use inline utilities instead — not recommended.
+
+</AccordionContent>
+</AccordionItem>
+
+</Accordion>
+
+## Next
+
+- [Components](/docs/components) — base primitives
+- [AI Elements](/docs/ai-elements) — chat and agent primitives
+- [Installation](/docs/installation) — set up frakment in your project

@@ -44,7 +44,9 @@ next-env.d.ts
 # generated content
 .contentlayer
 .content-collections
-.source# Backup folders (auto-generated during refactor)
+.source
+
+# Backup folders (auto-generated during refactor)
 .backup-*/
 
 # Backup files
@@ -66,3 +68,4 @@ public/avatars/*.png
 
 # CLI dependencies (install via: cd cli && npm install)
 cli/node_modules/
+*.bak-*

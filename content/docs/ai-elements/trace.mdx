@@ -3,6 +3,8 @@ title: Trace
 description: The primitive for rendering collapsible agent trace lines with icons, titles, and status.
 ---
 
+import { TraceDemo } from "@/examples/trace-demo";
+
 import {
   Trace,
   TraceLine,
@@ -31,7 +33,7 @@ import {
   <TraceDemo />
 </ComponentPreview>
 
-Trace is the foundational primitive behind [Chain of Thought](/docs/components/chain-of-thought) and any vertical step list. It composes a flex column of lines, each with an icon, title, and optional status.
+Trace is the foundational primitive behind [Chain of Thought](/docs/ai-elements/chain-of-thought) and any vertical step list. It composes a flex column of lines, each with an icon, title, and optional status.
 
 ## Installation
 
@@ -71,7 +73,6 @@ npx frakment add trace
 
 ```tsx
 import { Trace, TraceLine, TraceIcon, TraceTitle } from "@/components/ui/trace";
-import { TraceDemo } from "@/examples/trace-demo";
 ```
 
 ```tsx

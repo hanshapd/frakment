@@ -7,9 +7,12 @@ import { CodeBlockCommand } from "@/components/code-block-command";
 import { CodeTabs } from "@/components/code-tabs";
 import { ComponentPreview } from "@/components/component-preview";
 import { ComponentSource } from "@/components/component-source";
+import { FileTree, FileTreeFolder, FileTreeFile } from "@/components/file-tree";
+import { CodeCollapsibleWrapper } from "@/components/code-collapsible-wrapper";
 import { ComponentsList } from "@/components/components-list";
 import { CopyButton } from "@/components/copy-button";
 import { getIconForLanguageExtension } from "@/components/icons";
+import { Kbd } from "@/components/ui/kbd";
 import { PropsTable } from "@/components/props-table";
 import {
   Accordion,
@@ -37,9 +40,13 @@ export const mdxComponents = {
   AspectRatio,
   Button,
   Callout,
+  CodeCollapsibleWrapper,
   CodeTabs,
   ComponentPreview,
   ComponentSource,
+  FileTree,
+  FileTreeFolder,
+  FileTreeFile,
   ComponentsList,
   FeatureCard: ({
     icon: Icon,
@@ -91,6 +98,7 @@ export const mdxComponents = {
       {...props}
     />
   ),
+  Kbd,
   LinkedCard: ({ className, ...props }: React.ComponentProps<typeof Link>) => (
     <Link
       className={cn(
@@ -163,7 +171,7 @@ export const mdxComponents = {
   ),
   blockquote: ({ className, ...props }: React.ComponentProps<"blockquote">) => (
     <blockquote
-      className={cn("mt-6 border-l-2 pl-6 italic", className)}
+      className={cn("mt-6 border-l-4 border-border pl-6 italic", className)}
       {...props}
     />
   ),
@@ -189,7 +197,7 @@ export const mdxComponents = {
       return (
         <code
           className={cn(
-            "bg-muted relative rounded-md px-[0.3rem] py-[0.2rem] font-mono text-[0.8rem] break-words outline-none",
+            "bg-muted relative rounded-[3px] px-[5px] py-px font-mono text-[0.85em] break-words outline-none",
             className
           )}
           {...props}

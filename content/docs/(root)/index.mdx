@@ -1,81 +1,129 @@
 ---
 title: Introduction
-description: A template for building and publishing your own shadcn registry components.
+description: Accessible, composable primitives for AI and chat interfaces.
 ---
 
-A **ready-to-use template** for creating and publishing custom components to the [shadcn registry](https://ui.shadcn.com/docs/registry).
+import {
+  MessageSquareIcon,
+  ListTreeIcon,
+  CodeIcon,
+  SparklesIcon,
+  GitBranchIcon,
+  GaugeIcon,
+} from "lucide-react";
 
-## What You Get
+**frakment** is a set of accessible, composable primitives for AI and chat interfaces. Every component is written from scratch, depends only on a small set of well-known libraries, and ships as open source you can read, copy, and modify.
 
-- 📦 **Simple structure** - One component file + one config file
-- 📚 **Documentation site** - Powered by Fumadocs
-- 🎨 **Registry compatible** - Works with `npx shadcn add`
-- 🤖 **[Agent ready](https://www.mintlify.com/score/startercn)** - Ships with `llms.txt`, `llms-full.txt`, API catalog routes, and agent skill discovery endpoints
-- 🔊 **[Web audio feedback](https://audio.raphaelsalaja.com/)** - Built-in interaction sounds powered by `@web-kits/audio`
-- 📳 **[Web haptics](https://haptics.lochie.me/)** - Optional haptic feedback for supported devices via `web-haptics`
-- ✨ **[Motion animations](https://motion.dev/)** - Uses `motion` for animated UI states and transitions
-- 🎯 **[Animated icons](https://lucide-animated.com/)** - Includes reusable animated icons for buttons, sharing, and navigation
-- 🔄 **[View transitions](https://nextjs.org/docs/app/api-reference/config/next-config-js/viewTransition)** - Uses Next.js view transitions for smoother page changes
-- 🚀 **Deploy ready** - Deploy anywhere
+*Primitives for AI and chat — built to be read, copied, and extended.*
 
-## Tech Stack
+<Callout type="info" title="Built for AI interfaces">
 
-- `Next.js 16` + App Router
-- `React 19`
-- `Tailwind CSS 4`
-- `Fumadocs`
-- `motion`
-- `@web-kits/audio`
-- `web-haptics`
-- `shiki` + `rehype-pretty-code`
+AI applications have specific UI needs — agent traces, streaming status, chat bubbles, code output — that generic component libraries don't address well. frakment is built around those primitives.
 
-## How It Works
+</Callout>
 
-1. Edit your component at `registry/status-chip.tsx`
-2. Update `registry.json` with your component name and details
-3. Run `pnpm registry:build`
+## What's included
 
-That's it. Deploy your app and users can install your component:
+<div className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
 
-```bash
-npx shadcn@latest add https://your-site.com/r/status-chip.json
+<FeatureCard icon={MessageSquareIcon} title="Chat surfaces" description="Bubble and Message for user and assistant turns, with variants, reactions, and alignment." />
+
+<FeatureCard icon={ListTreeIcon} title="Agent traces" description="Trace and Chain of Thought for collapsible, streaming step lists with status and shimmer." />
+
+<FeatureCard icon={CodeIcon} title="Code output" description="Code Block with header, copy, line numbers, and per-line diff highlighting." />
+
+<FeatureCard icon={SparklesIcon} title="Status and markers" description="Marker, Spinner, and Pulse Status for inline status, loading, and service health." />
+
+<FeatureCard icon={GitBranchIcon} title="Composable by default" description="Every component follows the same shape: a root, a content slot, and cva variants." />
+
+<FeatureCard icon={GaugeIcon} title="Standalone primitives" description="No hidden dependency chain. Each component is self-contained and copy-pasteable." />
+
+</div>
+
+## Quick example
+
+<CodeTabs>
+  <TabsList>
+    <TabsTrigger value="chat">Chat turn</TabsTrigger>
+    <TabsTrigger value="trace">Agent trace</TabsTrigger>
+  </TabsList>
+
+  <TabsContent value="chat">
+
+```tsx
+import { Bubble, BubbleContent } from "@/components/ui/bubble";
+import { Message, MessageContent } from "@/components/ui/message";
+
+<Message align="end">
+  <MessageContent>
+    <Bubble variant="muted" align="end">
+      <BubbleContent>Why is the dashboard slow?</BubbleContent>
+    </Bubble>
+  </MessageContent>
+</Message>
 ```
 
-## FAQ
+  </TabsContent>
 
-<Accordion type="multiple">
+  <TabsContent value="trace">
 
-<AccordionItem value="faq-1">
-<AccordionTrigger>
-Why copy/paste instead of npm packages?
-</AccordionTrigger>
-<AccordionContent>
+```tsx
+import {
+  ChainOfThought,
+  ChainOfThoughtHeader,
+  ChainOfThoughtContent,
+  ChainOfThoughtStep,
+} from "@/components/ui/chain-of-thought";
 
-The shadcn philosophy gives you **ownership** of the code. You can customize components to your exact needs without fighting library constraints.
+<ChainOfThought defaultOpen>
+  <ChainOfThoughtHeader>Researched in 3 steps</ChainOfThoughtHeader>
+  <ChainOfThoughtContent>
+    <ChainOfThoughtStep>Read the build log</ChainOfThoughtStep>
+    <ChainOfThoughtStep>Checked bundle size</ChainOfThoughtStep>
+    <ChainOfThoughtStep>Profiled 3 endpoints</ChainOfThoughtStep>
+  </ChainOfThoughtContent>
+</ChainOfThought>
+```
 
-</AccordionContent>
-</AccordionItem>
+  </TabsContent>
+</CodeTabs>
 
-<AccordionItem value="faq-2">
-<AccordionTrigger>
-Which frameworks are supported?
-</AccordionTrigger>
-<AccordionContent>
+## Principles
 
-Any React framework: Next.js, Remix, Astro, Gatsby, Vite, etc.
+### Zero hidden dependencies
 
-</AccordionContent>
-</AccordionItem>
+Every component depends only on `radix-ui`, `class-variance-authority`, and `lucide-react`. There is no hidden dependency chain you need to install or keep in sync.
 
-<AccordionItem value="faq-3">
-<AccordionTrigger>
-Can I publish multiple components?
-</AccordionTrigger>
-<AccordionContent>
+### Composable by design
 
-Yes! Add more files to `registry/` and list them in `frakment.json`.
+All components follow the same shape: a root (`Bubble`), a content slot (`BubbleContent`), and variants via `cva`. This is predictable for you, and for LLMs reading the code.
 
-</AccordionContent>
-</AccordionItem>
+### Distribution via CLI and registry
 
-</Accordion>
+A flat-file registry (`public/r/*.json`) and a CLI (`npx frakment add`) make it easy to distribute components across projects. Each component is a JSON manifest with its source, npm dependencies, and registry dependencies.
+
+### Beautiful defaults for AI
+
+The defaults are opinionated so you don't have to design from scratch. Every component is designed for the AI use case first.
+
+### AI-ready
+
+An `llms.txt` file, agent catalog endpoint, and open source make it easy for AI tools to read, understand, and extend.
+
+## Component catalog
+
+| Category | Components |
+|:--|:--|
+| Chat | [Bubble](/docs/ai-elements/bubble), [Message](/docs/ai-elements/message) |
+| Agent | [Trace](/docs/ai-elements/trace), [Chain of Thought](/docs/ai-elements/chain-of-thought) |
+| Code | [Code Block](/docs/components/code-block) |
+| Status | [Marker](/docs/ai-elements/marker), [Spinner](/docs/ai-elements/spinner), [Pulse Status](/docs/ai-elements/pulse-status), [Pulse](/docs/ai-elements/pulse) |
+| Layout | [Item](/docs/components/item), [Separator](/docs/components/separator) |
+| Identity | [Avatar](/docs/components/avatar) |
+| Actions | [Button](/docs/components/button), [Badge](/docs/components/badge) |
+
+## Next steps
+
+- [Installation](/docs/installation) — set up frakment in your project
+- [Theming](/docs/theming) — customize CSS variables and dark mode
+- [Components](/docs/components/avatar) — start with a primitive

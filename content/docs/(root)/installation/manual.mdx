@@ -1,0 +1,128 @@
+---
+title: Manual
+description: Install frakment manually in any React 19 + Tailwind v4 project.
+---
+
+Use this guide if you prefer to copy files yourself instead of using the CLI. It works in any React 19 + Tailwind v4 project.
+
+## Prerequisites
+
+- **React** 19
+- **Tailwind CSS** v4
+- **TypeScript**
+- **Node.js** 18 or newer
+
+<Callout type="warning" title="Using an older stack?">
+
+Components target React 19 and Tailwind CSS v4. For React 18, some components may need `forwardRef` adjustments. For Tailwind v3, port the `@theme inline` block from [Theming](/docs/theming).
+
+</Callout>
+
+## Setup
+
+<Steps>
+
+<Step>Install dependencies</Step>
+
+```bash
+npm install class-variance-authority clsx tailwind-merge lucide-react radix-ui
+```
+
+<Step>Configure the import alias</Step>
+
+In `tsconfig.json`:
+
+```json
+{
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": { "@/*": ["./*"] }
+  }
+}
+```
+
+<Step>Create lib/utils.ts</Step>
+
+```tsx
+import { clsx, type ClassValue } from "clsx";
+import { twMerge } from "tailwind-merge";
+
+export function cn(...inputs: ClassValue[]) {
+  return twMerge(clsx(inputs));
+}
+```
+
+<Step>Add theme tokens to globals.css</Step>
+
+Copy the CSS variables from [Theming](/docs/theming) into your `globals.css`.
+
+<Step>Copy a component</Step>
+
+Every component is a single `.tsx` file under `registry/`. Browse the [catalog](/docs/ai-elements/bubble) and copy the source into `components/ui/`, or run:
+
+```bash
+npx frakment@latest add bubble
+```
+
+</Steps>
+
+## Project structure
+
+After completing the setup steps, your project will have:
+
+<FileTree>
+  <FileTreeFolder name="my-app" defaultOpen>
+    <FileTreeFile name="components.json" />
+    <FileTreeFile name="package.json" />
+    <FileTreeFile name="tsconfig.json" />
+    <FileTreeFile name="globals.css" />
+    <FileTreeFolder name="components">
+      <FileTreeFolder name="ui" defaultOpen>
+        <FileTreeFile name="bubble.tsx" />
+        <FileTreeFile name="button.tsx" />
+      </FileTreeFolder>
+    </FileTreeFolder>
+    <FileTreeFolder name="lib" defaultOpen>
+      <FileTreeFile name="utils.ts" />
+    </FileTreeFolder>
+  </FileTreeFolder>
+</FileTree>
+
+## Verify
+
+After installing your first component, confirm the setup:
+
+```bash
+ls components/ui/bubble.tsx
+```
+
+Then import and render it in your app. If it renders without errors, you're ready.
+
+## Troubleshooting
+
+<Accordion type="single" collapsible>
+
+<AccordionItem value="missing-utils">
+<AccordionTrigger>Cannot find module lib/utils</AccordionTrigger>
+<AccordionContent>
+
+Make sure `lib/utils.ts` exists and your `tsconfig.json` defines the `@/*` alias.
+
+</AccordionContent>
+</AccordionItem>
+
+<AccordionItem value="styles">
+<AccordionTrigger>Styles do not apply</AccordionTrigger>
+<AccordionContent>
+
+Make sure your `globals.css` includes the theme tokens from [Theming](/docs/theming).
+
+</AccordionContent>
+</AccordionItem>
+
+</Accordion>
+
+## Next
+
+- [Theming](/docs/theming) - customize tokens and dark mode
+- [Components](/docs/ai-elements/bubble) - browse the catalog

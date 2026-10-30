@@ -3,23 +3,12 @@ title: Pulse Status
 description: A status badge for service health, used inside Pulse.
 ---
 
+import { PulseStatusDemo } from "@/examples/pulse-status-demo";
+
 import { PulseStatus } from "@/components/ui/pulse-status";
 
 <ComponentPreview name="pulse-status" title="pulse-status.tsx">
-  <div className="flex w-full max-w-md flex-col gap-4 rounded-xl border border-border bg-card p-6">
-    <div className="flex items-center justify-between">
-      <span className="text-sm font-medium">Registry</span>
-      <PulseStatus status="up" />
-    </div>
-    <div className="flex items-center justify-between">
-      <span className="text-sm font-medium">Docs</span>
-      <PulseStatus status="degraded" count={2} />
-    </div>
-    <div className="flex items-center justify-between">
-      <span className="text-sm font-medium">CLI</span>
-      <PulseStatus status="down" label="Outage" />
-    </div>
-  </div>
+  <PulseStatusDemo />
 </ComponentPreview>
 
 Pulse Status is the inline health indicator used inside Pulse. It renders a color-coded icon and text label that communicates the current state of a service at a glance.

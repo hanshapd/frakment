@@ -3,6 +3,8 @@ title: Button
 description: Displays a button or a component that behaves like a button.
 ---
 
+import { ButtonDemo } from "@/examples/button-demo";
+
 import { Button } from "@/components/ui/button";
 import {
   ArrowRightIcon,
@@ -18,12 +20,7 @@ import {
 } from "lucide-react";
 
 <ComponentPreview name="button" title="button.tsx">
-  <div className="flex flex-wrap items-center justify-center gap-3">
-    <Button>Button</Button>
-    <Button size="icon" aria-label="New Branch">
-      <GitBranchIcon />
-    </Button>
-  </div>
+  <ButtonDemo />
 </ComponentPreview>
 
 Buttons trigger an action or event when clicked. They communicate intent through a compact surface, an icon, and a short label.

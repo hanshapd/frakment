@@ -1,0 +1,171 @@
+---
+title: Next.js
+description: Install and configure frakment for Next.js.
+---
+
+frakment works in any Next.js 15+ project with React 19 and Tailwind v4. This guide covers both a new project (via the CLI) and an existing app.
+
+## Prerequisites
+
+- **Next.js** 15 or newer (App Router or Pages Router)
+- **React** 19
+- **TypeScript**
+- **Tailwind CSS** v4
+
+<Callout type="warning" title="Using an older stack?">
+
+Components target React 19 and Tailwind CSS v4. For React 18, some components may need `forwardRef` adjustments. For Tailwind v3, port the `@theme inline` block from [Theming](/docs/theming).
+
+</Callout>
+
+<div id="use-cli" className="scroll-mt-24" />
+
+## Use the CLI
+
+Scaffold a new Next.js app with frakment installed.
+
+<Steps>
+
+<Step>Create Project</Step>
+
+```bash
+npx create-next-app@latest my-app --typescript --tailwind --app
+cd my-app
+```
+
+<Step>Add Components</Step>
+
+```bash
+npx frakment@latest init
+npx frakment@latest add bubble
+```
+
+<Step>Use it</Step>
+
+```tsx
+// app/page.tsx
+import { Bubble, BubbleContent } from "@/components/ui/bubble";
+
+export default function Page() {
+  return (
+    <Bubble>
+      <BubbleContent>Hello, frakment.</BubbleContent>
+    </Bubble>
+  );
+}
+```
+
+</Steps>
+
+<div id="existing-project" className="scroll-mt-24" />
+
+## Existing Project
+
+Add frakment to a Next.js app you already created.
+
+<Steps>
+
+<Step>Configure Tailwind CSS</Step>
+
+Make sure Tailwind v4 is installed and `globals.css` is imported in your root layout.
+
+<Step>Configure the import alias</Step>
+
+In `tsconfig.json`:
+
+```json
+{
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["./*"]
+    }
+  }
+}
+```
+
+<Step>Run the CLI</Step>
+
+```bash
+npx frakment@latest init
+npx frakment@latest add bubble
+```
+
+<Step>Import and use</Step>
+
+```tsx
+// app/page.tsx
+import { Bubble, BubbleContent } from "@/components/ui/bubble";
+
+export default function Page() {
+  return (
+    <Bubble>
+      <BubbleContent>Hello, frakment.</BubbleContent>
+    </Bubble>
+  );
+}
+```
+
+</Steps>
+
+## Project structure
+
+After `create-next-app`, your project will have:
+
+<FileTree>
+  <FileTreeFolder name="my-app" defaultOpen>
+    <FileTreeFile name="package.json" />
+    <FileTreeFile name="tsconfig.json" />
+    <FileTreeFile name="next.config.ts" />
+    <FileTreeFolder name="app" defaultOpen>
+      <FileTreeFile name="layout.tsx" />
+      <FileTreeFile name="page.tsx" />
+      <FileTreeFile name="globals.css" />
+    </FileTreeFolder>
+    <FileTreeFolder name="components">
+      <FileTreeFolder name="ui" />
+    </FileTreeFolder>
+    <FileTreeFolder name="public">
+    </FileTreeFolder>
+  </FileTreeFolder>
+</FileTree>
+
+
+## Verify
+
+After installing your first component, confirm the setup:
+
+```bash
+ls components/ui/bubble.tsx
+```
+
+Then import and render it in a page. If it renders without errors, you're ready.
+
+## Troubleshooting
+
+<Accordion type="single" collapsible>
+
+<AccordionItem value="missing-utils">
+<AccordionTrigger>Cannot find module lib/utils</AccordionTrigger>
+<AccordionContent>
+
+Run `npx frakment@latest init` again. It will create `lib/utils.ts` and update `tsconfig.json`.
+
+</AccordionContent>
+</AccordionItem>
+
+<AccordionItem value="styles">
+<AccordionTrigger>Styles do not apply</AccordionTrigger>
+<AccordionContent>
+
+Make sure `globals.css` includes the theme tokens from [Theming](/docs/theming).
+
+</AccordionContent>
+</AccordionItem>
+
+</Accordion>
+
+## Next
+
+- [Theming](/docs/theming) - customize tokens and dark mode
+- [Components](/docs/ai-elements/bubble) - browse the catalog
