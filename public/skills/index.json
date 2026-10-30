@@ -1,0 +1,12 @@
+{
+  "skills": [
+    {
+      "name": "frakment-usage",
+      "title": "Frakment Usage",
+      "description": "Instructions for AI agents to discover, browse, and install Frakment components.",
+      "version": "0.1.0",
+      "url": "/skills/frakment-usage/SKILL.md",
+      "digest": "sha256:78d0f9acb599cb1bef7764340882192547021bdabab76b7c365974676885c8c7"
+    }
+  ]
+}

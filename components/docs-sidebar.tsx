@@ -24,7 +24,9 @@ const TOP_LEVEL_SECTIONS = [
   { href: ROUTES.DOCS_THEMING, name: "Theming" },
   { href: ROUTES.DOCS_COMPONENTS, name: "Components" },
   { href: ROUTES.DOCS_AI_ELEMENTS, name: "AI Elements" },
-  { href: ROUTES.LLMS, name: "llms.txt" },
+  { href: ROUTES.DOCS_SKILLS, name: "Skills" },
+  { href: ROUTES.DOCS_MCP, name: "MCP" },
+  { href: ROUTES.DOCS_LLMS, name: "llms.txt" },
 ];
 
 const MENU_BUTTON_CLS =

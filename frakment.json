@@ -138,5 +138,15 @@
       "source": "registry/item.tsx",
       "target": "components/ui/item.tsx"
     }
+  ],
+  "skills": [
+    {
+      "name": "frakment-usage",
+      "title": "Frakment Usage",
+      "description": "Instructions for AI agents to discover, browse, and install Frakment components.",
+      "source": "skills/frakment-usage/SKILL.md",
+      "version": "0.1.0",
+      "allowedTools": ["fetch", "bash"]
+    }
   ]
 }

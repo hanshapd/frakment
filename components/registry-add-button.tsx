@@ -64,7 +64,7 @@ export const RegistryAddButton = ({
       pnpm: `pnpm dlx frakment@latest init`,
       yarn: `yarn frakment@latest init`,
     }),
-    [registryName]
+    []
   );
 
   const handleTriggerClick = (e: React.MouseEvent<HTMLButtonElement>) => {

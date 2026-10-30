@@ -1,5 +1,6 @@
-﻿#!/usr/bin/env node
+#!/usr/bin/env node
 import fs from "node:fs/promises";
+import { createHash } from "node:crypto";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 
@@ -167,6 +168,35 @@ async function main() {
   );
   console.log(`  ✓ index.json`);
   console.log(`\n✅ Built ${manifest.components.length} component(s).`);
+  // Skills
+  if (manifest.skills && manifest.skills.length > 0) {
+    const skillsOutDir = path.join(rootDir, "public/skills");
+    await fs.mkdir(skillsOutDir, { recursive: true });
+    const skillIndex = [];
+    for (const skill of manifest.skills) {
+      const srcPath = path.resolve(path.dirname(manifestPath), skill.source);
+      const content = await fs.readFile(srcPath, "utf8");
+      const skillDir = path.join(skillsOutDir, skill.name);
+      await fs.mkdir(skillDir, { recursive: true });
+      await fs.writeFile(path.join(skillDir, "SKILL.md"), content);
+      const hex = createHash("sha256").update(content, "utf8").digest("hex");
+      skillIndex.push({
+        name: skill.name,
+        title: skill.title,
+        description: skill.description,
+        version: skill.version ?? "0.0.0",
+        url: `/skills/${skill.name}/SKILL.md`,
+        digest: `sha256:${hex}`,
+      });
+      console.log(`  ✓ skill ${skill.name} → public/skills/${skill.name}/SKILL.md`);
+    }
+    await fs.writeFile(
+      path.join(skillsOutDir, "index.json"),
+      JSON.stringify({ skills: skillIndex }, null, 2)
+    );
+    console.log(`  ✓ public/skills/index.json`);
+  }
+
 }
 
 main().catch((err) => {

@@ -4,7 +4,12 @@ import { formatLabelFromSlug } from "@/lib/utils";
 
 export const DOCS_DIR = `content${ROUTES.DOCS}`;
 
-export const EXCLUDED_SECTIONS = new Set(["installation", "(root)"]);
+export const EXCLUDED_SECTIONS = new Set([
+  "installation",
+  "(root)",
+  "skills",
+  "mcp",
+]);
 
 export const isComponentsFolder = (folder: PageTreeFolder) =>
   folder.$id === "components" || folder.name === "Components";

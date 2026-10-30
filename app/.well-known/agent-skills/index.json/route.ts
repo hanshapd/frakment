@@ -1,10 +1,28 @@
+import { createHash } from "node:crypto";
+import { readFile } from "node:fs/promises";
+import path from "node:path";
+
 import { ROUTES } from "@/constants/routes";
 import { requestOrigin } from "@/lib/agent-discovery/request-origin";
 import { siteAgentSkillDigest } from "@/lib/agent-discovery/site-agent-skill";
 
-export const GET = (request: Request) => {
+async function fileDigest(source: string): Promise<string | null> {
+  try {
+    const content = await readFile(path.join(process.cwd(), source), "utf-8");
+    const hex = createHash("sha256").update(content, "utf-8").digest("hex");
+    return `sha256:${hex}`;
+  } catch {
+    return null;
+  }
+}
+
+export const GET = async (request: Request) => {
   const origin = requestOrigin(request);
   const base = origin.replace(/\/$/, "");
+
+  const frakmentUsageDigest = await fileDigest(
+    "skills/frakment-usage/SKILL.md"
+  );
 
   return Response.json(
     {
@@ -12,12 +30,24 @@ export const GET = (request: Request) => {
       skills: [
         {
           description:
-            "Install and compose frakment components — standalone AI and chat primitives with no shadcn dependency.",
+            "Site-wide orientation for frakment, a standalone registry of AI and chat primitives with no shadcn dependency.",
           digest: siteAgentSkillDigest(),
           name: "frakment",
           type: "skill-md",
           url: `${base}${ROUTES.AGENT_SKILLS_SITE_SKILL}`,
         },
+        ...(frakmentUsageDigest
+          ? [
+              {
+                description:
+                  "Discover, fetch, search, and install frakment components. Covers /r/index.json, per-component JSON, and the frakment CLI.",
+                digest: frakmentUsageDigest,
+                name: "frakment-usage",
+                type: "skill-md",
+                url: `${base}/skills/frakment-usage/SKILL.md`,
+              },
+            ]
+          : []),
       ],
     },
     { headers: { "Cache-Control": "public, max-age=3600" } }
