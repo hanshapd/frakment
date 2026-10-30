@@ -208,14 +208,12 @@ export const CommandMenu = ({
       const parsed = parseDocPageUrl(item.url);
       if (parsed.kind === "theme") {
         setCopyPayload(
-          `${packageManager} dlx shadcn@latest add ${SITE.REGISTRY}/theme-${parsed.slug}`
+          `${packageManager} frakment@latest add theme-${parsed.slug}`
         );
         return;
       }
       if (parsed.kind === "component" || parsed.kind === "template") {
-        setCopyPayload(
-          `${packageManager} dlx shadcn@latest add ${SITE.REGISTRY}/${parsed.slug}`
-        );
+        setCopyPayload(`${packageManager} frakment@latest add ${parsed.slug}`);
         return;
       }
       setCopyPayload("");
@@ -226,7 +224,7 @@ export const CommandMenu = ({
   const handleBlockHighlight = useCallback(
     (block: { name: string; description: string; categories: string[] }) => {
       setShowGoToPage(true);
-      setCopyPayload(`${packageManager} dlx shadcn@latest add ${block.name}`);
+      setCopyPayload(`${packageManager} frakment@latest add ${block.name}`);
     },
     [packageManager]
   );
@@ -300,7 +298,7 @@ export const CommandMenu = ({
       if (
         e.key === "c" &&
         (e.metaKey || e.ctrlKey) &&
-        copyPayload.includes("shadcn@latest")
+        copyPayload.includes("frakment add")
       ) {
         runCommand(() => {
           copyFeedback();

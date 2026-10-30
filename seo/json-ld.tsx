@@ -31,7 +31,7 @@ export const SoftwareSourceCodeJsonLd = () => (
       author: {
         "@type": "Person",
         name: SITE.AUTHOR.NAME,
-        url: LINK.PORTFOLIO,
+        url: LINK.AUTHOR,
       },
       codeRepository: LINK.GITHUB,
       description: SITE.DESCRIPTION.LONG,
@@ -41,7 +41,7 @@ export const SoftwareSourceCodeJsonLd = () => (
       maintainer: {
         "@type": "Person",
         name: SITE.AUTHOR.NAME,
-        url: LINK.PORTFOLIO,
+        url: LINK.AUTHOR,
       },
       name: SITE.NAME,
       offers: {
@@ -65,11 +65,11 @@ export const OrganizationJsonLd = () => (
       founder: {
         "@type": "Person",
         name: SITE.AUTHOR.NAME,
-        url: LINK.PORTFOLIO,
+        url: LINK.AUTHOR,
       },
       logo: SITE.OG_IMAGE,
       name: SITE.NAME,
-      sameAs: [LINK.GITHUB, LINK.PORTFOLIO, LINK.X],
+      sameAs: [LINK.GITHUB, LINK.AUTHOR],
       url: SITE.URL,
     }}
   />

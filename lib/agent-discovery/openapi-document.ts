@@ -11,8 +11,8 @@ export const buildOpenApiDocument = (
   return {
     externalDocs: {
       description:
-        "Use the maintained shadcn MCP server for registry browsing, search, and installation workflows.",
-      url: LINK.SHADCN_MCP_DOCS,
+        "Frakment MCP server documentation for registry browsing and installation workflows.",
+      url: LINK.FRAKMENT_MCP_DOCS,
     },
     info: {
       description: `Read-only HTTP surfaces for the ${SITE.NAME} documentation site and shadcn component registry.`,

@@ -34,7 +34,7 @@ ${documentationIndex(base)}
 - [OpenAPI description](${base}${ROUTES.OPENAPI})
 - [API catalog](${base}${ROUTES.API_CATALOG})
 - [Agent skill](${base}${ROUTES.AGENT_SKILLS_SITE_SKILL})
-- [shadcn MCP server documentation](${LINK.SHADCN_MCP_DOCS})
+- [Frakment MCP server documentation](${LINK.FRAKMENT_MCP_DOCS})
 `;
 };
 

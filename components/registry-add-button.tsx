@@ -34,21 +34,9 @@ import { cn } from "@/lib/utils";
 const title = "Add Registry";
 
 const Description = ({ registryName }: { registryName: string }) => (
-  <>
-    Run this command to add{" "}
-    <a
-      className="text-foreground underline underline-offset-4"
-      href={addQueryParams("https://ui.shadcn.com/docs/directory", {
-        q: registryName,
-        ...UTM_PARAMS,
-      })}
-      target="_blank"
-      rel="noopener"
-    >
-      {registryName}
-    </a>{" "}
-    to your project.
-  </>
+  <span className="text-balance">
+    Install the {registryName} registry into your project with the Frakment CLI.
+  </span>
 );
 
 export const RegistryAddButton = ({
@@ -71,10 +59,10 @@ export const RegistryAddButton = ({
 
   const commands = useMemo(
     () => ({
-      bun: `bunx --bun shadcn@latest registry add ${registryName}`,
-      npm: `npx shadcn@latest registry add ${registryName}`,
-      pnpm: `pnpm dlx shadcn@latest registry add ${registryName}`,
-      yarn: `yarn shadcn@latest registry add ${registryName}`,
+      bun: `bunx --bun frakment@latest init`,
+      npm: `npx frakment@latest init`,
+      pnpm: `pnpm dlx frakment@latest init`,
+      yarn: `yarn frakment@latest init`,
     }),
     [registryName]
   );

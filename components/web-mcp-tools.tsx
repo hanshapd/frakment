@@ -82,7 +82,7 @@ export const WebMcpTools = () => {
 
     register({
       description:
-        "Fetch the published shadcn registry manifest (registry.json) for this site.",
+        "Fetch the published Frakment registry manifest (registry.json) for this site.",
       execute: async (_input, { signal }) => {
         const res = await fetch(`${window.location.origin}${ROUTES.REGISTRY}`, {
           signal,

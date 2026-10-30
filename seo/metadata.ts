@@ -94,7 +94,7 @@ export const baseMetadata: Metadata = {
     title: SITE.NAME,
   },
   applicationName: SITE.NAME,
-  authors: [{ name: SITE.AUTHOR.NAME, url: LINK.PORTFOLIO }],
+  authors: [{ name: SITE.AUTHOR.NAME, url: LINK.AUTHOR }],
   category: "technology",
   creator: SITE.AUTHOR.NAME,
   description: SITE.DESCRIPTION.LONG,

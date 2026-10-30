@@ -18,7 +18,7 @@ export const SiteFooter = () => {
           <div className="text-muted-foreground w-full px-1 text-center text-xs leading-loose sm:text-sm">
             Built by{" "}
             <a
-              href={addQueryParams(LINK.PORTFOLIO, UTM_PARAMS)}
+              href={addQueryParams(LINK.AUTHOR, UTM_PARAMS)}
               target="_blank"
               rel="noreferrer"
               className="font-medium underline underline-offset-4"

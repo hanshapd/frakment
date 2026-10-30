@@ -16,8 +16,8 @@ const baseUrl = getBaseUrl();
 
 export const SITE = {
   AUTHOR: {
-    NAME: "Aniket Pawar",
-    TWITTER: "@alaymanguy",
+    NAME: "hanshapd",
+    TWITTER: "@hanshapd",
   },
   DESCRIPTION: {
     LONG: "A monochrome component registry. Neutral by nature, precise by design.",

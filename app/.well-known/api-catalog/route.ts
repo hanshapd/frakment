@@ -36,7 +36,7 @@ const catalogLinkset = (origin: string) => {
           { href: `${base}${ROUTES.LLMS}`, type: "text/plain" },
           { href: `${base}${ROUTES.LLMS_FULL}`, type: "text/plain" },
           { href: `${base}${homeContentRoute}`, type: "text/markdown" },
-          { href: LINK.SHADCN_MCP_DOCS, type: "text/html" },
+          { href: LINK.FRAKMENT_MCP_DOCS, type: "text/html" },
         ],
         status: [
           { href: `${base}${ROUTES.API_STATUS}`, type: "application/json" },

@@ -9,10 +9,10 @@ import { RegistryAddButton } from "@/components/registry-add-button";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { TextFlip } from "@/components/ui/text-flip";
 import { SITE } from "@/constants/site";
+import frakment from "@/frakment.json";
 import type { PackageManager } from "@/hooks/use-package-manager";
 import { usePackageManager } from "@/hooks/use-package-manager";
 import { cn } from "@/lib/utils";
-import registry from "@/registry.json";
 
 const pmCommands = {
   bun: "bunx --bun",
@@ -21,7 +21,7 @@ const pmCommands = {
   yarn: "yarn",
 };
 
-const registryItemNames = ((registry.items ?? []) as { name: string }[])
+const registryItemNames = frakment.components
   .map((item) => item.name)
   .toSorted((a, b) =>
     a.localeCompare(b, "en", {
@@ -73,16 +73,13 @@ export const CommandBox = ({ className }: { className?: string }) => {
               <TabsContent key={key} value={key} asChild>
                 <span className="block sm:inline-block">
                   <span className="select-none">$ </span>
-                  {command} shadcn add{" "}
+                  {command} frakment@latest add{" "}
                   <span className="select-none sm:hidden" aria-hidden="true">
                     \
                   </span>
                 </span>
               </TabsContent>
             ))}
-
-            <span>{SITE.REGISTRY}/</span>
-
             <TextFlip
               className="text-foreground"
               as={motion.span}
@@ -112,7 +109,7 @@ export const CommandBox = ({ className }: { className?: string }) => {
       <CopyButton
         className="absolute top-2 right-2 z-10 size-7 opacity-70 hover:opacity-100 focus-visible:opacity-100"
         value={() =>
-          `${pmCommands[packageManager]} shadcn@latest add ${SITE.REGISTRY}/${currentItemRef.current}`
+          `${pmCommands[packageManager]} frakment@latest add ${currentItemRef.current}`
         }
         event="copy_npm_command"
       />

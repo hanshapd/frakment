@@ -15,7 +15,7 @@ const nextConfig = {
       `<${ROUTES.API_CATALOG}>; rel="api-catalog"`,
       `<${ROUTES.OPENAPI}>; rel="service-desc"`,
       `<${ROUTES.DOCS}>; rel="service-doc"`,
-      `<${LINK.SHADCN_MCP_DOCS}>; rel="service-doc"; title="shadcn MCP server"`,
+      `<${LINK.FRAKMENT_MCP_DOCS}>; rel="service-doc"; title="Frakment MCP server"`,
       `<${ROUTES.AGENT_SKILLS_INDEX}>; rel="describedby"`,
     ].join(", ");
 

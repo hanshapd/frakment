@@ -16,7 +16,7 @@ export const ROUTES = {
   MCP: "/mcp",
   OG: "/og",
   OPENAPI: "/openapi.json",
-  REGISTRY: "/r/registry.json",
+  REGISTRY: "/r/index.json",
   ROBOTS: "/robots.txt",
   RSS: "/rss.xml",
   SITEMAP: "/sitemap.xml",
