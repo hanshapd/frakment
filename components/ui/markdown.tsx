@@ -7,7 +7,7 @@ import remarkGfm from "remark-gfm";
 
 import { cn } from "@/lib/utils";
 
-import { CodeBlock, CodeBlockCode } from "./code-block";
+import { CodeBlock, CodeBlockContent } from "./code-block";
 
 export interface MarkdownProps {
   children: string;
@@ -53,7 +53,7 @@ const INITIAL_COMPONENTS: Partial<Components> = {
 
     return (
       <CodeBlock className={className}>
-        <CodeBlockCode code={children as string} language={language} />
+        <CodeBlockContent>{children as string}</CodeBlockContent>
       </CodeBlock>
     );
   },

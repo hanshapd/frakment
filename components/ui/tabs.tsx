@@ -33,7 +33,7 @@ const TabsList = ({
 const TabsTrigger = ({
   className,
   ...props
-}: React.ComponentProps<typeof TabsPrimitive.Trigger>) => (
+}: React.ComponentProps<typeof TabsPrimitive.Trigger> & { sound?: string }) => (
   <TabsPrimitive.Trigger
     data-slot="tabs-trigger"
     className={cn(

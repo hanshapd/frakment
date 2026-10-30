@@ -21,7 +21,7 @@ const pmCommands = {
   yarn: "yarn",
 };
 
-const registryItemNames = registry.items
+const registryItemNames = ((registry.items ?? []) as Array<{ name: string }>)
   .map((item) => item.name)
   .toSorted((a, b) =>
     a.localeCompare(b, "en", {
