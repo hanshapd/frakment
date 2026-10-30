@@ -12,9 +12,9 @@ export const GET = (request: Request) => {
       skills: [
         {
           description:
-            "Install and use components from this public shadcn registry starter and documentation site.",
+            "Install and compose frakment components — standalone AI and chat primitives with no shadcn dependency.",
           digest: siteAgentSkillDigest(),
-          name: "registry-starter",
+          name: "frakment",
           type: "skill-md",
           url: `${base}${ROUTES.AGENT_SKILLS_SITE_SKILL}`,
         },

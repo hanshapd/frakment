@@ -1,6 +1,5 @@
 import { createHash } from "node:crypto";
 
-import { LINK } from "@/constants/links";
 import { ROUTES } from "@/constants/routes";
 import { SITE } from "@/constants/site";
 
@@ -8,30 +7,48 @@ export const SITE_AGENT_SKILL_MD = `# ${SITE.NAME}
 
 ## Summary
 
-Help users discover, inspect, and install components from this public shadcn registry starter and its documentation site.
+Help users discover and install components from frakment, a standalone registry of AI and chat primitives with no shadcn dependency.
+
+## What frakment is
+
+frakment ships self-contained component primitives for AI interfaces. Every component is a single .tsx file installed by the frakment CLI. There is no shadcn dependency chain.
 
 ## Registry
 
-- Registry JSON: \`${ROUTES.REGISTRY}\`
-- Docs: ${ROUTES.DOCS}
-
-## MCP
-
-This site is a shadcn-compatible registry. For MCP workflows, use the maintained shadcn MCP server documentation: ${LINK.SHADCN_MCP_DOCS}
+- Base URL: ${SITE.URL}
+- Component index: ${SITE.URL}/r/index.json
+- Component JSON: ${SITE.URL}/r/{name}.json
+- Docs: ${SITE.URL}${ROUTES.DOCS}
 
 ## Install
 
 \`\`\`bash
-npx shadcn@latest add ${SITE.URL}/r/status-chip.json
+npx frakment@latest init
+npx frakment@latest add chain-of-thought
 \`\`\`
 
-Prefer following the on-site installation guide: ${ROUTES.DOCS_INSTALLATION}
+The CLI resolves registry dependencies automatically. For example, chain-of-thought installs trace first.
+
+## Components
+
+Two groups:
+
+1. Components: badge, button, code-block, item, avatar, separator
+2. AI Elements: bubble, message, trace, chain-of-thought, marker, spinner, pulse, pulse-status
+
+Browse:
+
+- ${SITE.URL}${ROUTES.DOCS_COMPONENTS}
+- ${SITE.URL}${ROUTES.DOCS_AI_ELEMENTS}
+
+## MCP
+
+A frakment MCP server is planned. Until then, use this skill or the registry JSON directly.
 `;
 
 export const siteAgentSkillDigest = (): string => {
   const hex = createHash("sha256")
     .update(SITE_AGENT_SKILL_MD, "utf-8")
     .digest("hex");
-
   return `sha256:${hex}`;
 };
