@@ -144,7 +144,13 @@
 
 @layer base {
   * {
-    @apply border-border outline-ring/50;
+    @apply border-border;
+  }
+
+  /* Focus ring is handled per-component via Tailwind ring utilities.
+     Disable the browser's native (square) outline on focus. */
+  *:focus-visible {
+    outline: none;
   }
   ::selection {
     @apply bg-selection text-selection-foreground;
@@ -520,8 +526,12 @@
 
 /* === Trace shimmer (single source of truth) === */
 @keyframes shimmer {
-  0% { background-position: 220% 0; }
-  100% { background-position: -220% 0; }
+  0% {
+    background-position: 220% 0;
+  }
+  100% {
+    background-position: -220% 0;
+  }
 }
 
 @utility shimmer {
@@ -560,13 +570,21 @@
 }
 
 @keyframes accordion-down {
-  from { height: 0; }
-  to { height: var(--radix-accordion-content-height); }
+  from {
+    height: 0;
+  }
+  to {
+    height: var(--radix-accordion-content-height);
+  }
 }
 
 @keyframes accordion-up {
-  from { height: var(--radix-accordion-content-height); }
-  to { height: 0; }
+  from {
+    height: var(--radix-accordion-content-height);
+  }
+  to {
+    height: 0;
+  }
 }
 /* === Shiki dark mode === */
 .dark [data-slot="code-block-content"] .shiki,
@@ -595,8 +613,7 @@
   summary:not([aria-disabled="true"]),
   label[for],
   select:not(:disabled),
-  a[href],
-  [tabindex]:not([tabindex="-1"]):not(:disabled) {
+  a[href] {
     cursor: pointer;
   }
 

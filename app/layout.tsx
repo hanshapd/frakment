@@ -4,7 +4,6 @@ import { Analytics } from "@/components/analytics";
 import { ThemeProvider } from "@/components/theme-provider";
 import { Toaster } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
-import { META_THEME_COLORS } from "@/constants/site";
 import { fontVariables } from "@/lib/fonts";
 import { cn } from "@/lib/utils";
 import { JsonLdScripts } from "@/seo/json-ld";
@@ -22,18 +21,6 @@ const RootLayout = ({
   <html lang="en" suppressHydrationWarning>
     <head>
       <JsonLdScripts />
-      <script
-        dangerouslySetInnerHTML={{
-          __html: `
-              try {
-                if (localStorage.theme === 'dark' || ((!('theme' in localStorage) || localStorage.theme === 'system') && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
-                  document.querySelector('meta[name="theme-color"]').setAttribute('content', '${META_THEME_COLORS.dark}')
-                }
-              } catch (_) {}
-            `,
-        }}
-      />
-      <meta name="theme-color" content={META_THEME_COLORS.light} />
     </head>
     <body
       className={cn(

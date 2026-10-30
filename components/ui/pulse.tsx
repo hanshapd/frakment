@@ -1,19 +1,12 @@
 "use client";
 
 import { X } from "lucide-react";
-import {
-  type KeyboardEvent,
-  type PointerEvent,
-  useCallback,
-  useEffect,
-  useMemo,
-  useRef,
-  useState,
-} from "react";
+import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
+import type { KeyboardEvent, PointerEvent } from 'react';
 
-import { PulseStatus } from "@/components/ui/pulse-status";
 import { Badge } from "@/components/ui/badge";
-import { Timeline, TimelineItem } from "@/components/ui/timeline";
+import { PulseStatus } from "@/components/ui/pulse-status";
+import { Trace, TraceLine, TraceIcon } from "@/components/ui/trace";
 import { cn } from "@/lib/utils";
 
 const MAGNIFY = 5;
@@ -52,12 +45,11 @@ export interface PulseProps {
 
 const DEFAULT_SERVICES: PulseService[] = [
   {
-    name: "Registry",
     incidents: {
       19: {
-        title: "Elevated error rates on install",
-        status: "degraded",
         minutes: 18,
+        status: "degraded",
+        title: "Elevated error rates on install",
         updates: [
           {
             time: "14:02",
@@ -77,9 +69,9 @@ const DEFAULT_SERVICES: PulseService[] = [
         ],
       },
       84: {
-        title: "Slow responses in eu-west",
-        status: "degraded",
         minutes: 23,
+        status: "degraded",
+        title: "Slow responses in eu-west",
         updates: [
           {
             time: "09:41",
@@ -95,14 +87,14 @@ const DEFAULT_SERVICES: PulseService[] = [
         ],
       },
     },
+    name: "Registry",
   },
   {
-    name: "Docs",
     incidents: {
       43: {
-        title: "Search results failing to load",
-        status: "degraded",
         minutes: 12,
+        status: "degraded",
+        title: "Search results failing to load",
         updates: [
           { time: "18:30", label: "Investigating" },
           {
@@ -113,14 +105,14 @@ const DEFAULT_SERVICES: PulseService[] = [
         ],
       },
     },
+    name: "Docs",
   },
   {
-    name: "CLI",
     incidents: {
       69: {
-        title: "Downloads delayed",
-        status: "down",
         minutes: 48,
+        status: "down",
+        title: "Downloads delayed",
         updates: [
           {
             time: "02:15",
@@ -140,15 +132,14 @@ const DEFAULT_SERVICES: PulseService[] = [
         ],
       },
     },
+    name: "CLI",
   },
   {
-    name: "Preview",
-    missing: 6,
     incidents: {
       27: {
-        title: "Preview builds stalled",
-        status: "down",
         minutes: 9,
+        status: "down",
+        title: "Preview builds stalled",
         updates: [
           {
             time: "22:07",
@@ -163,6 +154,8 @@ const DEFAULT_SERVICES: PulseService[] = [
         ],
       },
     },
+    missing: 6,
+    name: "Preview",
   },
 ];
 
@@ -171,10 +164,10 @@ const clamp = (v: number, lo: number, hi: number) =>
 
 const formatDay = (ms: number) =>
   new Date(ms).toLocaleDateString("en-US", {
-    weekday: "short",
-    month: "short",
     day: "numeric",
+    month: "short",
     timeZone: "UTC",
+    weekday: "short",
   });
 
 function statusOf(service: PulseService, day: number): DayStatus {
@@ -221,7 +214,7 @@ function barAt(weights: Float64Array, x: number) {
 function incidentsOn(services: PulseService[], day: number) {
   return services.flatMap((s) => {
     const incident = s.incidents?.[day];
-    return incident ? [{ service: s.name, incident }] : [];
+    return incident ? [{ incident, service: s.name }] : [];
   });
 }
 
@@ -236,10 +229,10 @@ function describeDay(list: { service: string; incident: Incident }[]) {
 }
 
 const BAR_COLOR: Record<DayStatus, string> = {
-  up: "bg-emerald-500 dark:bg-emerald-400",
   degraded: "bg-amber-400 dark:bg-amber-300",
   down: "bg-rose-500 dark:bg-rose-400",
   none: "bg-muted",
+  up: "bg-emerald-500 dark:bg-emerald-400",
 };
 
 export default function Pulse({
@@ -253,12 +246,12 @@ export default function Pulse({
   const [pinned, setPinned] = useState<number | null>(null);
   const barsRef = useRef<HTMLDivElement>(null);
   const sim = useRef({
-    weights: new Float64Array(days).fill(1),
-    target: new Float64Array(days).fill(1),
     focus: null as number | null,
-    raf: 0,
     last: 0,
+    raf: 0,
     reduceMotion: false,
+    target: new Float64Array(days).fill(1),
+    weights: new Float64Array(days).fill(1),
   });
   if (sim.current.weights.length !== days) {
     sim.current.weights = new Float64Array(days).fill(1);
@@ -396,8 +389,8 @@ export default function Pulse({
     const moves: Record<string, number> = {
       ArrowLeft: -1,
       ArrowRight: 1,
-      Home: -days,
       End: days,
+      Home: -days,
     };
     if (event.key === "Enter" || event.key === " ") {
       event.preventDefault();
@@ -565,22 +558,30 @@ export default function Pulse({
                       {incident.title} · {incident.minutes} min
                     </span>
                   </p>
-                  <Timeline className="mt-2.5">
+                  <Trace className="mt-2.5">
                     {incident.updates.map((update) => (
-                      <TimelineItem key={`${update.time}-${update.label}`}>
-                        <span className="text-muted-foreground tabular-nums">
-                          {update.time}
-                        </span>{" "}
-                        <span className="font-medium">{update.label}</span>
-                        {update.note && (
-                          <span className="text-muted-foreground">
-                            {" "}
-                            {update.note}
-                          </span>
-                        )}
-                      </TimelineItem>
+                      <TraceLine
+                        key={`${update.time}-${update.label}`}
+                        className="w-full items-start"
+                      >
+                        <TraceIcon className="mt-1.5">
+                          <span className="size-1.5 rounded-full bg-muted-foreground" />
+                        </TraceIcon>
+                        <span className="min-w-0 flex-1">
+                          <span className="text-muted-foreground tabular-nums">
+                            {update.time}
+                          </span>{" "}
+                          <span className="font-medium">{update.label}</span>
+                          {update.note && (
+                            <span className="text-muted-foreground">
+                              {" "}
+                              {update.note}
+                            </span>
+                          )}
+                        </span>
+                      </TraceLine>
                     ))}
-                  </Timeline>
+                  </Trace>
                 </div>
               ))}
             </div>

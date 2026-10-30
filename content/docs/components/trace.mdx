@@ -1,0 +1,267 @@
+---
+title: Trace
+description: The primitive for rendering collapsible agent trace lines with icons, titles, and status.
+---
+
+import {
+  Trace,
+  TraceLine,
+  TraceIcon,
+  TraceTitle,
+  TraceDescription,
+  TraceCollapsible,
+  TraceCollapsibleTrigger,
+  TraceCollapsibleContent,
+} from "@/components/ui/trace";
+import {
+  CheckIcon,
+  LoaderCircleIcon,
+  CircleAlertIcon,
+  SearchIcon,
+  FileCode2Icon,
+  GaugeIcon,
+} from "lucide-react";
+
+<ComponentPreview name="trace" title="trace.tsx" align="start" previewClassName="h-auto">
+  <TraceDemo />
+</ComponentPreview>
+
+Trace is the foundational primitive behind [Chain of Thought](/docs/components/chain-of-thought) and any vertical step list. It composes a flex column of lines, each with an icon, title, and optional status.
+
+## Installation
+
+<CodeTabs>
+  <TabsList>
+    <TabsTrigger value="cli">Command</TabsTrigger>
+    <TabsTrigger value="manual">Manual</TabsTrigger>
+  </TabsList>
+
+<TabsContent value="cli">
+
+```bash
+npx frakment add trace
+```
+
+</TabsContent>
+
+  <TabsContent value="manual">
+    <Steps className="mb-0 pt-2">
+      <Step>Install the following dependencies:</Step>
+
+      ```bash
+      npm install lucide-react motion radix-ui
+      ```
+
+      <Step>Copy and paste the following code into your project.</Step>
+
+      <ComponentSource name="trace" title="components/ui/trace.tsx" />
+
+      <Step>Update the import paths to match your project setup.</Step>
+    </Steps>
+
+  </TabsContent>
+</CodeTabs>
+
+## Usage
+
+```tsx
+import {
+  Trace,
+  TraceLine,
+  TraceIcon,
+  TraceTitle,
+} from "@/components/ui/trace";
+import { TraceDemo } from "@/examples/trace-demo";
+```
+
+```tsx
+<Trace>
+  <TraceLine>
+    <TraceIcon><SearchIcon /></TraceIcon>
+    <TraceTitle>{"Searched for 3 sources"}</TraceTitle>
+  </TraceLine>
+</Trace>
+```
+
+## Anatomy
+
+```tsx
+<Trace>
+  <TraceLine>
+    <TraceIcon />
+    <TraceTitle />
+    <TraceDescription />
+  </TraceLine>
+</Trace>
+```
+
+- **Trace** — flex column, 4px gap, full width
+- **TraceLine** — inline row with icon and title, accepts `status`
+- **TraceIcon** — 16px icon container, `aria-hidden`
+- **TraceTitle** — truncated title, accessible name
+- **TraceDescription** — small muted secondary text on the right
+
+## Status
+
+Use `status` on **TraceLine** to convey state without extra markup.
+
+| Status    | Effect                              |
+| :-------- | :---------------------------------- |
+| `running` | Foreground color, shimmer on title  |
+| `error`   | Destructive color                   |
+| `pending` | 60% opacity                         |
+
+<ComponentPreview name="trace" title="trace.tsx" align="start" previewClassName="h-auto">
+  <div className="w-full max-w-md p-6">
+    <Trace>
+      <TraceLine status="running">
+        <TraceIcon><LoaderCircleIcon className="animate-spin" /></TraceIcon>
+        <TraceTitle>{"Searching for minimumReleaseAge…"}</TraceTitle>
+      </TraceLine>
+      <TraceLine>
+        <TraceIcon><CheckIcon /></TraceIcon>
+        <TraceTitle>{"Searched for minimumReleaseAge"}</TraceTitle>
+      </TraceLine>
+      <TraceLine status="error">
+        <TraceIcon><CircleAlertIcon /></TraceIcon>
+        <TraceTitle>{"Failed to search for minimumReleaseAge"}</TraceTitle>
+      </TraceLine>
+      <TraceLine status="pending">
+        <TraceIcon><GaugeIcon /></TraceIcon>
+        <TraceTitle>{"Scanning render tree…"}</TraceTitle>
+      </TraceLine>
+    </Trace>
+  </div>
+</ComponentPreview>
+
+## With description
+
+Place a `TraceDescription` after the title to show a secondary value, such as a duration or byte count.
+
+<ComponentPreview name="trace" title="trace.tsx" align="start" previewClassName="h-auto">
+  <div className="w-full max-w-md p-6">
+    <Trace>
+      <TraceLine>
+        <TraceIcon><FileCode2Icon /></TraceIcon>
+        <TraceTitle>{"vendor.js"}</TraceTitle>
+        <TraceDescription>{"1240 KB"}</TraceDescription>
+      </TraceLine>
+      <TraceLine>
+        <TraceIcon><FileCode2Icon /></TraceIcon>
+        <TraceTitle>{"chart-lib.js"}</TraceTitle>
+        <TraceDescription>{"812 KB"}</TraceDescription>
+      </TraceLine>
+      <TraceLine>
+        <TraceIcon><FileCode2Icon /></TraceIcon>
+        <TraceTitle>{"dashboard.js"}</TraceTitle>
+        <TraceDescription>{"340 KB"}</TraceDescription>
+      </TraceLine>
+    </Trace>
+  </div>
+</ComponentPreview>
+
+## Collapsible
+
+Wrap a **TraceLine** in **TraceCollapsibleTrigger** to make it expand into nested steps.
+
+<ComponentPreview name="trace" title="trace.tsx" align="start" previewClassName="h-auto">
+  <div className="w-full max-w-md p-6">
+    <Trace>
+      <TraceCollapsible defaultOpen>
+        <TraceCollapsibleTrigger>
+          <TraceLine>
+            <TraceIcon><CheckIcon /></TraceIcon>
+            <TraceTitle>{"Researched in 3 steps"}</TraceTitle>
+          </TraceLine>
+        </TraceCollapsibleTrigger>
+        <TraceCollapsibleContent>
+          <Trace>
+            <TraceLine>
+              <TraceIcon><CheckIcon /></TraceIcon>
+              <TraceTitle>{"Read the build log for dpl_8Kx2"}</TraceTitle>
+            </TraceLine>
+            <TraceLine>
+              <TraceIcon><CheckIcon /></TraceIcon>
+              <TraceTitle>{"Checked bundle size for dashboard.js"}</TraceTitle>
+            </TraceLine>
+            <TraceLine>
+              <TraceIcon><CheckIcon /></TraceIcon>
+              <TraceTitle>{"Profiled 3 API endpoints"}</TraceTitle>
+            </TraceLine>
+          </Trace>
+        </TraceCollapsibleContent>
+      </TraceCollapsible>
+    </Trace>
+  </div>
+</ComponentPreview>
+
+## In context
+
+Combined with a status spinner and a streaming title, **Trace** becomes a live agent trace.
+
+<ComponentPreview name="trace" title="trace.tsx" align="start" previewClassName="h-auto">
+  <div className="w-full max-w-md p-6">
+    <Trace>
+      <TraceCollapsible defaultOpen>
+        <TraceCollapsibleTrigger>
+          <TraceLine status="running">
+            <TraceIcon><LoaderCircleIcon className="animate-spin" /></TraceIcon>
+            <TraceTitle>{"Profiling"}</TraceTitle>
+          </TraceLine>
+        </TraceCollapsibleTrigger>
+        <TraceCollapsibleContent>
+          <Trace>
+            <TraceLine status="running">
+              <TraceIcon><LoaderCircleIcon className="animate-spin" /></TraceIcon>
+              <TraceTitle>{"Analyzing bundle for dashboard"}</TraceTitle>
+            </TraceLine>
+            <TraceLine>
+              <TraceIcon><CheckIcon /></TraceIcon>
+              <TraceTitle>{"Profiled requests on /dashboard"}</TraceTitle>
+            </TraceLine>
+            <TraceLine status="pending">
+              <TraceIcon><GaugeIcon /></TraceIcon>
+              <TraceTitle>{"Scanning render tree for Dashboard"}</TraceTitle>
+            </TraceLine>
+          </Trace>
+        </TraceCollapsibleContent>
+      </TraceCollapsible>
+    </Trace>
+  </div>
+</ComponentPreview>
+
+## API Reference
+
+### Trace / TraceIcon / TraceTitle / TraceDescription
+
+Extend `React.ComponentProps<"div">` / `"span">`. **TraceIcon** is `aria-hidden`.
+
+### TraceLine
+
+<PropsTable
+  rows={[
+    {
+      name: "status",
+      type: "running | error | pending",
+      description: "Controls color and shimmer behavior of the line.",
+    },
+  ]}
+/>
+
+### TraceCollapsible
+
+Extends Radix `Collapsible.Root`. Supports `open`, `defaultOpen`, `onOpenChange`.
+
+### TraceCollapsibleTrigger
+
+Extends Radix `Collapsible.Trigger`. Chevron rotates 90° when open.
+
+### TraceCollapsibleContent
+
+Extends Radix `Collapsible.Content`. Animates height and opacity via `motion/react`.
+
+## Accessibility
+
+- `TraceIcon` is `aria-hidden`. Use `TraceTitle` as the accessible name — write it as a sentence.
+- Status is conveyed by icon shape and color, not color alone.
+- `prefers-reduced-motion` disables shimmer and collapse animation.

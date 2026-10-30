@@ -1,6 +1,6 @@
 {
   "name": "frakment",
-  "homepage": "https://github.com/username-kamu/frakment",
+  "homepage": "https://github.com/hanshapd/frakment",
   "components": [
     {
       "name": "badge",
@@ -13,9 +13,9 @@
       "description": "A monochrome button with six variants and six sizes."
     },
     {
-      "name": "pulse",
-      "title": "Pulse",
-      "description": "A daily status timeline for service uptime, with inline incident logs."
+      "name": "chain-of-thought",
+      "title": "chain-of-thought",
+      "description": ""
     },
     {
       "name": "pulse-status",
@@ -23,19 +23,54 @@
       "description": "A status badge for service health, used inside Pulse."
     },
     {
-      "name": "timeline",
-      "title": "Timeline",
-      "description": "A vertical timeline for chronological events."
-    },
-    {
-      "name": "voice-glow",
-      "title": "Voice Glow",
-      "description": "A reactive voice glow that responds to microphone input."
+      "name": "pulse",
+      "title": "Pulse",
+      "description": "A daily status timeline for service uptime, with inline incident logs."
     },
     {
       "name": "trace",
       "title": "Trace",
       "description": "A list of lines for the steps an agent takes."
+    },
+    {
+      "name": "bubble",
+      "title": "Bubble",
+      "description": "Chat bubble surface with variants, alignment, and optional reactions."
+    },
+    {
+      "name": "code-block",
+      "title": "Code Block",
+      "description": "A scrollable code container with header, copy button, line numbers, and diff highlighting."
+    },
+    {
+      "name": "message",
+      "title": "Message",
+      "description": "A chat message layout with alignment, avatar, header, and footer."
+    },
+    {
+      "name": "avatar",
+      "title": "Avatar",
+      "description": "A circular user image with fallback, badge, and stacking group."
+    },
+    {
+      "name": "marker",
+      "title": "Marker",
+      "description": "A small inline status row with icon, content, and separator variants."
+    },
+    {
+      "name": "spinner",
+      "title": "Spinner",
+      "description": "A small animated loading indicator."
+    },
+    {
+      "name": "separator",
+      "title": "Separator",
+      "description": "A visual divider between content sections."
+    },
+    {
+      "name": "item",
+      "title": "Item",
+      "description": "A flexible row for grouping media, content, and actions."
     }
   ]
 }

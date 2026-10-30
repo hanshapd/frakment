@@ -1,64 +1,160 @@
 {
   "name": "frakment",
-  "homepage": "https://github.com/username-kamu/frakment",
+  "homepage": "https://github.com/hanshapd/frakment",
   "components": [
     {
       "name": "badge",
       "title": "Badge",
       "description": "A small label for statuses, categories, or counts.",
-      "source": "components/ui/badge.tsx",
+      "source": "registry/badge.tsx",
       "target": "components/ui/badge.tsx",
-      "dependencies": ["class-variance-authority", "radix-ui"]
+      "dependencies": [
+        "class-variance-authority",
+        "radix-ui"
+      ],
+      "registryDependencies": []
     },
     {
       "name": "button",
       "title": "Button",
       "description": "A monochrome button with six variants and six sizes.",
-      "source": "components/ui/button.tsx",
+      "source": "registry/button.tsx",
       "target": "components/ui/button.tsx",
-      "dependencies": ["class-variance-authority", "radix-ui"]
+      "dependencies": [
+        "class-variance-authority",
+        "radix-ui"
+      ],
+      "registryDependencies": []
     },
     {
-      "name": "pulse",
-      "title": "Pulse",
-      "description": "A daily status timeline for service uptime, with inline incident logs.",
-      "source": "components/ui/pulse.tsx",
-      "target": "components/ui/pulse.tsx",
-      "dependencies": ["lucide-react"],
-      "registryDependencies": ["pulse-status", "timeline", "badge"]
+      "name": "chain-of-thought",
+      "title": "chain-of-thought",
+      "description": "",
+      "source": "registry/chain-of-thought.tsx",
+      "target": "components/ui/chain-of-thought.tsx",
+      "dependencies": [
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "trace"
+      ]
     },
     {
       "name": "pulse-status",
       "title": "Pulse Status",
       "description": "A status badge for service health, used inside Pulse.",
-      "source": "components/ui/pulse-status.tsx",
+      "source": "registry/pulse-status.tsx",
       "target": "components/ui/pulse-status.tsx",
-      "dependencies": ["lucide-react"]
+      "dependencies": [
+        "lucide-react"
+      ],
+      "registryDependencies": []
     },
     {
-      "name": "timeline",
-      "title": "Timeline",
-      "description": "A vertical timeline for chronological events.",
-      "source": "components/ui/timeline.tsx",
-      "target": "components/ui/timeline.tsx",
-      "dependencies": []
+      "name": "pulse",
+      "title": "Pulse",
+      "description": "A daily status timeline for service uptime, with inline incident logs.",
+      "source": "registry/pulse.tsx",
+      "target": "components/ui/pulse.tsx",
+      "dependencies": [
+        "lucide-react"
+      ]
     },
     {
-      "name": "voice-glow",
-      "title": "Voice Glow",
-      "description": "A reactive voice glow that responds to microphone input.",
-      "sourceDir": "components/ui/voice-glow",
-      "targetDir": "components/ui/voice-glow",
-      "dependencies": []
+      "name": "trace",
+      "title": "Trace",
+      "description": "A list of lines for the steps an agent takes.",
+      "source": "registry/trace.tsx",
+      "target": "components/ui/trace.tsx",
+      "dependencies": [
+        "lucide-react",
+        "motion",
+        "radix-ui"
+      ],
+      "registryDependencies": []
     },
-{
-  "name": "trace",
-  "title": "Trace",
-  "description": "A list of lines for the steps an agent takes.",
-  "source": "components/ui/trace.tsx",
-  "target": "components/ui/trace.tsx",
-  "dependencies": ["lucide-react"],
-  "registryDependencies": ["collapsible", "badge"]
-}
+    {
+      "name": "bubble",
+      "title": "Bubble",
+      "description": "Chat bubble surface with variants, alignment, and optional reactions.",
+      "source": "registry/bubble.tsx",
+      "target": "components/ui/bubble.tsx"
+    },
+    {
+      "name": "code-block",
+      "title": "Code Block",
+      "description": "A scrollable code container with header, copy button, line numbers, and diff highlighting.",
+      "source": "registry/code-block.tsx",
+      "target": "components/ui/code-block.tsx"
+    },
+    {
+      "name": "message",
+      "title": "Message",
+      "description": "A chat message layout with alignment, avatar, header, and footer.",
+      "source": "registry/message.tsx",
+      "target": "components/ui/message.tsx"
+    },
+    {
+      "name": "avatar",
+      "title": "Avatar",
+      "description": "A circular user image with fallback, badge, and stacking group.",
+      "source": "registry/avatar.tsx",
+      "target": "components/ui/avatar.tsx",
+      "assets": [
+        {
+          "path": "public/avatars/male-l.avif",
+          "type": "registry:file",
+          "target": "public/avatars/male-l.avif"
+        },
+        {
+          "path": "public/avatars/male-r.avif",
+          "type": "registry:file",
+          "target": "public/avatars/male-r.avif"
+        },
+        {
+          "path": "public/avatars/female-l-1.avif",
+          "type": "registry:file",
+          "target": "public/avatars/female-l-1.avif"
+        },
+        {
+          "path": "public/avatars/female-l-2.avif",
+          "type": "registry:file",
+          "target": "public/avatars/female-l-2.avif"
+        },
+        {
+          "path": "public/avatars/female-l-3.avif",
+          "type": "registry:file",
+          "target": "public/avatars/female-l-3.avif"
+        }
+      ]
+    },
+    {
+      "name": "marker",
+      "title": "Marker",
+      "description": "A small inline status row with icon, content, and separator variants.",
+      "source": "registry/marker.tsx",
+      "target": "components/ui/marker.tsx"
+    },
+    {
+      "name": "spinner",
+      "title": "Spinner",
+      "description": "A small animated loading indicator.",
+      "source": "registry/spinner.tsx",
+      "target": "components/ui/spinner.tsx"
+    },
+    {
+      "name": "separator",
+      "title": "Separator",
+      "description": "A visual divider between content sections.",
+      "source": "registry/separator.tsx",
+      "target": "components/ui/separator.tsx"
+    },
+    {
+      "name": "item",
+      "title": "Item",
+      "description": "A flexible row for grouping media, content, and actions.",
+      "source": "registry/item.tsx",
+      "target": "components/ui/item.tsx"
+    }
   ]
 }

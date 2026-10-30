@@ -1,15 +1,12 @@
 {
   "name": "chain-of-thought",
-  "title": "Chain of Thought",
-  "description": "A summary line that expands into the steps an agent took.",
+  "title": "chain-of-thought",
+  "description": "",
   "dependencies": [
-    "class-variance-authority",
     "lucide-react"
   ],
   "registryDependencies": [
-    "trace",
-    "badge",
-    "collapsible"
+    "trace"
   ],
   "files": [
     {

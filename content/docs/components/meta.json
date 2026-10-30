@@ -1,12 +1,19 @@
 {
   "title": "Components",
   "pages": [
+    "avatar",
     "badge",
+    "bubble",
     "button",
     "chain-of-thought",
+    "code-block",
+    "item",
+    "marker",
+    "message",
     "pulse",
     "pulse-status",
-    "timeline",
-    "voice-glow"
+    "separator",
+    "spinner",
+    "trace"
   ]
 }

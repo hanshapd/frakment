@@ -5,7 +5,7 @@ description: Displays a summary that expands into the steps an agent took.
 
 import { ChainOfThoughtDemo } from "@/examples/chain-of-thought-demo";
 
-<ComponentPreview name="trace" title="trace.tsx" align="start" previewClassName="h-auto">
+<ComponentPreview name="chain-of-thought" title="chain-of-thought.tsx" align="start" previewClassName="h-auto">
   <ChainOfThoughtDemo />
 </ComponentPreview>
 
@@ -13,47 +13,76 @@ Chain of Thought is a summary line that expands into the steps an agent took. Th
 
 ## Installation
 
+<CodeTabs>
+  <TabsList>
+    <TabsTrigger value="cli">Command</TabsTrigger>
+    <TabsTrigger value="manual">Manual</TabsTrigger>
+  </TabsList>
+
+<TabsContent value="cli">
+
 ```bash
-npx frakment add trace badge
+npx frakment add chain-of-thought
 ```
+
+</TabsContent>
+
+  <TabsContent value="manual">
+    <Steps className="mb-0 pt-2">
+      <Step>Install the following dependencies:</Step>
+
+      ```bash
+      npm install lucide-react
+      ```
+
+      <Step>Install the required registry component:</Step>
+
+      ```bash
+      npx frakment add trace
+      ```
+
+      <Step>Optional — install these primitives to replicate the full demo:</Step>
+
+      ```bash
+      npx frakment add badge bubble code-block message
+      npm install @ai-sdk/react ai
+      ```
+
+      <div className="mt-3 text-sm text-muted-foreground">
+
+The demo uses `useChat` from `@ai-sdk/react` to simulate streaming agent output. If you only need the `ChainOfThought` component itself, you can skip this step — `trace` is the only required dependency.
+
+</div>
+<Step>Copy and paste the following code into your project.</Step>
+
+      <ComponentSource name="chain-of-thought" title="components/ui/chain-of-thought.tsx" />
+
+      <Step>Update the import paths to match your project setup.</Step>
+    </Steps>
+
+  </TabsContent>
+</CodeTabs>
 
 ## Usage
 
 ```tsx
 import {
-  Trace,
-  TraceCollapsible,
-  TraceCollapsibleContent,
-  TraceCollapsibleTrigger,
-  TraceIcon,
-  TraceLine,
-  TraceTitle,
-} from "@/components/ui/trace";
+  ChainOfThought,
+  ChainOfThoughtHeader,
+  ChainOfThoughtContent,
+  ChainOfThoughtStep,
+} from "@/components/ui/chain-of-thought";
 ```
 
 ```tsx
-<Trace>
-  <TraceCollapsible defaultOpen>
-    <TraceCollapsibleTrigger>
-      <TraceLine>
-        <TraceIcon>
-          <CircleCheckIcon className="size-4" />
-        </TraceIcon>
-        <TraceTitle>Researched in 3 steps</TraceTitle>
-      </TraceLine>
-    </TraceCollapsibleTrigger>
-    <TraceCollapsibleContent>
-      <Trace>
-        <TraceLine>
-          <TraceIcon>
-            <CircleCheckIcon className="size-4" />
-          </TraceIcon>
-          <TraceTitle>Read the build log for dpl_8Kx2</TraceTitle>
-        </TraceLine>
-      </Trace>
-    </TraceCollapsibleContent>
-  </TraceCollapsible>
-</Trace>
+<ChainOfThought defaultOpen>
+  <ChainOfThoughtHeader>Researched in 3 steps</ChainOfThoughtHeader>
+  <ChainOfThoughtContent>
+    <ChainOfThoughtStep>Read the build log for dpl_8Kx2</ChainOfThoughtStep>
+    <ChainOfThoughtStep>Checked bundle size for dashboard.js</ChainOfThoughtStep>
+    <ChainOfThoughtStep>Profiled 3 API endpoints</ChainOfThoughtStep>
+  </ChainOfThoughtContent>
+</ChainOfThought>
 ```
 
 ## Steps

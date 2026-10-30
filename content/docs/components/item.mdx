@@ -1,0 +1,250 @@
+---
+title: Item
+description: A flexible row for grouping media, content, and actions.
+---
+
+import { Item } from "@/components/ui/item";
+import { Spinner } from "@/components/ui/spinner";
+
+<ComponentPreview name="item" title="item.tsx" align="start" previewClassName="h-auto">
+  <div className="w-full max-w-sm p-4">
+    <Item variant="muted">
+      <ItemMedia>
+        <span className="flex size-8 items-center justify-center rounded-full bg-background text-xs font-medium">JS</span>
+      </ItemMedia>
+      <ItemContent>
+        <ItemTitle>{"Jane Smith"}</ItemTitle>
+        <ItemDescription>{"jane@frakment.dev"}</ItemDescription>
+      </ItemContent>
+    </Item>
+  </div>
+</ComponentPreview>
+
+Item is a flexible row primitive for grouping media, content, and actions. Use it for settings lists, activity feeds, user rows, or any horizontal layout with a leading visual and trailing controls.
+
+## Installation
+
+<CodeTabs>
+  <TabsList>
+    <TabsTrigger value="cli">Command</TabsTrigger>
+    <TabsTrigger value="manual">Manual</TabsTrigger>
+  </TabsList>
+
+<TabsContent value="cli">
+
+```bash
+npx frakment add item
+```
+
+</TabsContent>
+
+  <TabsContent value="manual">
+    <Steps className="mb-0 pt-2">
+      <Step>Install the following dependencies:</Step>
+
+      ```bash
+      npm install class-variance-authority radix-ui
+      ```
+
+      <Step>Copy and paste the following code into your project.</Step>
+
+      <ComponentSource name="item" title="components/ui/item.tsx" />
+
+      <Step>Update the import paths to match your project setup.</Step>
+    </Steps>
+
+  </TabsContent>
+</CodeTabs>
+
+## Usage
+
+```tsx
+import { Item, ItemContent, ItemMedia, ItemTitle } from "@/components/ui/item";
+```
+
+```tsx
+<Item>
+  <ItemMedia>{"JS"}</ItemMedia>
+  <ItemContent>
+    <ItemTitle>{"Jane Smith"}</ItemTitle>
+  </ItemContent>
+</Item>
+```
+
+## Anatomy
+
+```tsx
+<ItemGroup>
+  <Item>
+    <ItemMedia />
+    <ItemContent>
+      <ItemTitle />
+      <ItemDescription />
+    </ItemContent>
+    <ItemActions />
+  </Item>
+</ItemGroup>
+```
+
+- **Item** — row root, controls variant and `asChild`
+- **ItemGroup** — vertical stack of items, 8px gap
+- **ItemMedia** — leading visual (icon, avatar, badge)
+- **ItemContent** — flexible content area, can appear multiple times
+- **ItemTitle** — one-line truncated title
+- **ItemDescription** — muted secondary text
+- **ItemActions** — trailing actions (button, badge, amount)
+
+## Variants
+
+Three styles: `default` (bordered card), `outline` (transparent with border), `muted` (soft background, no border).
+
+<ComponentPreview name="item" title="item.tsx" align="start" previewClassName="h-auto">
+  <div className="flex w-full max-w-md flex-col gap-3 p-4">
+    <div className="flex flex-col gap-1">
+      <span className="text-xs font-medium text-muted-foreground">default</span>
+      <Item>
+        <ItemContent><ItemTitle>{"Default row"}</ItemTitle></ItemContent>
+      </Item>
+    </div>
+    <div className="flex flex-col gap-1">
+      <span className="text-xs font-medium text-muted-foreground">outline</span>
+      <Item variant="outline">
+        <ItemContent><ItemTitle>{"Outline row"}</ItemTitle></ItemContent>
+      </Item>
+    </div>
+    <div className="flex flex-col gap-1">
+      <span className="text-xs font-medium text-muted-foreground">muted</span>
+      <Item variant="muted">
+        <ItemContent><ItemTitle>{"Muted row"}</ItemTitle></ItemContent>
+      </Item>
+    </div>
+  </div>
+</ComponentPreview>
+
+## With media
+
+Put an icon, avatar, or badge in `ItemMedia`. Icons without a `size-*` class are auto-sized to 16px.
+
+<ComponentPreview name="item" title="item.tsx" align="start" previewClassName="h-auto">
+  <div className="w-full max-w-sm p-4">
+    <ItemGroup>
+      <Item>
+        <ItemMedia>
+          <span className="flex size-8 items-center justify-center rounded-full bg-muted text-xs font-medium">A</span>
+        </ItemMedia>
+        <ItemContent><ItemTitle>{"Aria Chen"}</ItemTitle></ItemContent>
+      </Item>
+      <Item>
+        <ItemMedia>
+          <span className="flex size-8 items-center justify-center rounded-full bg-muted text-xs font-medium">B</span>
+        </ItemMedia>
+        <ItemContent><ItemTitle>{"Ben Ortiz"}</ItemTitle></ItemContent>
+      </Item>
+      <Item>
+        <ItemMedia>
+          <span className="flex size-8 items-center justify-center rounded-full bg-muted text-xs font-medium">C</span>
+        </ItemMedia>
+        <ItemContent><ItemTitle>{"Cleo Park"}</ItemTitle></ItemContent>
+      </Item>
+    </ItemGroup>
+  </div>
+</ComponentPreview>
+
+## With description
+
+Add `ItemDescription` below `ItemTitle` for a secondary line.
+
+<ComponentPreview name="item" title="item.tsx" align="start" previewClassName="h-auto">
+  <div className="w-full max-w-sm p-4">
+    <ItemGroup>
+      <Item>
+        <ItemContent>
+          <ItemTitle>{"Deployed v1.2.3"}</ItemTitle>
+          <ItemDescription>{"2 minutes ago"}</ItemDescription>
+        </ItemContent>
+      </Item>
+      <Item>
+        <ItemContent>
+          <ItemTitle>{"Ran migrations"}</ItemTitle>
+          <ItemDescription>{"14 minutes ago"}</ItemDescription>
+        </ItemContent>
+      </Item>
+      <Item>
+        <ItemContent>
+          <ItemTitle>{"Merged PR #42"}</ItemTitle>
+          <ItemDescription>{"1 hour ago"}</ItemDescription>
+        </ItemContent>
+      </Item>
+    </ItemGroup>
+  </div>
+</ComponentPreview>
+
+## With actions
+
+Add `ItemActions` as the last child for a trailing button, badge, or amount.
+
+<ComponentPreview name="item" title="item.tsx" align="start" previewClassName="h-auto">
+  <div className="w-full max-w-sm p-4">
+    <ItemGroup>
+      <Item variant="muted">
+        <ItemContent>
+          <ItemTitle>{"Pro plan"}</ItemTitle>
+          <ItemDescription>{"Billed monthly"}</ItemDescription>
+        </ItemContent>
+        <ItemActions>
+          <span className="text-sm font-medium tabular-nums">{"$20/mo"}</span>
+        </ItemActions>
+      </Item>
+      <Item variant="muted">
+        <ItemContent>
+          <ItemTitle>{"Team plan"}</ItemTitle>
+          <ItemDescription>{"Billed annually"}</ItemDescription>
+        </ItemContent>
+        <ItemActions>
+          <span className="text-sm font-medium tabular-nums">{"$200/yr"}</span>
+        </ItemActions>
+      </Item>
+    </ItemGroup>
+  </div>
+</ComponentPreview>
+
+## In context
+
+Combine with [Spinner](/docs/components/spinner) for a live processing row.
+
+<ComponentPreview name="item" title="item.tsx" align="start" previewClassName="h-auto">
+  <div className="w-full max-w-sm p-4">
+    <Item variant="muted">
+      <ItemMedia>
+        <Spinner />
+      </ItemMedia>
+      <ItemContent>
+        <ItemTitle>{"Processing payment..."}</ItemTitle>
+      </ItemContent>
+      <ItemContent className="flex-none justify-end">
+        <span className="text-sm tabular-nums">{"$100.00"}</span>
+      </ItemContent>
+    </Item>
+  </div>
+</ComponentPreview>
+
+## API Reference
+
+### Item
+
+<PropsTable
+  rows={[
+    { name: "variant", type: "default | outline | muted", default: "default", description: "Visual style of the row." },
+    { name: "asChild", type: "boolean", default: "false", description: "When true, renders the child element instead of a div." },
+  ]}
+/>
+
+### ItemMedia / ItemContent / ItemTitle / ItemDescription / ItemActions
+
+Extend `React.ComponentProps<"div">`. Each maps to a `data-slot` attribute for CSS targeting.
+
+## Accessibility
+
+- `Item` renders a `<div>` — for interactive rows, use `asChild` with `<a>` or `<button>` so keyboard and screen readers work.
+- `ItemMedia` should be `aria-hidden` when the visual is decorative (e.g., a status dot).
+- `ItemTitle` acts as the accessible name — write it as a short label.
