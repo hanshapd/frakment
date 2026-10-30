@@ -1,0 +1,41 @@
+{
+  "name": "frakment",
+  "homepage": "https://github.com/username-kamu/frakment",
+  "components": [
+    {
+      "name": "badge",
+      "title": "Badge",
+      "description": "A small label for statuses, categories, or counts."
+    },
+    {
+      "name": "button",
+      "title": "Button",
+      "description": "A monochrome button with six variants and six sizes."
+    },
+    {
+      "name": "pulse",
+      "title": "Pulse",
+      "description": "A daily status timeline for service uptime, with inline incident logs."
+    },
+    {
+      "name": "pulse-status",
+      "title": "Pulse Status",
+      "description": "A status badge for service health, used inside Pulse."
+    },
+    {
+      "name": "timeline",
+      "title": "Timeline",
+      "description": "A vertical timeline for chronological events."
+    },
+    {
+      "name": "voice-glow",
+      "title": "Voice Glow",
+      "description": "A reactive voice glow that responds to microphone input."
+    },
+    {
+      "name": "trace",
+      "title": "Trace",
+      "description": "A list of lines for the steps an agent takes."
+    }
+  ]
+}

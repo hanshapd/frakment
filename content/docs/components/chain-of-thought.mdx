@@ -1,0 +1,98 @@
+---
+title: Chain of Thought
+description: Displays a summary that expands into the steps an agent took.
+---
+
+import { ChainOfThoughtDemo } from "@/examples/chain-of-thought-demo";
+
+<ComponentPreview name="trace" title="trace.tsx" align="start" previewClassName="h-auto">
+  <ChainOfThoughtDemo />
+</ComponentPreview>
+
+Chain of Thought is a summary line that expands into the steps an agent took. The summary says what happened, like "Researched in 3 steps". The steps sit inside it, each one a line of its own.
+
+## Installation
+
+```bash
+npx frakment add trace badge
+```
+
+## Usage
+
+```tsx
+import {
+  Trace,
+  TraceCollapsible,
+  TraceCollapsibleContent,
+  TraceCollapsibleTrigger,
+  TraceIcon,
+  TraceLine,
+  TraceTitle,
+} from "@/components/ui/trace";
+```
+
+```tsx
+<Trace>
+  <TraceCollapsible defaultOpen>
+    <TraceCollapsibleTrigger>
+      <TraceLine>
+        <TraceIcon>
+          <CircleCheckIcon className="size-4" />
+        </TraceIcon>
+        <TraceTitle>Researched in 3 steps</TraceTitle>
+      </TraceLine>
+    </TraceCollapsibleTrigger>
+    <TraceCollapsibleContent>
+      <Trace>
+        <TraceLine>
+          <TraceIcon>
+            <CircleCheckIcon className="size-4" />
+          </TraceIcon>
+          <TraceTitle>Read the build log for dpl_8Kx2</TraceTitle>
+        </TraceLine>
+      </Trace>
+    </TraceCollapsibleContent>
+  </TraceCollapsible>
+</Trace>
+```
+
+## Steps
+
+| Step    | `status`    | Title                  |
+| :------ | :---------- | :--------------------- |
+| Running | `"running"` | Searching for …        |
+| Done    | none        | Searched for …         |
+| Failed  | `"error"`   | Failed to search for … |
+
+Add `keepMounted` to the summary's `TraceCollapsibleContent`. Steps keep their open state when the summary closes.
+
+## API Reference
+
+<PropsTable
+  rows={[
+    {
+      name: "status",
+      type: "running | error | pending",
+      description:
+        "Set on TraceLine. Controls color, and shimmer when running.",
+    },
+    {
+      name: "open",
+      type: "boolean",
+      description:
+        "Controlled open state on TraceCollapsible. Use open={open ?? running} to open while steps stream.",
+    },
+    {
+      name: "defaultOpen",
+      type: "boolean",
+      description: "Start expanded. Useful for static content.",
+    },
+  ]}
+/>
+
+## Accessibility
+
+- `TraceIcon` is `aria-hidden`. `TraceTitle` is the accessible name. Write it as a sentence: "Searched for minimumReleaseAge", not just "minimumReleaseAge".
+- Status is conveyed by icon shape and color, not color alone.
+- `prefers-reduced-motion`: shimmer stops via `motion-reduce:shimmer-none`.
+- Use `open={open ?? running}` so a reader's manual toggle wins over the auto state.

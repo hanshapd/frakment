@@ -1,0 +1,29 @@
+{
+  "name": "frakment",
+  "version": "0.0.1",
+  "description": "CLI and design system for the frakment component registry",
+  "type": "module",
+  "bin": {
+    "frakment": "./bin/index.js"
+  },
+  "files": [
+    "bin",
+    "src",
+    "templates"
+  ],
+  "keywords": [
+    "frakment",
+    "shadcn",
+    "registry",
+    "components",
+    "monochrome",
+    "tailwindcss"
+  ],
+  "license": "MIT",
+  "dependencies": {
+    "@clack/prompts": "^0.7.0",
+    "commander": "^12.0.0",
+    "execa": "^8.0.0",
+    "picocolors": "^1.0.0"
+  }
+}

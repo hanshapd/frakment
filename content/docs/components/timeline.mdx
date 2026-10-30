@@ -1,0 +1,178 @@
+---
+title: Timeline
+description: A vertical timeline for chronological events.
+---
+
+import { Timeline, TimelineItem } from "@/components/ui/timeline";
+
+<ComponentPreview name="timeline" title="timeline.tsx">
+  <div className="w-full max-w-md p-6">
+    <Timeline>
+      <TimelineItem>
+        <span className="font-medium">Deployed v1.2.0</span>
+        <p className="text-muted-foreground">2 minutes ago</p>
+      </TimelineItem>
+      <TimelineItem>
+        <span className="font-medium">Tests passed</span>
+        <p className="text-muted-foreground">3 minutes ago</p>
+      </TimelineItem>
+      <TimelineItem>
+        <span className="font-medium">Build started</span>
+        <p className="text-muted-foreground">5 minutes ago</p>
+      </TimelineItem>
+    </Timeline>
+  </div>
+</ComponentPreview>
+
+Timeline renders a vertical line with dot markers. Use it for chronological events such as deploy history, activity feeds, changelogs, or incident updates.
+
+## Installation
+
+```bash
+npx frakment add timeline
+```
+
+## Usage
+
+```tsx
+import { Timeline, TimelineItem } from "@/components/ui/timeline";
+
+<Timeline>
+  <TimelineItem>Event one</TimelineItem>
+  <TimelineItem>Event two</TimelineItem>
+</Timeline>;
+```
+
+## Anatomy
+
+Each `TimelineItem` renders a dot on the left of the content.
+
+<ComponentPreview name="timeline" title="timeline.tsx">
+  <div className="w-full max-w-md p-6">
+    <Timeline>
+      <TimelineItem>Simple text</TimelineItem>
+      <TimelineItem>
+        <span className="font-medium">Bold title</span>
+        <p className="text-muted-foreground">Secondary line</p>
+      </TimelineItem>
+      <TimelineItem>
+        <span className="font-medium">With multiple</span>
+        <p className="text-muted-foreground">Nested content lines</p>
+      </TimelineItem>
+    </Timeline>
+  </div>
+</ComponentPreview>
+
+- **Line** — a 1px vertical border on the container
+- **Dot** — a 6px circle at the top-left of each item
+- **Content** — whatever you pass as children, indented 16px from the line
+
+## Custom marker
+
+Override the default dot with the `marker` prop. Must be absolutely positioned.
+
+<ComponentPreview name="timeline" title="timeline.tsx">
+  <div className="w-full max-w-md p-6">
+    <Timeline>
+      <TimelineItem
+        marker={
+          <span className="absolute top-[6px] -left-[5px] size-2.5 rounded-full bg-foreground" />
+        }
+      >
+        <span className="font-medium">Large marker</span>
+      </TimelineItem>
+      <TimelineItem>Default marker</TimelineItem>
+    </Timeline>
+  </div>
+</ComponentPreview>
+
+```tsx
+<TimelineItem
+  marker={
+    <span className="absolute top-[6px] -left-[5px] size-2.5 rounded-full bg-foreground" />
+  }
+>
+  Large marker
+</TimelineItem>
+```
+
+## Last item
+
+The last item has no bottom padding, so the line ends cleanly at the last dot.
+
+<ComponentPreview name="timeline" title="timeline.tsx">
+  <div className="w-full max-w-md p-6">
+    <Timeline>
+      <TimelineItem>First</TimelineItem>
+      <TimelineItem>Second</TimelineItem>
+      <TimelineItem>Last — no bottom gap</TimelineItem>
+    </Timeline>
+  </div>
+</ComponentPreview>
+
+## With timestamps
+
+A common pattern: pair the timeline with monospace timestamps and bold labels.
+
+<ComponentPreview name="timeline" title="timeline.tsx">
+  <div className="w-full max-w-md p-6">
+    <Timeline>
+      <TimelineItem>
+        <span className="text-muted-foreground tabular-nums">14:02</span>{" "}
+        <span className="font-medium">Investigating</span>{" "}
+        <span className="text-muted-foreground">5xx on POST rose to 2%.</span>
+      </TimelineItem>
+      <TimelineItem>
+        <span className="text-muted-foreground tabular-nums">14:11</span>{" "}
+        <span className="font-medium">Identified</span>
+      </TimelineItem>
+      <TimelineItem>
+        <span className="text-muted-foreground tabular-nums">14:20</span>{" "}
+        <span className="font-medium">Resolved</span>
+      </TimelineItem>
+    </Timeline>
+  </div>
+</ComponentPreview>
+
+## API Reference
+
+### Timeline
+
+<PropsTable
+  rows={[
+    {
+      name: "className",
+      type: "string",
+      description: "Additional class names on the ol element.",
+    },
+  ]}
+/>
+
+### TimelineItem
+
+<PropsTable
+  rows={[
+    {
+      name: "marker",
+      type: "ReactNode",
+      description:
+        "Override the default dot marker. Must be absolutely positioned.",
+    },
+    {
+      name: "children",
+      type: "ReactNode",
+      description: "Content of the item.",
+    },
+    {
+      name: "className",
+      type: "string",
+      description: "Additional class names on the li element.",
+    },
+  ]}
+/>
+
+## Accessibility
+
+- Renders as `<ol>` with `<li>` items, so screen readers announce the sequence naturally.
+- Dot and line are decorative only and do not carry semantic meaning.
+- If you override the marker, keep it `aria-hidden` unless the icon itself conveys meaning.

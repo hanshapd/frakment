@@ -1,0 +1,20 @@
+{
+  "name": "chain-of-thought",
+  "title": "Chain of Thought",
+  "description": "A summary line that expands into the steps an agent took.",
+  "dependencies": [
+    "class-variance-authority",
+    "lucide-react"
+  ],
+  "registryDependencies": [
+    "trace",
+    "badge",
+    "collapsible"
+  ],
+  "files": [
+    {
+      "path": "components/ui/chain-of-thought.tsx",
+      "content": "\"use client\";\r\n\r\nimport * as React from \"react\";\r\nimport { CircleCheckIcon } from \"lucide-react\";\r\n\r\nimport {\r\n  Trace,\r\n  TraceCollapsible,\r\n  TraceCollapsibleContent,\r\n  TraceCollapsibleTrigger,\r\n  TraceIcon,\r\n  TraceLine,\r\n  TraceTitle,\r\n} from \"@/components/ui/trace\";\r\nimport { cn } from \"@/lib/utils\";\r\n\r\ninterface ChainOfThoughtProps extends React.ComponentProps<\"div\"> {\r\n  defaultOpen?: boolean;\r\n}\r\n\r\nfunction ChainOfThought({\r\n  className,\r\n  defaultOpen = true,\r\n  children,\r\n  ...props\r\n}: ChainOfThoughtProps) {\r\n  return (\r\n    <div\r\n      data-slot=\"chain-of-thought\"\r\n      className={cn(\"w-full\", className)}\r\n      {...props}\r\n    >\r\n      <Trace>\r\n        <TraceCollapsible defaultOpen={defaultOpen}>\r\n          {children}\r\n        </TraceCollapsible>\r\n      </Trace>\r\n    </div>\r\n  );\r\n}\r\n\r\nfunction ChainOfThoughtHeader({\r\n  className,\r\n  children = \"Researched in 3 steps\",\r\n  ...props\r\n}: React.ComponentProps<\"div\">) {\r\n  return (\r\n    <TraceCollapsibleTrigger>\r\n      <TraceLine>\r\n        <TraceIcon>\r\n          <CircleCheckIcon />\r\n        </TraceIcon>\r\n        <TraceTitle className={cn(className)} {...props}>\r\n          {children}\r\n        </TraceTitle>\r\n      </TraceLine>\r\n    </TraceCollapsibleTrigger>\r\n  );\r\n}\r\n\r\nfunction ChainOfThoughtContent({\r\n  className,\r\n  children,\r\n  ...props\r\n}: React.ComponentProps<\"div\">) {\r\n  return (\r\n    <TraceCollapsibleContent className={className} {...props}>\r\n      <Trace className=\"pt-2\">{children}</Trace>\r\n    </TraceCollapsibleContent>\r\n  );\r\n}\r\n\r\nfunction ChainOfThoughtStep({\r\n  className,\r\n  children,\r\n  ...props\r\n}: React.ComponentProps<\"div\">) {\r\n  return (\r\n    <TraceLine className={className} {...props}>\r\n      <TraceIcon>\r\n        <CircleCheckIcon />\r\n      </TraceIcon>\r\n      <TraceTitle>{children}</TraceTitle>\r\n    </TraceLine>\r\n  );\r\n}\r\n\r\nexport {\r\n  ChainOfThought,\r\n  ChainOfThoughtHeader,\r\n  ChainOfThoughtContent,\r\n  ChainOfThoughtStep,\r\n};"
+    }
+  ]
+}

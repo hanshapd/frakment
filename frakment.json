@@ -1,0 +1,64 @@
+{
+  "name": "frakment",
+  "homepage": "https://github.com/username-kamu/frakment",
+  "components": [
+    {
+      "name": "badge",
+      "title": "Badge",
+      "description": "A small label for statuses, categories, or counts.",
+      "source": "components/ui/badge.tsx",
+      "target": "components/ui/badge.tsx",
+      "dependencies": ["class-variance-authority", "radix-ui"]
+    },
+    {
+      "name": "button",
+      "title": "Button",
+      "description": "A monochrome button with six variants and six sizes.",
+      "source": "components/ui/button.tsx",
+      "target": "components/ui/button.tsx",
+      "dependencies": ["class-variance-authority", "radix-ui"]
+    },
+    {
+      "name": "pulse",
+      "title": "Pulse",
+      "description": "A daily status timeline for service uptime, with inline incident logs.",
+      "source": "components/ui/pulse.tsx",
+      "target": "components/ui/pulse.tsx",
+      "dependencies": ["lucide-react"],
+      "registryDependencies": ["pulse-status", "timeline", "badge"]
+    },
+    {
+      "name": "pulse-status",
+      "title": "Pulse Status",
+      "description": "A status badge for service health, used inside Pulse.",
+      "source": "components/ui/pulse-status.tsx",
+      "target": "components/ui/pulse-status.tsx",
+      "dependencies": ["lucide-react"]
+    },
+    {
+      "name": "timeline",
+      "title": "Timeline",
+      "description": "A vertical timeline for chronological events.",
+      "source": "components/ui/timeline.tsx",
+      "target": "components/ui/timeline.tsx",
+      "dependencies": []
+    },
+    {
+      "name": "voice-glow",
+      "title": "Voice Glow",
+      "description": "A reactive voice glow that responds to microphone input.",
+      "sourceDir": "components/ui/voice-glow",
+      "targetDir": "components/ui/voice-glow",
+      "dependencies": []
+    },
+{
+  "name": "trace",
+  "title": "Trace",
+  "description": "A list of lines for the steps an agent takes.",
+  "source": "components/ui/trace.tsx",
+  "target": "components/ui/trace.tsx",
+  "dependencies": ["lucide-react"],
+  "registryDependencies": ["collapsible", "badge"]
+}
+  ]
+}

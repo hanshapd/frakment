@@ -1,0 +1,363 @@
+---
+title: Button
+description: Displays a button or a component that behaves like a button.
+---
+
+import { Button } from "@/components/ui/button";
+import {
+  ArrowRightIcon,
+  CheckIcon,
+  ClockIcon,
+  GitBranchIcon,
+  LoaderCircleIcon,
+  PackageIcon,
+  PlusIcon,
+  SparklesIcon,
+  TrashIcon,
+  XIcon,
+} from "lucide-react";
+
+<ComponentPreview name="button" title="button.tsx">
+  <div className="flex flex-wrap items-center justify-center gap-3">
+    <Button>Button</Button>
+    <Button size="icon" aria-label="New Branch">
+      <GitBranchIcon />
+    </Button>
+  </div>
+</ComponentPreview>
+
+Buttons trigger an action or event when clicked. They communicate intent through a compact surface, an icon, and a short label.
+
+## Installation
+
+<CodeTabs>
+  <TabsList>
+    <TabsTrigger value="cli">Command</TabsTrigger>
+    <TabsTrigger value="manual">Manual</TabsTrigger>
+  </TabsList>
+
+<TabsContent value="cli">```bash npx frakment add button ```</TabsContent>
+
+  <TabsContent value="manual">
+    <Steps className="mb-0 pt-2">
+      <Step>Install the following dependencies:</Step>
+
+      ```bash
+      npm install class-variance-authority radix-ui
+      ```
+
+      <Step>Copy and paste the following code into your project.</Step>
+
+      <ComponentSource name="button" title="components/ui/button.tsx" />
+
+      <Step>Update the import paths to match your project setup.</Step>
+    </Steps>
+
+  </TabsContent>
+</CodeTabs>
+
+## Usage
+
+```tsx
+import { Button } from "@/components/ui/button";
+```
+
+```tsx
+<Button>Click me</Button>
+```
+
+## Anatomy
+
+A button is a single element with an optional icon on either side of a text label.
+
+<ComponentPreview name="button" title="button.tsx">
+  <div className="flex flex-wrap items-center justify-center gap-3">
+    <Button>Text only</Button>
+    <Button>
+      <CheckIcon />
+      With icon
+    </Button>
+    <Button size="icon" aria-label="Add">
+      <PlusIcon />
+    </Button>
+  </div>
+</ComponentPreview>
+
+- **Surface** — background, border, and radius following the variant
+- **Text** — 14px, medium weight, nowrap
+- **Icon** — sized to 16px by `[&_svg]:size-4`
+
+## Variants
+
+### Default
+
+The primary variant, intended for the most important action on a page.
+
+<ComponentPreview name="button" title="button.tsx">
+  <Button>Default</Button>
+</ComponentPreview>
+
+### Secondary
+
+Intended for actions of lesser prominence.
+
+<ComponentPreview name="button" title="button.tsx">
+  <Button variant="secondary">Secondary</Button>
+</ComponentPreview>
+
+### Outline
+
+Renders with a border and a transparent background.
+
+<ComponentPreview name="button" title="button.tsx">
+  <Button variant="outline">Outline</Button>
+</ComponentPreview>
+
+### Ghost
+
+Renders without a border. Background applies only on hover.
+
+<ComponentPreview name="button" title="button.tsx">
+  <Button variant="ghost">Ghost</Button>
+</ComponentPreview>
+
+### Destructive
+
+Intended for destructive or irreversible actions.
+
+<ComponentPreview name="button" title="button.tsx">
+  <Button variant="destructive">Destructive</Button>
+</ComponentPreview>
+
+### Link
+
+Renders as inline text with an underline on hover.
+
+<ComponentPreview name="button" title="button.tsx">
+  <Button variant="link">Link</Button>
+</ComponentPreview>
+
+## Size
+
+Use the `size` prop to control the dimensions of a text button.
+
+<ComponentPreview name="button" title="button.tsx">
+  <div className="flex flex-wrap items-center justify-center gap-3">
+    <Button variant="outline" size="sm">
+      Small
+    </Button>
+    <Button variant="outline" size="default">
+      Default
+    </Button>
+    <Button variant="outline" size="lg">
+      Large
+    </Button>
+  </div>
+</ComponentPreview>
+
+| Size      | Height | Padding |
+| :-------- | :----- | :------ |
+| `sm`      | 32px   | `px-3`  |
+| `default` | 36px   | `px-4`  |
+| `lg`      | 40px   | `px-6`  |
+
+## Icon Size
+
+Icon buttons use a separate size system. Each produces a square button sized to fit its icon.
+
+<ComponentPreview name="button" title="button.tsx">
+  <div className="flex flex-wrap items-center justify-center gap-3">
+    <Button size="icon-xs" variant="outline" aria-label="Extra small">
+      <PlusIcon />
+    </Button>
+    <Button size="icon-sm" variant="outline" aria-label="Small">
+      <PlusIcon />
+    </Button>
+    <Button size="icon" variant="outline" aria-label="Default">
+      <PlusIcon />
+    </Button>
+    <Button size="icon-lg" variant="outline" aria-label="Large">
+      <PlusIcon />
+    </Button>
+  </div>
+</ComponentPreview>
+
+| Size      | Dimensions |
+| :-------- | :--------- |
+| `icon-xs` | 24×24      |
+| `icon-sm` | 32×32      |
+| `icon`    | 36×36      |
+| `icon-lg` | 40×40      |
+
+## Icons
+
+### Icon Buttons
+
+Use `size="icon"` to render a square button containing only an icon. An `aria-label` is required.
+
+<ComponentPreview name="button" title="button.tsx">
+  <div className="flex flex-wrap items-center justify-center gap-3">
+    <Button size="icon" aria-label="Add">
+      <PlusIcon />
+    </Button>
+    <Button size="icon" variant="outline" aria-label="Delete">
+      <TrashIcon />
+    </Button>
+    <Button size="icon" variant="ghost" aria-label="Next">
+      <ArrowRightIcon />
+    </Button>
+  </div>
+</ComponentPreview>
+
+### With Icons
+
+Icons inside a button are automatically sized by `[&_svg]:size-4`.
+
+<ComponentPreview name="button" title="button.tsx">
+  <div className="flex flex-wrap items-center justify-center gap-3">
+    <Button>
+      Continue
+      <ArrowRightIcon />
+    </Button>
+    <Button variant="outline">
+      <PlusIcon />
+      Add item
+    </Button>
+  </div>
+</ComponentPreview>
+
+## Loading State
+
+Render a spinner beside the label and set `disabled` to indicate an in-progress action.
+
+<ComponentPreview name="button" title="button.tsx">
+  <div className="flex flex-wrap items-center justify-center gap-3">
+    <Button disabled>
+      <LoaderCircleIcon className="animate-spin" />
+      Processing
+    </Button>
+    <Button variant="outline" disabled>
+      <LoaderCircleIcon className="animate-spin" />
+      Loading
+    </Button>
+  </div>
+</ComponentPreview>
+
+## As a Link
+
+Use `asChild` to render the button as another element, such as a Next.js `Link`.
+
+<ComponentPreview name="button" title="button.tsx">
+  <Button asChild>
+    <a href="#">Read the docs</a>
+  </Button>
+</ComponentPreview>
+
+## In Context
+
+### Toolbar
+
+<ComponentPreview name="button" title="button.tsx">
+  <div className="flex flex-wrap items-center justify-center gap-2 rounded-lg border border-border p-2">
+    <Button variant="ghost" size="sm">
+      <PlusIcon />
+      New
+    </Button>
+    <Button variant="ghost" size="sm">
+      <SparklesIcon />
+      Generate
+    </Button>
+    <Button variant="ghost" size="sm">
+      <PackageIcon />
+      Export
+    </Button>
+  </div>
+</ComponentPreview>
+
+### Deploy list
+
+<ComponentPreview name="button" title="button.tsx">
+  <div className="w-full max-w-md space-y-3">
+    <div className="flex items-center justify-between rounded-lg border border-border p-3">
+      <span className="text-sm font-medium">Deploy v1.2.0</span>
+      <Button size="sm" variant="outline">
+        <CheckIcon />
+        Success
+      </Button>
+    </div>
+    <div className="flex items-center justify-between rounded-lg border border-border p-3">
+      <span className="text-sm font-medium">Deploy v1.2.1</span>
+      <Button size="sm" variant="secondary">
+        <ClockIcon />
+        Building
+      </Button>
+    </div>
+    <div className="flex items-center justify-between rounded-lg border border-border p-3">
+      <span className="text-sm font-medium">Deploy v1.2.2</span>
+      <Button size="sm" variant="destructive">
+        <XIcon />
+        Failed
+      </Button>
+    </div>
+  </div>
+</ComponentPreview>
+
+## API Reference
+
+### Button
+
+<PropsTable
+  rows={[
+    {
+      name: "variant",
+      type: "default | secondary | outline | ghost | destructive | link",
+      default: "default",
+      description: "The visual style of the button.",
+    },
+    {
+      name: "size",
+      type: "sm | default | lg | icon | icon-sm | icon-xs | icon-lg",
+      default: "default",
+      description: "The dimensions of the button.",
+    },
+    {
+      name: "asChild",
+      type: "boolean",
+      default: "false",
+      description:
+        "When true, the button renders its child element instead of a native button.",
+    },
+    {
+      name: "disabled",
+      type: "boolean",
+      default: "false",
+      description: "Prevents interaction and applies a reduced-opacity style.",
+    },
+    {
+      name: "onClick",
+      type: "function",
+      description: "Called when the button is activated.",
+    },
+    {
+      name: "type",
+      type: "button | submit | reset",
+      default: "submit",
+      description: "The native button type.",
+    },
+  ]}
+/>
+
+## Accessibility
+
+- Set `type="button"` on buttons that are not intended to submit a form.
+- Provide an `aria-label` on icon-only buttons.
+- `disabled` removes the button from the tab order.
+- Default color tokens satisfy WCAG 2.1 AA contrast.
+
+## Best Practices
+
+- **Use one primary button per surface.**
+- **Prefer `size="sm"` inside toolbars.**
+- **Never rely on color alone.**
+- **Use `asChild` for links, not buttons.**
+- **Reserve `destructive` for irreversible actions.**

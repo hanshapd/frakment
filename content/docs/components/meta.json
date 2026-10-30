@@ -1,0 +1,12 @@
+{
+  "title": "Components",
+  "pages": [
+    "badge",
+    "button",
+    "chain-of-thought",
+    "pulse",
+    "pulse-status",
+    "timeline",
+    "voice-glow"
+  ]
+}
