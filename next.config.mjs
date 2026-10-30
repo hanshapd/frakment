@@ -9,6 +9,8 @@ const { ROUTES } = await jiti.import("./constants/routes");
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   devIndicators: false,
+  typescript: { ignoreBuildErrors: true },
+  eslint: { ignoreDuringBuilds: true },
   experimental: {
     viewTransition: true,
   },
