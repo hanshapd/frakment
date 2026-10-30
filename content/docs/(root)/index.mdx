@@ -14,7 +14,7 @@ import {
 
 **frakment** is a set of accessible, composable primitives for AI and chat interfaces. Every component is written from scratch, depends only on a small set of well-known libraries, and ships as open source you can read, copy, and modify.
 
-*Primitives for AI and chat — built to be read, copied, and extended.*
+_Primitives for AI and chat — built to be read, copied, and extended._
 
 <Callout type="info" title="Built for AI interfaces">
 
@@ -26,17 +26,41 @@ AI applications have specific UI needs — agent traces, streaming status, chat 
 
 <div className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
 
-<FeatureCard icon={MessageSquareIcon} title="Chat surfaces" description="Bubble and Message for user and assistant turns, with variants, reactions, and alignment." />
+<FeatureCard
+  icon={MessageSquareIcon}
+  title="Chat surfaces"
+  description="Bubble and Message for user and assistant turns, with variants, reactions, and alignment."
+/>
 
-<FeatureCard icon={ListTreeIcon} title="Agent traces" description="Trace and Chain of Thought for collapsible, streaming step lists with status and shimmer." />
+<FeatureCard
+  icon={ListTreeIcon}
+  title="Agent traces"
+  description="Trace and Chain of Thought for collapsible, streaming step lists with status and shimmer."
+/>
 
-<FeatureCard icon={CodeIcon} title="Code output" description="Code Block with header, copy, line numbers, and per-line diff highlighting." />
+<FeatureCard
+  icon={CodeIcon}
+  title="Code output"
+  description="Code Block with header, copy, line numbers, and per-line diff highlighting."
+/>
 
-<FeatureCard icon={SparklesIcon} title="Status and markers" description="Marker, Spinner, and Pulse Status for inline status, loading, and service health." />
+<FeatureCard
+  icon={SparklesIcon}
+  title="Status and markers"
+  description="Marker, Spinner, and Pulse Status for inline status, loading, and service health."
+/>
 
-<FeatureCard icon={GitBranchIcon} title="Composable by default" description="Every component follows the same shape: a root, a content slot, and cva variants." />
+<FeatureCard
+  icon={GitBranchIcon}
+  title="Composable by default"
+  description="Every component follows the same shape: a root, a content slot, and cva variants."
+/>
 
-<FeatureCard icon={GaugeIcon} title="Standalone primitives" description="No hidden dependency chain. Each component is self-contained and copy-pasteable." />
+<FeatureCard
+  icon={GaugeIcon}
+  title="Standalone primitives"
+  description="No hidden dependency chain. Each component is self-contained and copy-pasteable."
+/>
 
 </div>
 
@@ -60,7 +84,7 @@ import { Message, MessageContent } from "@/components/ui/message";
       <BubbleContent>Why is the dashboard slow?</BubbleContent>
     </Bubble>
   </MessageContent>
-</Message>
+</Message>;
 ```
 
   </TabsContent>
@@ -82,7 +106,7 @@ import {
     <ChainOfThoughtStep>Checked bundle size</ChainOfThoughtStep>
     <ChainOfThoughtStep>Profiled 3 endpoints</ChainOfThoughtStep>
   </ChainOfThoughtContent>
-</ChainOfThought>
+</ChainOfThought>;
 ```
 
   </TabsContent>
@@ -112,15 +136,15 @@ An `llms.txt` file, agent catalog endpoint, and open source make it easy for AI 
 
 ## Component catalog
 
-| Category | Components |
-|:--|:--|
-| Chat | [Bubble](/docs/ai-elements/bubble), [Message](/docs/ai-elements/message) |
-| Agent | [Trace](/docs/ai-elements/trace), [Chain of Thought](/docs/ai-elements/chain-of-thought) |
-| Code | [Code Block](/docs/components/code-block) |
-| Status | [Marker](/docs/ai-elements/marker), [Spinner](/docs/ai-elements/spinner), [Pulse Status](/docs/ai-elements/pulse-status), [Pulse](/docs/ai-elements/pulse) |
-| Layout | [Item](/docs/components/item), [Separator](/docs/components/separator) |
-| Identity | [Avatar](/docs/components/avatar) |
-| Actions | [Button](/docs/components/button), [Badge](/docs/components/badge) |
+| Category | Components                                                                                                                                                 |
+| :------- | :--------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Chat     | [Bubble](/docs/ai-elements/bubble), [Message](/docs/ai-elements/message)                                                                                   |
+| Agent    | [Trace](/docs/ai-elements/trace), [Chain of Thought](/docs/ai-elements/chain-of-thought)                                                                   |
+| Code     | [Code Block](/docs/components/code-block)                                                                                                                  |
+| Status   | [Marker](/docs/ai-elements/marker), [Spinner](/docs/ai-elements/spinner), [Pulse Status](/docs/ai-elements/pulse-status), [Pulse](/docs/ai-elements/pulse) |
+| Layout   | [Item](/docs/components/item), [Separator](/docs/components/separator)                                                                                     |
+| Identity | [Avatar](/docs/components/avatar)                                                                                                                          |
+| Actions  | [Button](/docs/components/button), [Badge](/docs/components/badge)                                                                                         |
 
 ## Next steps
 

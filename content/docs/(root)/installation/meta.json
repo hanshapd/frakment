@@ -1,1 +1,4 @@
-﻿{ "title": "Installation", "pages": ["index", "next", "vite", "astro", "manual"] }
+﻿{
+  "title": "Installation",
+  "pages": ["index", "next", "vite", "astro", "manual"]
+}

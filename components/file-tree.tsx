@@ -1,9 +1,9 @@
 "use client";
 
-import * as React from "react";
-import { Collapsible as CollapsiblePrimitive } from "radix-ui";
-import { motion, useReducedMotion } from "motion/react";
 import { ChevronRightIcon, FileIcon, FolderIcon } from "lucide-react";
+import { motion, useReducedMotion } from "motion/react";
+import { Collapsible as CollapsiblePrimitive } from "radix-ui";
+import * as React from "react";
 
 import { cn } from "@/lib/utils";
 
@@ -34,14 +34,19 @@ const FILE_COLORS: Record<string, string> = {
 
 function FileTree({ className, ...props }: React.ComponentProps<"div">) {
   return (
-    <div
-      className={cn("my-6 font-mono text-[15px]", className)}
-      {...props}
-    />
+    <div className={cn("my-6 font-mono text-[15px]", className)} {...props} />
   );
 }
 
-function FileTreeFolder({ name, defaultOpen = false, children }: { name: string; defaultOpen?: boolean; children: React.ReactNode }) {
+function FileTreeFolder({
+  name,
+  defaultOpen = false,
+  children,
+}: {
+  name: string;
+  defaultOpen?: boolean;
+  children: React.ReactNode;
+}) {
   const [open, setOpen] = React.useState(defaultOpen);
   const shouldReduce = useReducedMotion();
 
@@ -73,7 +78,9 @@ function FileTreeFolder({ name, defaultOpen = false, children }: { name: string;
           }
           style={{ overflow: "hidden", transform: "translateZ(0)" }}
         >
-          <div className="ml-[19px] border-l border-border/60 py-0.5 pl-3">{children}</div>
+          <div className="ml-[19px] border-l border-border/60 py-0.5 pl-3">
+            {children}
+          </div>
         </motion.div>
       </CollapsiblePrimitive.Content>
     </CollapsiblePrimitive.Root>

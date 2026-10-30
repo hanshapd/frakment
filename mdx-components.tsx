@@ -4,15 +4,14 @@ import Link from "next/link";
 
 import { Callout } from "@/components/callout";
 import { CodeBlockCommand } from "@/components/code-block-command";
+import { CodeCollapsibleWrapper } from "@/components/code-collapsible-wrapper";
 import { CodeTabs } from "@/components/code-tabs";
 import { ComponentPreview } from "@/components/component-preview";
 import { ComponentSource } from "@/components/component-source";
-import { FileTree, FileTreeFolder, FileTreeFile } from "@/components/file-tree";
-import { CodeCollapsibleWrapper } from "@/components/code-collapsible-wrapper";
 import { ComponentsList } from "@/components/components-list";
 import { CopyButton } from "@/components/copy-button";
+import { FileTree, FileTreeFolder, FileTreeFile } from "@/components/file-tree";
 import { getIconForLanguageExtension } from "@/components/icons";
-import { Kbd } from "@/components/ui/kbd";
 import { PropsTable } from "@/components/props-table";
 import {
   Accordion,
@@ -24,6 +23,7 @@ import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 import { AspectRatio } from "@/components/ui/aspect-ratio";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Kbd } from "@/components/ui/kbd";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { cn } from "@/lib/utils";
 

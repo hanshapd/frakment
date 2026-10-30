@@ -29,28 +29,27 @@ Each surface token has a matching `-foreground` token for text on that surface. 
 
 </Callout>
 
-
 ## Theme tokens
 
 Define these in `:root` (light) and `.dark` (dark mode) in your `globals.css`:
 
-| Token | Controls | Used by |
-|:--|:--|:--|
-| `background` / `foreground` | Page background and text | Page shell, sections |
-| `card` / `card-foreground` | Elevated surfaces | Card, panels |
-| `popover` / `popover-foreground` | Floating surfaces | Popover, DropdownMenu |
-| `primary` / `primary-foreground` | High-emphasis actions | Default Button, selected states |
-| `secondary` / `secondary-foreground` | Lower-emphasis actions | Secondary buttons |
-| `muted` / `muted-foreground` | Subtle surfaces | Descriptions, placeholders |
-| `accent` / `accent-foreground` | Hover and focus surfaces | Ghost buttons, hover rows |
-| `destructive` | Errors and destructive actions | Destructive buttons, error states |
-| `border` | Borders and separators | Cards, Separator, inputs |
-| `input` | Form control borders | Input, Textarea |
-| `ring` | Focus rings | Buttons, inputs |
-| `radius` | Base corner radius | All rounded elements |
-| `surface` / `surface-foreground` | Docs surface tokens | Callout, LinkedCard |
-| `code` / `code-foreground` | Code block background and text | Code Block, inline code |
-| `sidebar-*` | Sidebar tokens | Sidebar, docs navigation |
+| Token                                | Controls                       | Used by                           |
+| :----------------------------------- | :----------------------------- | :-------------------------------- |
+| `background` / `foreground`          | Page background and text       | Page shell, sections              |
+| `card` / `card-foreground`           | Elevated surfaces              | Card, panels                      |
+| `popover` / `popover-foreground`     | Floating surfaces              | Popover, DropdownMenu             |
+| `primary` / `primary-foreground`     | High-emphasis actions          | Default Button, selected states   |
+| `secondary` / `secondary-foreground` | Lower-emphasis actions         | Secondary buttons                 |
+| `muted` / `muted-foreground`         | Subtle surfaces                | Descriptions, placeholders        |
+| `accent` / `accent-foreground`       | Hover and focus surfaces       | Ghost buttons, hover rows         |
+| `destructive`                        | Errors and destructive actions | Destructive buttons, error states |
+| `border`                             | Borders and separators         | Cards, Separator, inputs          |
+| `input`                              | Form control borders           | Input, Textarea                   |
+| `ring`                               | Focus rings                    | Buttons, inputs                   |
+| `radius`                             | Base corner radius             | All rounded elements              |
+| `surface` / `surface-foreground`     | Docs surface tokens            | Callout, LinkedCard               |
+| `code` / `code-foreground`           | Code block background and text | Code Block, inline code           |
+| `sidebar-*`                          | Sidebar tokens                 | Sidebar, docs navigation          |
 
 ## Radius scale
 
@@ -96,15 +95,15 @@ Now you can use `bg-warning` and `text-warning-foreground` in your components.
 
 frakment works with any OKLCH palette. These base colors all work with the default theme without changes:
 
-| Base | Character |
-|:--|:--|
-| Neutral | Pure gray |
-| Stone | Warm gray |
-| Zinc | Cool gray |
-| Mauve | Purple-tinted gray |
-| Olive | Green-tinted gray |
-| Mist | Blue-tinted gray |
-| Taupe | Brown-tinted gray |
+| Base    | Character          |
+| :------ | :----------------- |
+| Neutral | Pure gray          |
+| Stone   | Warm gray          |
+| Zinc    | Cool gray          |
+| Mauve   | Purple-tinted gray |
+| Olive   | Green-tinted gray  |
+| Mist    | Blue-tinted gray   |
+| Taupe   | Brown-tinted gray  |
 
 Swap the OKLCH values in `:root` and `.dark` for any of these — frakment components don't care which base you choose, they only read tokens.
 
@@ -119,7 +118,10 @@ frakment components only reference CSS variables — they work with **any** dark
 
 import { ThemeProvider as NextThemesProvider } from "next-themes";
 
-export function ThemeProvider({ children, ...props }: React.ComponentProps<typeof NextThemesProvider>) {
+export function ThemeProvider({
+  children,
+  ...props
+}: React.ComponentProps<typeof NextThemesProvider>) {
   return <NextThemesProvider {...props}>{children}</NextThemesProvider>;
 }
 ```
@@ -127,11 +129,20 @@ export function ThemeProvider({ children, ...props }: React.ComponentProps<typeo
 ```tsx title="app/layout.tsx"
 import { ThemeProvider } from "@/components/theme-provider";
 
-export default function RootLayout({ children }: { children: React.ReactNode }) {
+export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
   return (
     <html lang="en" suppressHydrationWarning>
       <body>
-        <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="system"
+          enableSystem
+          disableTransitionOnChange
+        >
           {children}
         </ThemeProvider>
       </body>

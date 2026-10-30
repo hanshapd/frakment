@@ -31,6 +31,7 @@ export const Callout = ({
 }) => {
   const config = type ? CALLOUT_TYPES[type] : null;
   const Icon = config?.Icon;
+  const renderedIcon = icon ?? (Icon ? <Icon /> : null);
 
   return (
     <Alert
@@ -42,7 +43,7 @@ export const Callout = ({
       )}
       {...props}
     >
-      {icon ? icon : Icon ? <Icon /> : null}
+      {renderedIcon}
       {title && <AlertTitle>{title}</AlertTitle>}
       <AlertDescription className={cn(!type && "text-card-foreground/80")}>
         {children}

@@ -1,1 +1,5 @@
-{"title": "Components", "root": true, "pages": ["avatar", "badge", "button", "code-block", "item", "separator"]}
+{
+  "title": "Components",
+  "root": true,
+  "pages": ["avatar", "badge", "button", "code-block", "item", "separator"]
+}
