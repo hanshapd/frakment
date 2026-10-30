@@ -15,7 +15,12 @@ import {
 } from "@/components/ui/message";
 import { Bubble, BubbleContent } from "@/components/ui/bubble";
 
-<ComponentPreview name="message" title="message.tsx" align="start" previewClassName="h-auto">
+<ComponentPreview
+  name="message"
+  title="message.tsx"
+  align="start"
+  previewClassName="h-auto"
+>
   <MessageDemo />
 </ComponentPreview>
 
@@ -92,7 +97,12 @@ import { Bubble, BubbleContent } from "@/components/ui/bubble";
 
 `align="start"` for received, `align="end"` for sent. When `end`, children with `data-slot` push to the end of the row.
 
-<ComponentPreview name="message" title="message.tsx" align="start" previewClassName="h-auto">
+<ComponentPreview
+  name="message"
+  title="message.tsx"
+  align="start"
+  previewClassName="h-auto"
+>
   <div className="w-full max-w-md space-y-3 p-6">
     <Message>
       <MessageContent>
@@ -115,7 +125,12 @@ import { Bubble, BubbleContent } from "@/components/ui/bubble";
 
 Add `MessageAvatar` as the first child of `Message`. It sits at the bottom of the message and shifts up 32px when a `MessageFooter` is present.
 
-<ComponentPreview name="message" title="message.tsx" align="start" previewClassName="h-auto">
+<ComponentPreview
+  name="message"
+  title="message.tsx"
+  align="start"
+  previewClassName="h-auto"
+>
   <div className="w-full max-w-md space-y-3 p-6">
     <Message>
       <MessageAvatar>{"AI"}</MessageAvatar>
@@ -141,14 +156,21 @@ Add `MessageAvatar` as the first child of `Message`. It sits at the bottom of th
 
 Header above the bubble, footer below — useful for names, timestamps, and inline actions.
 
-<ComponentPreview name="message" title="message.tsx" align="start" previewClassName="h-auto">
+<ComponentPreview
+  name="message"
+  title="message.tsx"
+  align="start"
+  previewClassName="h-auto"
+>
   <div className="w-full max-w-md p-6">
     <Message>
       <MessageAvatar>{"AI"}</MessageAvatar>
       <MessageContent>
         <MessageHeader>{"Assistant · 2:14 PM"}</MessageHeader>
         <Bubble>
-          <BubbleContent>{"Chart library is 812 KB and loads on first paint."}</BubbleContent>
+          <BubbleContent>
+            {"Chart library is 812 KB and loads on first paint."}
+          </BubbleContent>
         </Bubble>
         <MessageFooter>{"Suggested fix · lazy-load the chart"}</MessageFooter>
       </MessageContent>
@@ -160,7 +182,12 @@ Header above the bubble, footer below — useful for names, timestamps, and inli
 
 The realistic pattern: a group of messages using **Message**, **Bubble**, and optional headers.
 
-<ComponentPreview name="message" title="message.tsx" align="start" previewClassName="h-auto">
+<ComponentPreview
+  name="message"
+  title="message.tsx"
+  align="start"
+  previewClassName="h-auto"
+>
   <div className="w-full max-w-md p-6">
     <MessageGroup>
       <Message>
@@ -177,7 +204,9 @@ The realistic pattern: a group of messages using **Message**, **Bubble**, and op
         <MessageContent>
           <MessageHeader>{"You"}</MessageHeader>
           <Bubble variant="muted" align="end">
-            <BubbleContent>{"Why is my dashboard taking 4 seconds to load?"}</BubbleContent>
+            <BubbleContent>
+              {"Why is my dashboard taking 4 seconds to load?"}
+            </BubbleContent>
           </Bubble>
         </MessageContent>
       </Message>
@@ -186,7 +215,9 @@ The realistic pattern: a group of messages using **Message**, **Bubble**, and op
         <MessageContent>
           <MessageHeader>{"Assistant"}</MessageHeader>
           <Bubble>
-            <BubbleContent>{"Two problems compound. Let me trace them."}</BubbleContent>
+            <BubbleContent>
+              {"Two problems compound. Let me trace them."}
+            </BubbleContent>
           </Bubble>
         </MessageContent>
       </Message>

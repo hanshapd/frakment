@@ -37,7 +37,9 @@ export function PropsTable({ rows }: PropsTableProps) {
               className="border-b transition-colors last:border-0 hover:bg-muted/30"
             >
               <td className="px-4 py-3 align-middle">
-                <code className="font-mono text-sm font-medium">{row.name}</code>
+                <code className="font-mono text-sm font-medium">
+                  {row.name}
+                </code>
                 {row.required && (
                   <span className="ml-1 text-destructive" aria-label="required">
                     *

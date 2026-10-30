@@ -15,7 +15,12 @@ import {
 } from "@/components/ui/code-block";
 import { FileCode2Icon } from "lucide-react";
 
-<ComponentPreview name="code-block" title="code-block.tsx" align="start" previewClassName="h-auto">
+<ComponentPreview
+  name="code-block"
+  title="code-block.tsx"
+  align="start"
+  previewClassName="h-auto"
+>
   <CodeBlockDemo />
 </ComponentPreview>
 
@@ -170,8 +175,10 @@ Set `startLine` to begin numbering from a different number — useful when showi
     messages,
   })
 
-  return result.toUIMessageStreamResponse()`}</CodeBlockContent>
-    </CodeBlock>
+return result.toUIMessageStreamResponse()`}</CodeBlockContent>
+
+</CodeBlock>
+
   </div>
 </ComponentPreview>
 
@@ -179,18 +186,28 @@ Set `startLine` to begin numbering from a different number — useful when showi
 
 Add `wrap` to `CodeBlockContent` to break long lines instead of scroll. Compare both sides:
 
-<ComponentPreview name="code-block" title="code-block.tsx" previewClassName="h-auto">
+<ComponentPreview
+  name="code-block"
+  title="code-block.tsx"
+  previewClassName="h-auto"
+>
   <div className="grid w-full max-w-2xl grid-cols-1 gap-4 p-4 sm:grid-cols-2">
     <div className="flex flex-col gap-2">
-      <span className="text-xs font-medium text-muted-foreground">default (scroll)</span>
+      <span className="text-xs font-medium text-muted-foreground">
+        default (scroll)
+      </span>
       <CodeBlock>
-        <CodeBlockContent>{"Error: Failed to resolve module from /app/page.tsx"}</CodeBlockContent>
+        <CodeBlockContent>
+          {"Error: Failed to resolve module from /app/page.tsx"}
+        </CodeBlockContent>
       </CodeBlock>
     </div>
     <div className="flex flex-col gap-2">
       <span className="text-xs font-medium text-muted-foreground">wrap</span>
       <CodeBlock>
-        <CodeBlockContent wrap>{"Error: Failed to resolve module from /app/page.tsx"}</CodeBlockContent>
+        <CodeBlockContent wrap>
+          {"Error: Failed to resolve module from /app/page.tsx"}
+        </CodeBlockContent>
       </CodeBlock>
     </div>
   </div>
@@ -206,7 +223,9 @@ Use `CodeBlockLine` with `variant="highlighted"` to draw attention to specific l
       <CodeBlockContent>
         <CodeBlockLine>{"const config = {"}</CodeBlockLine>
         <CodeBlockLine>{"  theme: 'system',"}</CodeBlockLine>
-        <CodeBlockLine variant="highlighted">{"  primary: 'oklch(0.6 0.2 250)',"}</CodeBlockLine>
+        <CodeBlockLine variant="highlighted">
+          {"  primary: 'oklch(0.6 0.2 250)',"}
+        </CodeBlockLine>
         <CodeBlockLine>{"  radius: 0.5,"}</CodeBlockLine>
         <CodeBlockLine>{"}"}</CodeBlockLine>
       </CodeBlockContent>
@@ -244,33 +263,42 @@ Constrain height with a `max-h-*` class on `CodeBlockContent`. Content becomes s
 ✓ Generating static pages (12/12)
 ✓ Finalizing page optimization
 
-Route (app)                              Size     First Load JS
-┌ ○ /                                    1.2 kB          90.2 kB
-├ ○ /_not-found                          875 B           88.9 kB
-├ ○ /docs                                3.4 kB          92.4 kB
-└ ○ /docs/components                     5.1 kB          94.1 kB
-+ First Load JS shared by all            88.1 kB
-  ├ chunks/1a2b3c.js                     45.2 kB
-  ├ chunks/4d5e6f.js                     32.9 kB
-  └ chunks/7g8h9i.js                     10.0 kB`}</CodeBlockContent>
-    </CodeBlock>
+Route (app) Size First Load JS
+┌ ○ / 1.2 kB 90.2 kB
+├ ○ /\_not-found 875 B 88.9 kB
+├ ○ /docs 3.4 kB 92.4 kB
+└ ○ /docs/components 5.1 kB 94.1 kB
+
+- First Load JS shared by all 88.1 kB
+  ├ chunks/1a2b3c.js 45.2 kB
+  ├ chunks/4d5e6f.js 32.9 kB
+  └ chunks/7g8h9i.js 10.0 kB`}</CodeBlockContent>
+  </CodeBlock>
   </div>
-</ComponentPreview>
+  </ComponentPreview>
 
 ## Size
 
 Two sizes: `default` (14px, 16px padding) and `sm` (12px, 12px padding). `sm` fits inside compact slots.
 
-<ComponentPreview name="code-block" title="code-block.tsx" previewClassName="h-auto">
+<ComponentPreview
+  name="code-block"
+  title="code-block.tsx"
+  previewClassName="h-auto"
+>
   <div className="flex w-full max-w-lg flex-col gap-4 p-4">
     <div className="flex flex-col gap-2">
-      <span className="text-xs font-medium text-muted-foreground">size="default"</span>
+      <span className="text-xs font-medium text-muted-foreground">
+        size="default"
+      </span>
       <CodeBlock>
         <CodeBlockContent>{"npx frakment add button"}</CodeBlockContent>
       </CodeBlock>
     </div>
     <div className="flex flex-col gap-2">
-      <span className="text-xs font-medium text-muted-foreground">size="sm"</span>
+      <span className="text-xs font-medium text-muted-foreground">
+        size="sm"
+      </span>
       <CodeBlock size="sm">
         <CodeBlockContent>{"npx frakment add button"}</CodeBlockContent>
       </CodeBlock>
@@ -285,7 +313,9 @@ Use `variant="destructive"` for error output. Background and text shift to destr
 <ComponentPreview name="code-block" title="code-block.tsx">
   <div className="w-full max-w-lg">
     <CodeBlock variant="destructive">
-      <CodeBlockContent>{"Error: Failed to resolve module '@/components/ui/code-block'"}</CodeBlockContent>
+      <CodeBlockContent>
+        {"Error: Failed to resolve module '@/components/ui/code-block'"}
+      </CodeBlockContent>
     </CodeBlock>
   </div>
 </ComponentPreview>
@@ -296,8 +326,18 @@ Use `variant="destructive"` for error output. Background and text shift to destr
 
 <PropsTable
   rows={[
-    { name: "variant", type: "default | destructive", default: "default", description: "Visual style of the container." },
-    { name: "size", type: "default | sm", default: "default", description: "Text size and padding scale." },
+    {
+      name: "variant",
+      type: "default | destructive",
+      default: "default",
+      description: "Visual style of the container.",
+    },
+    {
+      name: "size",
+      type: "default | sm",
+      default: "default",
+      description: "Text size and padding scale.",
+    },
   ]}
 />
 
@@ -305,9 +345,24 @@ Use `variant="destructive"` for error output. Background and text shift to destr
 
 <PropsTable
   rows={[
-    { name: "wrap", type: "boolean", default: "false", description: "Wrap long lines instead of horizontal scroll." },
-    { name: "lineNumbers", type: "boolean", default: "false", description: "Render line numbers. Requires string children." },
-    { name: "startLine", type: "number", default: "1", description: "First line number when lineNumbers is enabled." },
+    {
+      name: "wrap",
+      type: "boolean",
+      default: "false",
+      description: "Wrap long lines instead of horizontal scroll.",
+    },
+    {
+      name: "lineNumbers",
+      type: "boolean",
+      default: "false",
+      description: "Render line numbers. Requires string children.",
+    },
+    {
+      name: "startLine",
+      type: "number",
+      default: "1",
+      description: "First line number when lineNumbers is enabled.",
+    },
   ]}
 />
 
@@ -315,7 +370,12 @@ Use `variant="destructive"` for error output. Background and text shift to destr
 
 <PropsTable
   rows={[
-    { name: "variant", type: "default | added | removed | highlighted", default: "default", description: "Visual diff or highlight style for the line." },
+    {
+      name: "variant",
+      type: "default | added | removed | highlighted",
+      default: "default",
+      description: "Visual diff or highlight style for the line.",
+    },
   ]}
 />
 

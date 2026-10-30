@@ -1,10 +1,11 @@
 "use client";
 
-import * as React from "react";
 import { AnimatePresence, motion } from "motion/react";
-import { cn } from "@/lib/utils";
-import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import * as React from "react";
+
 import { Button } from "@/components/ui/button";
+import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { cn } from "@/lib/utils";
 
 interface ComponentPreviewTabsProps {
   component: React.ReactNode;
@@ -21,9 +22,9 @@ const transition = {
 };
 
 const variants = {
-  initial: { opacity: 0, y: 6 },
   animate: { opacity: 1, y: 0 },
   exit: { opacity: 0, y: -6 },
+  initial: { opacity: 0, y: 6 },
 };
 
 export function ComponentPreviewTabs({
@@ -34,7 +35,9 @@ export function ComponentPreviewTabs({
   hideCode = false,
   align = "center",
 }: ComponentPreviewTabsProps) {
-  const [activeTab, setActiveTab] = React.useState<"preview" | "code">("preview");
+  const [activeTab, setActiveTab] = React.useState<"preview" | "code">(
+    "preview"
+  );
   const [isMobileCodeVisible, setIsMobileCodeVisible] = React.useState(false);
 
   return (

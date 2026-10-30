@@ -280,10 +280,23 @@ Pulse uses color to convey status — a deliberate exception to frakment's monoc
 
 <PropsTable
   rows={[
-    { name: "title", type: "string", description: "Short incident title shown in the pin panel." },
-    { name: "status", type: 'degraded | down', description: "Severity of the incident." },
+    {
+      name: "title",
+      type: "string",
+      description: "Short incident title shown in the pin panel.",
+    },
+    {
+      name: "status",
+      type: "degraded | down",
+      description: "Severity of the incident.",
+    },
     { name: "minutes", type: "number", description: "Minutes of impact." },
-    { name: "updates", type: "IncidentUpdate[]", description: "Ordered list of updates. Each has time, label, and optional note." },
+    {
+      name: "updates",
+      type: "IncidentUpdate[]",
+      description:
+        "Ordered list of updates. Each has time, label, and optional note.",
+    },
   ]}
 />
 

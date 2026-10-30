@@ -5,7 +5,12 @@ description: Displays a summary that expands into the steps an agent took.
 
 import { ChainOfThoughtDemo } from "@/examples/chain-of-thought-demo";
 
-<ComponentPreview name="chain-of-thought" title="chain-of-thought.tsx" align="start" previewClassName="h-auto">
+<ComponentPreview
+  name="chain-of-thought"
+  title="chain-of-thought.tsx"
+  align="start"
+  previewClassName="h-auto"
+>
   <ChainOfThoughtDemo />
 </ComponentPreview>
 
@@ -79,7 +84,9 @@ import {
   <ChainOfThoughtHeader>Researched in 3 steps</ChainOfThoughtHeader>
   <ChainOfThoughtContent>
     <ChainOfThoughtStep>Read the build log for dpl_8Kx2</ChainOfThoughtStep>
-    <ChainOfThoughtStep>Checked bundle size for dashboard.js</ChainOfThoughtStep>
+    <ChainOfThoughtStep>
+      Checked bundle size for dashboard.js
+    </ChainOfThoughtStep>
     <ChainOfThoughtStep>Profiled 3 API endpoints</ChainOfThoughtStep>
   </ChainOfThoughtContent>
 </ChainOfThought>

@@ -1,15 +1,19 @@
-"use client"
+"use client";
 
-import * as React from "react"
-import { cva, type VariantProps } from "class-variance-authority"
-import { cn } from "@/lib/utils"
-import { CheckIcon, CopyIcon } from "lucide-react"
+import { cva } from "class-variance-authority";
+import type { VariantProps } from "class-variance-authority";
+import { CheckIcon, CopyIcon } from "lucide-react";
+import * as React from "react";
 
-import { Button } from "@/components/ui/button"
+import { Button } from "@/components/ui/button";
+import { cn } from "@/lib/utils";
 
 const codeBlockVariants = cva(
   "group/code-block relative flex w-full min-w-0 flex-col overflow-hidden rounded-2xl text-sm has-[>[data-slot=code-block-content]:focus-visible]:ring-3 has-[>[data-slot=code-block-content]:focus-visible]:ring-ring/30 data-[size=sm]:rounded-xl data-[size=sm]:text-xs",
   {
+    defaultVariants: {
+      variant: "default",
+    },
     variants: {
       variant: {
         default:
@@ -18,11 +22,8 @@ const codeBlockVariants = cva(
           "bg-destructive/5 text-destructive ring-1 ring-destructive/15 dark:bg-destructive/10 dark:ring-destructive/20",
       },
     },
-    defaultVariants: {
-      variant: "default",
-    },
   }
-)
+);
 
 function CodeBlock({
   className,
@@ -39,7 +40,7 @@ function CodeBlock({
       className={cn(codeBlockVariants({ variant }), className)}
       {...props}
     />
-  )
+  );
 }
 
 function CodeBlockHeader({ className, ...props }: React.ComponentProps<"div">) {
@@ -52,7 +53,7 @@ function CodeBlockHeader({ className, ...props }: React.ComponentProps<"div">) {
       )}
       {...props}
     />
-  )
+  );
 }
 
 function CodeBlockTitle({ className, ...props }: React.ComponentProps<"div">) {
@@ -65,7 +66,7 @@ function CodeBlockTitle({ className, ...props }: React.ComponentProps<"div">) {
       )}
       {...props}
     />
-  )
+  );
 }
 
 function CodeBlockActions({
@@ -81,7 +82,7 @@ function CodeBlockActions({
       )}
       {...props}
     />
-  )
+  );
 }
 
 function CodeBlockCopyButton({
@@ -92,16 +93,16 @@ function CodeBlockCopyButton({
   onClick,
   ...props
 }: React.ComponentProps<typeof Button> & { value: string }) {
-  const [copied, setCopied] = React.useState(false)
+  const [copied, setCopied] = React.useState(false);
 
   React.useEffect(() => {
     if (!copied) {
-      return
+      return;
     }
 
-    const timeout = setTimeout(() => setCopied(false), 2000)
-    return () => clearTimeout(timeout)
-  }, [copied])
+    const timeout = setTimeout(() => setCopied(false), 2000);
+    return () => clearTimeout(timeout);
+  }, [copied]);
 
   return (
     <>
@@ -116,11 +117,11 @@ function CodeBlockCopyButton({
           className
         )}
         onClick={(event) => {
-          onClick?.(event)
+          onClick?.(event);
           navigator.clipboard
             .writeText(value)
             .then(() => setCopied(true))
-            .catch(() => {})
+            .catch(() => {});
         }}
         {...props}
       >
@@ -130,7 +131,7 @@ function CodeBlockCopyButton({
         {copied ? "Copied" : ""}
       </span>
     </>
-  )
+  );
 }
 
 function CodeBlockContent({
@@ -142,9 +143,9 @@ function CodeBlockContent({
   startLine = 1,
   ...props
 }: React.ComponentProps<"pre"> & {
-  wrap?: boolean
-  lineNumbers?: boolean
-  startLine?: number
+  wrap?: boolean;
+  lineNumbers?: boolean;
+  startLine?: number;
 }) {
   return (
     <pre
@@ -174,25 +175,25 @@ function CodeBlockContent({
           : children}
       </code>
     </pre>
-  )
+  );
 }
 
 const codeBlockLineVariants = cva(
   "relative -mx-4 block min-h-lh px-4 group-data-[size=sm]/code-block:-mx-3 group-data-[size=sm]/code-block:px-3 before:min-w-6 before:text-end before:text-muted-foreground after:absolute after:start-1 after:top-0 after:text-muted-foreground after:select-none in-data-numbered:col-span-2 in-data-numbered:grid in-data-numbered:grid-cols-subgrid in-data-numbered:gap-x-3 in-data-numbered:[counter-increment:line] in-data-numbered:before:content-[counter(line)] in-data-numbered:before:select-none in-data-numbered:supports-[content:counter(line)_/_'']:before:content-[counter(line)_/_'']",
   {
-    variants: {
-      variant: {
-        default: "",
-        added: "bg-foreground/5 after:content-['+']",
-        removed: "bg-destructive/10 after:text-destructive after:content-['−']",
-        highlighted: "bg-foreground/5",
-      },
-    },
     defaultVariants: {
       variant: "default",
     },
+    variants: {
+      variant: {
+        added: "bg-foreground/5 after:content-['+']",
+        default: "",
+        highlighted: "bg-foreground/5",
+        removed: "bg-destructive/10 after:text-destructive after:content-['−']",
+      },
+    },
   }
-)
+);
 
 function CodeBlockLine({
   className,
@@ -205,7 +206,7 @@ function CodeBlockLine({
     children === undefined ||
     children === null ||
     children === "" ||
-    (Array.isArray(children) && children.length === 0)
+    (Array.isArray(children) && children.length === 0);
 
   return (
     <span
@@ -218,7 +219,7 @@ function CodeBlockLine({
         {empty ? "\n" : children}
       </span>
     </span>
-  )
+  );
 }
 
 function CodeBlockFooter({ className, ...props }: React.ComponentProps<"div">) {
@@ -231,7 +232,7 @@ function CodeBlockFooter({ className, ...props }: React.ComponentProps<"div">) {
       )}
       {...props}
     />
-  )
+  );
 }
 
 export {
@@ -243,4 +244,4 @@ export {
   CodeBlockContent,
   CodeBlockLine,
   CodeBlockFooter,
-}
+};

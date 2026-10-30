@@ -6,7 +6,12 @@ description: A visual divider between content sections.
 import { Separator } from "@/components/ui/separator";
 import { SeparatorDemo } from "@/examples/separator-demo";
 
-<ComponentPreview name="separator" title="separator.tsx" align="start" previewClassName="h-auto">
+<ComponentPreview
+  name="separator"
+  title="separator.tsx"
+  align="start"
+  previewClassName="h-auto"
+>
   <div className="w-full max-w-md p-6">
     <SeparatorDemo />
   </div>
@@ -71,14 +76,23 @@ import { Separator } from "@/components/ui/separator";
 
 Horizontal rules have `h-px w-full`. Vertical rules have `h-full w-px` — the parent must have a defined height.
 
-<ComponentPreview name="separator" title="separator.tsx" align="start" previewClassName="h-auto">
+<ComponentPreview
+  name="separator"
+  title="separator.tsx"
+  align="start"
+  previewClassName="h-auto"
+>
   <div className="flex w-full max-w-md flex-col gap-6 p-6">
     <div className="flex flex-col gap-2">
-      <span className="text-xs font-medium text-muted-foreground">horizontal</span>
+      <span className="text-xs font-medium text-muted-foreground">
+        horizontal
+      </span>
       <Separator />
     </div>
     <div className="flex flex-col gap-2">
-      <span className="text-xs font-medium text-muted-foreground">vertical (in a row)</span>
+      <span className="text-xs font-medium text-muted-foreground">
+        vertical (in a row)
+      </span>
       <div className="flex h-6 items-center gap-4 text-sm">
         <span>Left</span>
         <Separator orientation="vertical" />
@@ -94,7 +108,12 @@ Horizontal rules have `h-px w-full`. Vertical rules have `h-full w-px` — the p
 
 To center a label on a separator, wrap it in a `relative` container and give the label a background that matches its parent.
 
-<ComponentPreview name="separator" title="separator.tsx" align="start" previewClassName="h-auto">
+<ComponentPreview
+  name="separator"
+  title="separator.tsx"
+  align="start"
+  previewClassName="h-auto"
+>
   <div className="w-full max-w-md p-6">
     <div className="relative">
       <div className="absolute inset-0 flex items-center">
@@ -126,7 +145,12 @@ To center a label on a separator, wrap it in a `relative` container and give the
 
 Use `Separator` to break groups in a list, or to delineate a header from content.
 
-<ComponentPreview name="separator" title="separator.tsx" align="start" previewClassName="h-auto">
+<ComponentPreview
+  name="separator"
+  title="separator.tsx"
+  align="start"
+  previewClassName="h-auto"
+>
   <div className="w-full max-w-md p-6">
     <div className="space-y-3 text-sm">
       <div className="font-medium">Recent activity</div>
@@ -173,7 +197,8 @@ Extends Radix `Separator.Root`.
       name: "decorative",
       type: "boolean",
       default: "true",
-      description: "When true, renders as a visual-only separator (role=presentation).",
+      description:
+        "When true, renders as a visual-only separator (role=presentation).",
     },
   ]}
 />

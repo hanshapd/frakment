@@ -22,7 +22,12 @@ import {
   GaugeIcon,
 } from "lucide-react";
 
-<ComponentPreview name="trace" title="trace.tsx" align="start" previewClassName="h-auto">
+<ComponentPreview
+  name="trace"
+  title="trace.tsx"
+  align="start"
+  previewClassName="h-auto"
+>
   <TraceDemo />
 </ComponentPreview>
 
@@ -65,19 +70,16 @@ npx frakment add trace
 ## Usage
 
 ```tsx
-import {
-  Trace,
-  TraceLine,
-  TraceIcon,
-  TraceTitle,
-} from "@/components/ui/trace";
+import { Trace, TraceLine, TraceIcon, TraceTitle } from "@/components/ui/trace";
 import { TraceDemo } from "@/examples/trace-demo";
 ```
 
 ```tsx
 <Trace>
   <TraceLine>
-    <TraceIcon><SearchIcon /></TraceIcon>
+    <TraceIcon>
+      <SearchIcon />
+    </TraceIcon>
     <TraceTitle>{"Searched for 3 sources"}</TraceTitle>
   </TraceLine>
 </Trace>
@@ -105,29 +107,42 @@ import { TraceDemo } from "@/examples/trace-demo";
 
 Use `status` on **TraceLine** to convey state without extra markup.
 
-| Status    | Effect                              |
-| :-------- | :---------------------------------- |
-| `running` | Foreground color, shimmer on title  |
-| `error`   | Destructive color                   |
-| `pending` | 60% opacity                         |
+| Status    | Effect                             |
+| :-------- | :--------------------------------- |
+| `running` | Foreground color, shimmer on title |
+| `error`   | Destructive color                  |
+| `pending` | 60% opacity                        |
 
-<ComponentPreview name="trace" title="trace.tsx" align="start" previewClassName="h-auto">
+<ComponentPreview
+  name="trace"
+  title="trace.tsx"
+  align="start"
+  previewClassName="h-auto"
+>
   <div className="w-full max-w-md p-6">
     <Trace>
       <TraceLine status="running">
-        <TraceIcon><LoaderCircleIcon className="animate-spin" /></TraceIcon>
+        <TraceIcon>
+          <LoaderCircleIcon className="animate-spin" />
+        </TraceIcon>
         <TraceTitle>{"Searching for minimumReleaseAge…"}</TraceTitle>
       </TraceLine>
       <TraceLine>
-        <TraceIcon><CheckIcon /></TraceIcon>
+        <TraceIcon>
+          <CheckIcon />
+        </TraceIcon>
         <TraceTitle>{"Searched for minimumReleaseAge"}</TraceTitle>
       </TraceLine>
       <TraceLine status="error">
-        <TraceIcon><CircleAlertIcon /></TraceIcon>
+        <TraceIcon>
+          <CircleAlertIcon />
+        </TraceIcon>
         <TraceTitle>{"Failed to search for minimumReleaseAge"}</TraceTitle>
       </TraceLine>
       <TraceLine status="pending">
-        <TraceIcon><GaugeIcon /></TraceIcon>
+        <TraceIcon>
+          <GaugeIcon />
+        </TraceIcon>
         <TraceTitle>{"Scanning render tree…"}</TraceTitle>
       </TraceLine>
     </Trace>
@@ -138,21 +153,32 @@ Use `status` on **TraceLine** to convey state without extra markup.
 
 Place a `TraceDescription` after the title to show a secondary value, such as a duration or byte count.
 
-<ComponentPreview name="trace" title="trace.tsx" align="start" previewClassName="h-auto">
+<ComponentPreview
+  name="trace"
+  title="trace.tsx"
+  align="start"
+  previewClassName="h-auto"
+>
   <div className="w-full max-w-md p-6">
     <Trace>
       <TraceLine>
-        <TraceIcon><FileCode2Icon /></TraceIcon>
+        <TraceIcon>
+          <FileCode2Icon />
+        </TraceIcon>
         <TraceTitle>{"vendor.js"}</TraceTitle>
         <TraceDescription>{"1240 KB"}</TraceDescription>
       </TraceLine>
       <TraceLine>
-        <TraceIcon><FileCode2Icon /></TraceIcon>
+        <TraceIcon>
+          <FileCode2Icon />
+        </TraceIcon>
         <TraceTitle>{"chart-lib.js"}</TraceTitle>
         <TraceDescription>{"812 KB"}</TraceDescription>
       </TraceLine>
       <TraceLine>
-        <TraceIcon><FileCode2Icon /></TraceIcon>
+        <TraceIcon>
+          <FileCode2Icon />
+        </TraceIcon>
         <TraceTitle>{"dashboard.js"}</TraceTitle>
         <TraceDescription>{"340 KB"}</TraceDescription>
       </TraceLine>
@@ -164,28 +190,41 @@ Place a `TraceDescription` after the title to show a secondary value, such as a 
 
 Wrap a **TraceLine** in **TraceCollapsibleTrigger** to make it expand into nested steps.
 
-<ComponentPreview name="trace" title="trace.tsx" align="start" previewClassName="h-auto">
+<ComponentPreview
+  name="trace"
+  title="trace.tsx"
+  align="start"
+  previewClassName="h-auto"
+>
   <div className="w-full max-w-md p-6">
     <Trace>
       <TraceCollapsible defaultOpen>
         <TraceCollapsibleTrigger>
           <TraceLine>
-            <TraceIcon><CheckIcon /></TraceIcon>
+            <TraceIcon>
+              <CheckIcon />
+            </TraceIcon>
             <TraceTitle>{"Researched in 3 steps"}</TraceTitle>
           </TraceLine>
         </TraceCollapsibleTrigger>
         <TraceCollapsibleContent>
           <Trace>
             <TraceLine>
-              <TraceIcon><CheckIcon /></TraceIcon>
+              <TraceIcon>
+                <CheckIcon />
+              </TraceIcon>
               <TraceTitle>{"Read the build log for dpl_8Kx2"}</TraceTitle>
             </TraceLine>
             <TraceLine>
-              <TraceIcon><CheckIcon /></TraceIcon>
+              <TraceIcon>
+                <CheckIcon />
+              </TraceIcon>
               <TraceTitle>{"Checked bundle size for dashboard.js"}</TraceTitle>
             </TraceLine>
             <TraceLine>
-              <TraceIcon><CheckIcon /></TraceIcon>
+              <TraceIcon>
+                <CheckIcon />
+              </TraceIcon>
               <TraceTitle>{"Profiled 3 API endpoints"}</TraceTitle>
             </TraceLine>
           </Trace>
@@ -199,28 +238,41 @@ Wrap a **TraceLine** in **TraceCollapsibleTrigger** to make it expand into neste
 
 Combined with a status spinner and a streaming title, **Trace** becomes a live agent trace.
 
-<ComponentPreview name="trace" title="trace.tsx" align="start" previewClassName="h-auto">
+<ComponentPreview
+  name="trace"
+  title="trace.tsx"
+  align="start"
+  previewClassName="h-auto"
+>
   <div className="w-full max-w-md p-6">
     <Trace>
       <TraceCollapsible defaultOpen>
         <TraceCollapsibleTrigger>
           <TraceLine status="running">
-            <TraceIcon><LoaderCircleIcon className="animate-spin" /></TraceIcon>
+            <TraceIcon>
+              <LoaderCircleIcon className="animate-spin" />
+            </TraceIcon>
             <TraceTitle>{"Profiling"}</TraceTitle>
           </TraceLine>
         </TraceCollapsibleTrigger>
         <TraceCollapsibleContent>
           <Trace>
             <TraceLine status="running">
-              <TraceIcon><LoaderCircleIcon className="animate-spin" /></TraceIcon>
+              <TraceIcon>
+                <LoaderCircleIcon className="animate-spin" />
+              </TraceIcon>
               <TraceTitle>{"Analyzing bundle for dashboard"}</TraceTitle>
             </TraceLine>
             <TraceLine>
-              <TraceIcon><CheckIcon /></TraceIcon>
+              <TraceIcon>
+                <CheckIcon />
+              </TraceIcon>
               <TraceTitle>{"Profiled requests on /dashboard"}</TraceTitle>
             </TraceLine>
             <TraceLine status="pending">
-              <TraceIcon><GaugeIcon /></TraceIcon>
+              <TraceIcon>
+                <GaugeIcon />
+              </TraceIcon>
               <TraceTitle>{"Scanning render tree for Dashboard"}</TraceTitle>
             </TraceLine>
           </Trace>

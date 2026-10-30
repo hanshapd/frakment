@@ -6,11 +6,18 @@ description: A flexible row for grouping media, content, and actions.
 import { Item } from "@/components/ui/item";
 import { Spinner } from "@/components/ui/spinner";
 
-<ComponentPreview name="item" title="item.tsx" align="start" previewClassName="h-auto">
+<ComponentPreview
+  name="item"
+  title="item.tsx"
+  align="start"
+  previewClassName="h-auto"
+>
   <div className="w-full max-w-sm p-4">
     <Item variant="muted">
       <ItemMedia>
-        <span className="flex size-8 items-center justify-center rounded-full bg-background text-xs font-medium">JS</span>
+        <span className="flex size-8 items-center justify-center rounded-full bg-background text-xs font-medium">
+          JS
+        </span>
       </ItemMedia>
       <ItemContent>
         <ItemTitle>{"Jane Smith"}</ItemTitle>
@@ -98,24 +105,35 @@ import { Item, ItemContent, ItemMedia, ItemTitle } from "@/components/ui/item";
 
 Three styles: `default` (bordered card), `outline` (transparent with border), `muted` (soft background, no border).
 
-<ComponentPreview name="item" title="item.tsx" align="start" previewClassName="h-auto">
+<ComponentPreview
+  name="item"
+  title="item.tsx"
+  align="start"
+  previewClassName="h-auto"
+>
   <div className="flex w-full max-w-md flex-col gap-3 p-4">
     <div className="flex flex-col gap-1">
       <span className="text-xs font-medium text-muted-foreground">default</span>
       <Item>
-        <ItemContent><ItemTitle>{"Default row"}</ItemTitle></ItemContent>
+        <ItemContent>
+          <ItemTitle>{"Default row"}</ItemTitle>
+        </ItemContent>
       </Item>
     </div>
     <div className="flex flex-col gap-1">
       <span className="text-xs font-medium text-muted-foreground">outline</span>
       <Item variant="outline">
-        <ItemContent><ItemTitle>{"Outline row"}</ItemTitle></ItemContent>
+        <ItemContent>
+          <ItemTitle>{"Outline row"}</ItemTitle>
+        </ItemContent>
       </Item>
     </div>
     <div className="flex flex-col gap-1">
       <span className="text-xs font-medium text-muted-foreground">muted</span>
       <Item variant="muted">
-        <ItemContent><ItemTitle>{"Muted row"}</ItemTitle></ItemContent>
+        <ItemContent>
+          <ItemTitle>{"Muted row"}</ItemTitle>
+        </ItemContent>
       </Item>
     </div>
   </div>
@@ -125,26 +143,43 @@ Three styles: `default` (bordered card), `outline` (transparent with border), `m
 
 Put an icon, avatar, or badge in `ItemMedia`. Icons without a `size-*` class are auto-sized to 16px.
 
-<ComponentPreview name="item" title="item.tsx" align="start" previewClassName="h-auto">
+<ComponentPreview
+  name="item"
+  title="item.tsx"
+  align="start"
+  previewClassName="h-auto"
+>
   <div className="w-full max-w-sm p-4">
     <ItemGroup>
       <Item>
         <ItemMedia>
-          <span className="flex size-8 items-center justify-center rounded-full bg-muted text-xs font-medium">A</span>
+          <span className="flex size-8 items-center justify-center rounded-full bg-muted text-xs font-medium">
+            A
+          </span>
         </ItemMedia>
-        <ItemContent><ItemTitle>{"Aria Chen"}</ItemTitle></ItemContent>
+        <ItemContent>
+          <ItemTitle>{"Aria Chen"}</ItemTitle>
+        </ItemContent>
       </Item>
       <Item>
         <ItemMedia>
-          <span className="flex size-8 items-center justify-center rounded-full bg-muted text-xs font-medium">B</span>
+          <span className="flex size-8 items-center justify-center rounded-full bg-muted text-xs font-medium">
+            B
+          </span>
         </ItemMedia>
-        <ItemContent><ItemTitle>{"Ben Ortiz"}</ItemTitle></ItemContent>
+        <ItemContent>
+          <ItemTitle>{"Ben Ortiz"}</ItemTitle>
+        </ItemContent>
       </Item>
       <Item>
         <ItemMedia>
-          <span className="flex size-8 items-center justify-center rounded-full bg-muted text-xs font-medium">C</span>
+          <span className="flex size-8 items-center justify-center rounded-full bg-muted text-xs font-medium">
+            C
+          </span>
         </ItemMedia>
-        <ItemContent><ItemTitle>{"Cleo Park"}</ItemTitle></ItemContent>
+        <ItemContent>
+          <ItemTitle>{"Cleo Park"}</ItemTitle>
+        </ItemContent>
       </Item>
     </ItemGroup>
   </div>
@@ -154,7 +189,12 @@ Put an icon, avatar, or badge in `ItemMedia`. Icons without a `size-*` class are
 
 Add `ItemDescription` below `ItemTitle` for a secondary line.
 
-<ComponentPreview name="item" title="item.tsx" align="start" previewClassName="h-auto">
+<ComponentPreview
+  name="item"
+  title="item.tsx"
+  align="start"
+  previewClassName="h-auto"
+>
   <div className="w-full max-w-sm p-4">
     <ItemGroup>
       <Item>
@@ -183,7 +223,12 @@ Add `ItemDescription` below `ItemTitle` for a secondary line.
 
 Add `ItemActions` as the last child for a trailing button, badge, or amount.
 
-<ComponentPreview name="item" title="item.tsx" align="start" previewClassName="h-auto">
+<ComponentPreview
+  name="item"
+  title="item.tsx"
+  align="start"
+  previewClassName="h-auto"
+>
   <div className="w-full max-w-sm p-4">
     <ItemGroup>
       <Item variant="muted">
@@ -212,7 +257,12 @@ Add `ItemActions` as the last child for a trailing button, badge, or amount.
 
 Combine with [Spinner](/docs/components/spinner) for a live processing row.
 
-<ComponentPreview name="item" title="item.tsx" align="start" previewClassName="h-auto">
+<ComponentPreview
+  name="item"
+  title="item.tsx"
+  align="start"
+  previewClassName="h-auto"
+>
   <div className="w-full max-w-sm p-4">
     <Item variant="muted">
       <ItemMedia>
@@ -234,8 +284,18 @@ Combine with [Spinner](/docs/components/spinner) for a live processing row.
 
 <PropsTable
   rows={[
-    { name: "variant", type: "default | outline | muted", default: "default", description: "Visual style of the row." },
-    { name: "asChild", type: "boolean", default: "false", description: "When true, renders the child element instead of a div." },
+    {
+      name: "variant",
+      type: "default | outline | muted",
+      default: "default",
+      description: "Visual style of the row.",
+    },
+    {
+      name: "asChild",
+      type: "boolean",
+      default: "false",
+      description: "When true, renders the child element instead of a div.",
+    },
   ]}
 />
 

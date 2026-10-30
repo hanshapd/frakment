@@ -1,6 +1,6 @@
-import { getRegistryComponent } from "@/lib/registry";
-import { ComponentSource } from "@/components/component-source";
 import { ComponentPreviewTabs } from "@/components/component-preview-tabs";
+import { ComponentSource } from "@/components/component-source";
+import { getRegistryComponent } from "@/lib/registry";
 
 interface ComponentPreviewProps {
   /** Nama komponen di registry — dipakai untuk mencari source code */

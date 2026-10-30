@@ -39,7 +39,9 @@ export const getDemoItem = async (
   styleName: string
 ): Promise<{ files: { content: string }[] } | null> => {
   const content = await getDemoSource(name);
-  if (!content) return null;
+  if (!content) {
+    return null;
+  }
   return { files: [{ content }] };
 };
 
@@ -48,7 +50,9 @@ export const getRegistryItem = async (
   styleName: string
 ): Promise<{ files: { content: string }[] } | null> => {
   const content = await getRegistrySource(name);
-  if (!content) return null;
+  if (!content) {
+    return null;
+  }
   return { files: [{ content }] };
 };
 
@@ -63,7 +67,9 @@ export const getRegistryComponent = (
       // eslint-disable-next-line @typescript-eslint/no-var-requires
       const mod = require(candidate);
       const comp = (mod as { default?: React.ComponentType }).default;
-      if (comp) return comp;
+      if (comp) {
+        return comp;
+      }
     } catch {
       // continue to next candidate
     }

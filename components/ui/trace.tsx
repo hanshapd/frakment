@@ -1,12 +1,12 @@
-import * as React from "react"
-import { cn } from "@/lib/utils"
+import { ChevronRightIcon } from "lucide-react";
+import * as React from "react";
 
 import {
   Collapsible,
   CollapsibleContent,
   CollapsibleTrigger,
-} from "@/components/ui/collapsible"
-import { ChevronRightIcon } from "lucide-react"
+} from "@/components/ui/collapsible";
+import { cn } from "@/lib/utils";
 
 function Trace({ className, ...props }: React.ComponentProps<"div">) {
   return (
@@ -18,7 +18,7 @@ function Trace({ className, ...props }: React.ComponentProps<"div">) {
       )}
       {...props}
     />
-  )
+  );
 }
 
 function TraceLine({
@@ -26,7 +26,7 @@ function TraceLine({
   status,
   ...props
 }: React.ComponentProps<"span"> & {
-  status?: "running" | "error" | "pending"
+  status?: "running" | "error" | "pending";
 }) {
   return (
     <span
@@ -38,7 +38,7 @@ function TraceLine({
       )}
       {...props}
     />
-  )
+  );
 }
 
 function TraceIcon({ className, ...props }: React.ComponentProps<"span">) {
@@ -52,7 +52,7 @@ function TraceIcon({ className, ...props }: React.ComponentProps<"span">) {
       )}
       {...props}
     />
-  )
+  );
 }
 
 function TraceTitle({ className, ...props }: React.ComponentProps<"span">) {
@@ -62,7 +62,7 @@ function TraceTitle({ className, ...props }: React.ComponentProps<"span">) {
       className={cn("min-w-0 truncate motion-reduce:shimmer-none", className)}
       {...props}
     />
-  )
+  );
 }
 
 function TraceDescription({
@@ -78,7 +78,7 @@ function TraceDescription({
       )}
       {...props}
     />
-  )
+  );
 }
 
 function TraceCollapsible({
@@ -88,10 +88,10 @@ function TraceCollapsible({
   (
     | { open?: undefined }
     | {
-        open: boolean
+        open: boolean;
         onOpenChange: NonNullable<
           React.ComponentProps<typeof Collapsible>["onOpenChange"]
-        >
+        >;
       }
   )) {
   return (
@@ -100,7 +100,7 @@ function TraceCollapsible({
       className={cn("flex w-full min-w-0 flex-col", className)}
       {...props}
     />
-  )
+  );
 }
 
 function TraceCollapsibleTrigger({
@@ -119,11 +119,10 @@ function TraceCollapsibleTrigger({
     >
       {children}
       <TraceIcon className="transition-transform group-aria-expanded/trace-collapsible-trigger:rotate-90">
-        <ChevronRightIcon
-        />
+        <ChevronRightIcon />
       </TraceIcon>
     </CollapsibleTrigger>
-  )
+  );
 }
 
 function TraceCollapsibleContent({
@@ -147,7 +146,7 @@ function TraceCollapsibleContent({
         {children}
       </div>
     </CollapsibleContent>
-  )
+  );
 }
 
 export {
@@ -159,4 +158,4 @@ export {
   TraceCollapsible,
   TraceCollapsibleTrigger,
   TraceCollapsibleContent,
-}
+};

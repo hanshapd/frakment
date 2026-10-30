@@ -13,7 +13,11 @@ import {
 } from "@/components/ui/avatar";
 import { AvatarDemo } from "@/examples/avatar-demo";
 
-<ComponentPreview name="avatar" title="avatar.tsx" previewClassName="h-auto p-10">
+<ComponentPreview
+  name="avatar"
+  title="avatar.tsx"
+  previewClassName="h-auto p-10"
+>
   <AvatarDemo />
 </ComponentPreview>
 
@@ -148,9 +152,15 @@ When there is no image, use **AvatarFallback** directly with initials.
 
 <ComponentPreview name="avatar" title="avatar.tsx">
   <div className="flex items-center gap-4">
-    <Avatar><AvatarFallback>{"JD"}</AvatarFallback></Avatar>
-    <Avatar><AvatarFallback>{"AI"}</AvatarFallback></Avatar>
-    <Avatar><AvatarFallback>{"?"}</AvatarFallback></Avatar>
+    <Avatar>
+      <AvatarFallback>{"JD"}</AvatarFallback>
+    </Avatar>
+    <Avatar>
+      <AvatarFallback>{"AI"}</AvatarFallback>
+    </Avatar>
+    <Avatar>
+      <AvatarFallback>{"?"}</AvatarFallback>
+    </Avatar>
   </div>
 </ComponentPreview>
 
@@ -186,10 +196,22 @@ show how many more are hidden.
 
 <ComponentPreview name="avatar" title="avatar.tsx">
   <AvatarGroup>
-    <Avatar><AvatarImage src="/avatars/female-l-1.avif" alt="@anna" /><AvatarFallback>{"AN"}</AvatarFallback></Avatar>
-    <Avatar><AvatarImage src="/avatars/female-l-2.avif" alt="@sara" /><AvatarFallback>{"SA"}</AvatarFallback></Avatar>
-    <Avatar><AvatarImage src="/avatars/female-l-3.avif" alt="@liv" /><AvatarFallback>{"LV"}</AvatarFallback></Avatar>
-    <Avatar><AvatarImage src="/avatars/male-l.avif" alt="@max" /><AvatarFallback>{"MX"}</AvatarFallback></Avatar>
+    <Avatar>
+      <AvatarImage src="/avatars/female-l-1.avif" alt="@anna" />
+      <AvatarFallback>{"AN"}</AvatarFallback>
+    </Avatar>
+    <Avatar>
+      <AvatarImage src="/avatars/female-l-2.avif" alt="@sara" />
+      <AvatarFallback>{"SA"}</AvatarFallback>
+    </Avatar>
+    <Avatar>
+      <AvatarImage src="/avatars/female-l-3.avif" alt="@liv" />
+      <AvatarFallback>{"LV"}</AvatarFallback>
+    </Avatar>
+    <Avatar>
+      <AvatarImage src="/avatars/male-l.avif" alt="@max" />
+      <AvatarFallback>{"MX"}</AvatarFallback>
+    </Avatar>
     <AvatarGroupCount>{"+3"}</AvatarGroupCount>
   </AvatarGroup>
 </ComponentPreview>
@@ -220,21 +242,48 @@ The count badge inherits the size of the group's avatars. Pass `size` on each
 <ComponentPreview name="avatar" title="avatar.tsx" previewClassName="h-auto">
   <div className="flex flex-col items-start gap-6">
     <AvatarGroup>
-      <Avatar size="sm"><AvatarImage src="/avatars/female-l-1.avif" alt="@anna" /><AvatarFallback>{"AN"}</AvatarFallback></Avatar>
-      <Avatar size="sm"><AvatarImage src="/avatars/female-l-2.avif" alt="@sara" /><AvatarFallback>{"SA"}</AvatarFallback></Avatar>
-      <Avatar size="sm"><AvatarImage src="/avatars/female-l-3.avif" alt="@liv" /><AvatarFallback>{"LV"}</AvatarFallback></Avatar>
+      <Avatar size="sm">
+        <AvatarImage src="/avatars/female-l-1.avif" alt="@anna" />
+        <AvatarFallback>{"AN"}</AvatarFallback>
+      </Avatar>
+      <Avatar size="sm">
+        <AvatarImage src="/avatars/female-l-2.avif" alt="@sara" />
+        <AvatarFallback>{"SA"}</AvatarFallback>
+      </Avatar>
+      <Avatar size="sm">
+        <AvatarImage src="/avatars/female-l-3.avif" alt="@liv" />
+        <AvatarFallback>{"LV"}</AvatarFallback>
+      </Avatar>
       <AvatarGroupCount>{"+3"}</AvatarGroupCount>
     </AvatarGroup>
     <AvatarGroup>
-      <Avatar><AvatarImage src="/avatars/female-l-1.avif" alt="@anna" /><AvatarFallback>{"AN"}</AvatarFallback></Avatar>
-      <Avatar><AvatarImage src="/avatars/female-l-2.avif" alt="@sara" /><AvatarFallback>{"SA"}</AvatarFallback></Avatar>
-      <Avatar><AvatarImage src="/avatars/female-l-3.avif" alt="@liv" /><AvatarFallback>{"LV"}</AvatarFallback></Avatar>
+      <Avatar>
+        <AvatarImage src="/avatars/female-l-1.avif" alt="@anna" />
+        <AvatarFallback>{"AN"}</AvatarFallback>
+      </Avatar>
+      <Avatar>
+        <AvatarImage src="/avatars/female-l-2.avif" alt="@sara" />
+        <AvatarFallback>{"SA"}</AvatarFallback>
+      </Avatar>
+      <Avatar>
+        <AvatarImage src="/avatars/female-l-3.avif" alt="@liv" />
+        <AvatarFallback>{"LV"}</AvatarFallback>
+      </Avatar>
       <AvatarGroupCount>{"+3"}</AvatarGroupCount>
     </AvatarGroup>
     <AvatarGroup>
-      <Avatar size="lg"><AvatarImage src="/avatars/female-l-1.avif" alt="@anna" /><AvatarFallback>{"AN"}</AvatarFallback></Avatar>
-      <Avatar size="lg"><AvatarImage src="/avatars/female-l-2.avif" alt="@sara" /><AvatarFallback>{"SA"}</AvatarFallback></Avatar>
-      <Avatar size="lg"><AvatarImage src="/avatars/female-l-3.avif" alt="@liv" /><AvatarFallback>{"LV"}</AvatarFallback></Avatar>
+      <Avatar size="lg">
+        <AvatarImage src="/avatars/female-l-1.avif" alt="@anna" />
+        <AvatarFallback>{"AN"}</AvatarFallback>
+      </Avatar>
+      <Avatar size="lg">
+        <AvatarImage src="/avatars/female-l-2.avif" alt="@sara" />
+        <AvatarFallback>{"SA"}</AvatarFallback>
+      </Avatar>
+      <Avatar size="lg">
+        <AvatarImage src="/avatars/female-l-3.avif" alt="@liv" />
+        <AvatarFallback>{"LV"}</AvatarFallback>
+      </Avatar>
       <AvatarGroupCount>{"+3"}</AvatarGroupCount>
     </AvatarGroup>
   </div>
@@ -270,7 +319,6 @@ Avatars stack left-to-right with each one overlapping the next by 8px. The
 background ring (`ring-2 ring-background`) keeps edges visible. If you need
 right-to-left stacking, wrap the group with `flex-row-reverse`.
 
-
 ## Facing direction
 
 All demo avatars face left by default (`-l`). Use `male-r` alone when you need a single right-facing avatar — never mix `-l` and `-r` in the same row.
@@ -299,9 +347,15 @@ Apply `grayscale` to the **Avatar** or **AvatarGroup** to desaturate. Remove on 
       <AvatarFallback>{"SA"}</AvatarFallback>
     </Avatar>
     <AvatarGroup className="grayscale">
-      <Avatar><AvatarFallback>{"A"}</AvatarFallback></Avatar>
-      <Avatar><AvatarFallback>{"B"}</AvatarFallback></Avatar>
-      <Avatar><AvatarFallback>{"C"}</AvatarFallback></Avatar>
+      <Avatar>
+        <AvatarFallback>{"A"}</AvatarFallback>
+      </Avatar>
+      <Avatar>
+        <AvatarFallback>{"B"}</AvatarFallback>
+      </Avatar>
+      <Avatar>
+        <AvatarFallback>{"C"}</AvatarFallback>
+      </Avatar>
     </AvatarGroup>
   </div>
 </ComponentPreview>
@@ -320,7 +374,9 @@ Pair **Avatar** with [Message](/docs/components/message) and [Bubble](/docs/comp
       </Avatar>
       <div className="flex flex-col gap-1 text-sm">
         <span className="font-medium">{"Anna"}</span>
-        <span className="text-muted-foreground">{"It's 4:55 PM. On a Friday."}</span>
+        <span className="text-muted-foreground">
+          {"It's 4:55 PM. On a Friday."}
+        </span>
       </div>
     </div>
     <div className="flex items-start gap-3">
@@ -330,7 +386,9 @@ Pair **Avatar** with [Message](/docs/components/message) and [Bubble](/docs/comp
       </Avatar>
       <div className="flex flex-col gap-1 text-sm">
         <span className="font-medium">{"Sara"}</span>
-        <span className="text-muted-foreground">{"It's always a one-line change 😭."}</span>
+        <span className="text-muted-foreground">
+          {"It's always a one-line change 😭."}
+        </span>
       </div>
     </div>
   </div>

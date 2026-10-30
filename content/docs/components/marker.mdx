@@ -4,11 +4,7 @@ description: A small inline status row with icon, content, and separator variant
 ---
 
 import { MarkerDemo } from "@/examples/marker-demo";
-import {
-  Marker,
-  MarkerContent,
-  MarkerIcon,
-} from "@/components/ui/marker";
+import { Marker, MarkerContent, MarkerIcon } from "@/components/ui/marker";
 import {
   CheckIcon,
   ChevronRightIcon,
@@ -18,7 +14,12 @@ import {
   SearchIcon,
 } from "lucide-react";
 
-<ComponentPreview name="marker" title="marker.tsx" align="start" previewClassName="h-auto">
+<ComponentPreview
+  name="marker"
+  title="marker.tsx"
+  align="start"
+  previewClassName="h-auto"
+>
   <MarkerDemo />
 </ComponentPreview>
 
@@ -66,7 +67,9 @@ import { Marker, MarkerContent, MarkerIcon } from "@/components/ui/marker";
 
 ```tsx
 <Marker>
-  <MarkerIcon><CheckIcon /></MarkerIcon>
+  <MarkerIcon>
+    <CheckIcon />
+  </MarkerIcon>
   <MarkerContent>{"Saved just now"}</MarkerContent>
 </Marker>
 ```
@@ -103,15 +106,21 @@ Place `MarkerIcon` as the first child. The icon is sized to 16px.
 <ComponentPreview name="marker" title="marker.tsx" previewClassName="h-auto">
   <div className="flex w-full max-w-sm flex-col gap-4">
     <Marker>
-      <MarkerIcon><GitBranchIcon /></MarkerIcon>
+      <MarkerIcon>
+        <GitBranchIcon />
+      </MarkerIcon>
       <MarkerContent>{"Switched to a new branch"}</MarkerContent>
     </Marker>
     <Marker>
-      <MarkerIcon><SearchIcon /></MarkerIcon>
+      <MarkerIcon>
+        <SearchIcon />
+      </MarkerIcon>
       <MarkerContent>{"Explored 4 files"}</MarkerContent>
     </Marker>
     <Marker>
-      <MarkerIcon><CheckIcon /></MarkerIcon>
+      <MarkerIcon>
+        <CheckIcon />
+      </MarkerIcon>
       <MarkerContent>{"All checks passed"}</MarkerContent>
     </Marker>
   </div>
@@ -124,15 +133,21 @@ Set `role="status"` when the marker announces a live change. Pair with a spinner
 <ComponentPreview name="marker" title="marker.tsx" previewClassName="h-auto">
   <div className="flex w-full max-w-sm flex-col gap-4">
     <Marker role="status">
-      <MarkerIcon><LoaderCircleIcon className="animate-spin" /></MarkerIcon>
+      <MarkerIcon>
+        <LoaderCircleIcon className="animate-spin" />
+      </MarkerIcon>
       <MarkerContent className="shimmer">{"Thinking..."}</MarkerContent>
     </Marker>
     <Marker role="status">
-      <MarkerIcon><LoaderCircleIcon className="animate-spin" /></MarkerIcon>
+      <MarkerIcon>
+        <LoaderCircleIcon className="animate-spin" />
+      </MarkerIcon>
       <MarkerContent className="shimmer">{"Reading 4 files..."}</MarkerContent>
     </Marker>
     <Marker role="status">
-      <MarkerIcon><LoaderCircleIcon className="animate-spin" /></MarkerIcon>
+      <MarkerIcon>
+        <LoaderCircleIcon className="animate-spin" />
+      </MarkerIcon>
       <MarkerContent className="shimmer">{"Running tests..."}</MarkerContent>
     </Marker>
   </div>
@@ -146,11 +161,14 @@ Apply `shimmer` to `MarkerContent` for a gentle highlight animation. Combine wit
   <div className="flex w-full max-w-sm flex-col gap-4">
     <Marker>
       <MarkerContent className="shimmer">
-        <span className="font-medium">{"Oliver"}</span>{" is typing..."}
+        <span className="font-medium">{"Oliver"}</span>
+        {" is typing..."}
       </MarkerContent>
     </Marker>
     <Marker>
-      <MarkerContent className="shimmer">{"Generating response..."}</MarkerContent>
+      <MarkerContent className="shimmer">
+        {"Generating response..."}
+      </MarkerContent>
     </Marker>
   </div>
 </ComponentPreview>
@@ -180,7 +198,9 @@ Set `variant="border"` for a status row with a bottom rule — useful as a secti
 <ComponentPreview name="marker" title="marker.tsx" previewClassName="h-auto">
   <div className="flex w-full max-w-sm flex-col gap-2">
     <Marker variant="border">
-      <MarkerIcon><GitBranchIcon /></MarkerIcon>
+      <MarkerIcon>
+        <GitBranchIcon />
+      </MarkerIcon>
       <MarkerContent>{"Switched to release-candidate"}</MarkerContent>
     </Marker>
     <Marker>
@@ -196,11 +216,15 @@ Combine an icon with a muted duration. Use `tabular-nums` for aligned digits.
 <ComponentPreview name="marker" title="marker.tsx" previewClassName="h-auto">
   <div className="flex w-full max-w-sm flex-col gap-2">
     <Marker>
-      <MarkerIcon><ClockIcon /></MarkerIcon>
+      <MarkerIcon>
+        <ClockIcon />
+      </MarkerIcon>
       <MarkerContent>{"Profiled in 1.8s"}</MarkerContent>
     </Marker>
     <Marker>
-      <MarkerIcon><ClockIcon /></MarkerIcon>
+      <MarkerIcon>
+        <ClockIcon />
+      </MarkerIcon>
       <MarkerContent>{"Deployed in 12.4s"}</MarkerContent>
     </Marker>
   </div>
@@ -214,14 +238,18 @@ Use `asChild` to render the marker as a link or button. The whole row becomes cl
   <div className="flex w-full max-w-sm flex-col gap-4">
     <Marker asChild>
       <a href="#">
-        <MarkerIcon><GitBranchIcon /></MarkerIcon>
+        <MarkerIcon>
+          <GitBranchIcon />
+        </MarkerIcon>
         <MarkerContent>{"View branch on GitHub"}</MarkerContent>
         <ChevronRightIcon className="ms-auto size-4 opacity-50" />
       </a>
     </Marker>
     <Marker asChild>
       <button type="button">
-        <MarkerIcon><SearchIcon /></MarkerIcon>
+        <MarkerIcon>
+          <SearchIcon />
+        </MarkerIcon>
         <MarkerContent>{"Show all 4 explored files"}</MarkerContent>
         <ChevronRightIcon className="ms-auto size-4 opacity-50" />
       </button>
@@ -235,8 +263,19 @@ Use `asChild` to render the marker as a link or button. The whole row becomes cl
 
 <PropsTable
   rows={[
-    { name: "variant", type: "default | border | separator", default: "default", description: "Visual style of the row." },
-    { name: "asChild", type: "boolean", default: "false", description: "When true, renders the child element (e.g. <a>, <button>) instead of a div." },
+    {
+      name: "variant",
+      type: "default | border | separator",
+      default: "default",
+      description: "Visual style of the row.",
+    },
+    {
+      name: "asChild",
+      type: "boolean",
+      default: "false",
+      description:
+        "When true, renders the child element (e.g. <a>, <button>) instead of a div.",
+    },
   ]}
 />
 

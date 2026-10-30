@@ -5,20 +5,20 @@ import { cn } from "@/lib/utils";
 export type PulseStatusType = "up" | "degraded" | "down";
 
 const STATUS_CONFIG = {
-  up: {
-    icon: CircleCheck,
-    color: "text-emerald-600 dark:text-emerald-400",
-    label: "All systems operational",
-  },
   degraded: {
-    icon: TriangleAlert,
     color: "text-amber-600 dark:text-amber-400",
+    icon: TriangleAlert,
     label: "Degraded",
   },
   down: {
-    icon: X,
     color: "text-rose-600 dark:text-rose-400",
+    icon: X,
     label: "Outage",
+  },
+  up: {
+    color: "text-emerald-600 dark:text-emerald-400",
+    icon: CircleCheck,
+    label: "All systems operational",
   },
 } as const;
 
@@ -39,11 +39,11 @@ function PulseStatus({
   const Icon = config.icon;
   const text =
     label ??
-    (count !== undefined
-      ? count === 1
+    (count === undefined
+      ? config.label
+      : (count === 1
         ? "1 service affected"
-        : `${count} services affected`
-      : config.label);
+        : `${count} services affected`));
 
   return (
     <p

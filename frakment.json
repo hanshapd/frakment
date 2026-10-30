@@ -8,10 +8,7 @@
       "description": "A small label for statuses, categories, or counts.",
       "source": "registry/badge.tsx",
       "target": "components/ui/badge.tsx",
-      "dependencies": [
-        "class-variance-authority",
-        "radix-ui"
-      ],
+      "dependencies": ["class-variance-authority", "radix-ui"],
       "registryDependencies": []
     },
     {
@@ -20,10 +17,7 @@
       "description": "A monochrome button with six variants and six sizes.",
       "source": "registry/button.tsx",
       "target": "components/ui/button.tsx",
-      "dependencies": [
-        "class-variance-authority",
-        "radix-ui"
-      ],
+      "dependencies": ["class-variance-authority", "radix-ui"],
       "registryDependencies": []
     },
     {
@@ -32,12 +26,8 @@
       "description": "",
       "source": "registry/chain-of-thought.tsx",
       "target": "components/ui/chain-of-thought.tsx",
-      "dependencies": [
-        "lucide-react"
-      ],
-      "registryDependencies": [
-        "trace"
-      ]
+      "dependencies": ["lucide-react"],
+      "registryDependencies": ["trace"]
     },
     {
       "name": "pulse-status",
@@ -45,9 +35,7 @@
       "description": "A status badge for service health, used inside Pulse.",
       "source": "registry/pulse-status.tsx",
       "target": "components/ui/pulse-status.tsx",
-      "dependencies": [
-        "lucide-react"
-      ],
+      "dependencies": ["lucide-react"],
       "registryDependencies": []
     },
     {
@@ -56,9 +44,7 @@
       "description": "A daily status timeline for service uptime, with inline incident logs.",
       "source": "registry/pulse.tsx",
       "target": "components/ui/pulse.tsx",
-      "dependencies": [
-        "lucide-react"
-      ]
+      "dependencies": ["lucide-react"]
     },
     {
       "name": "trace",
@@ -66,11 +52,7 @@
       "description": "A list of lines for the steps an agent takes.",
       "source": "registry/trace.tsx",
       "target": "components/ui/trace.tsx",
-      "dependencies": [
-        "lucide-react",
-        "motion",
-        "radix-ui"
-      ],
+      "dependencies": ["lucide-react", "motion", "radix-ui"],
       "registryDependencies": []
     },
     {

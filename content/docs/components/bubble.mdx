@@ -12,7 +12,12 @@ import {
   BubbleReactions,
 } from "@/components/ui/bubble";
 
-<ComponentPreview name="bubble" title="bubble.tsx" align="start" previewClassName="h-auto">
+<ComponentPreview
+  name="bubble"
+  title="bubble.tsx"
+  align="start"
+  previewClassName="h-auto"
+>
   <BubbleDemo />
 </ComponentPreview>
 
@@ -84,7 +89,12 @@ import { Bubble, BubbleContent } from "@/components/ui/bubble";
 
 Seven tone variants cover sent, received, muted, and error states.
 
-<ComponentPreview name="bubble" title="bubble.tsx" align="center" previewClassName="h-auto">
+<ComponentPreview
+  name="bubble"
+  title="bubble.tsx"
+  align="center"
+  previewClassName="h-auto"
+>
   <div className="flex w-full max-w-2xl flex-wrap items-end justify-center gap-3 p-6">
     <Bubble variant="default">
       <BubbleContent>{"Default"}</BubbleContent>
@@ -114,7 +124,12 @@ Seven tone variants cover sent, received, muted, and error states.
 
 Use `align="start"` (default) for received and `align="end"` for sent messages.
 
-<ComponentPreview name="bubble" title="bubble.tsx" align="start" previewClassName="h-auto">
+<ComponentPreview
+  name="bubble"
+  title="bubble.tsx"
+  align="start"
+  previewClassName="h-auto"
+>
   <div className="w-full max-w-md space-y-2 p-6">
     <Bubble>
       <BubbleContent>{"Received message"}</BubbleContent>
@@ -129,7 +144,12 @@ Use `align="start"` (default) for received and `align="end"` for sent messages.
 
 `BubbleReactions` floats a pill on the bottom or top edge of the bubble.
 
-<ComponentPreview name="bubble" title="bubble.tsx" align="start" previewClassName="h-auto">
+<ComponentPreview
+  name="bubble"
+  title="bubble.tsx"
+  align="start"
+  previewClassName="h-auto"
+>
   <div className="w-full max-w-md p-6">
     <BubbleGroup>
       <Bubble>
@@ -147,10 +167,17 @@ Use `align="start"` (default) for received and `align="end"` for sent messages.
 
 Combine **Bubble** with [Message](/docs/components/message) for a full conversation layout.
 
-<ComponentPreview name="bubble" title="bubble.tsx" align="start" previewClassName="h-auto">
+<ComponentPreview
+  name="bubble"
+  title="bubble.tsx"
+  align="start"
+  previewClassName="h-auto"
+>
   <div className="w-full max-w-md space-y-3 p-6">
     <div className="flex flex-col gap-2">
-      <span className="text-xs font-medium text-muted-foreground">{"Assistant"}</span>
+      <span className="text-xs font-medium text-muted-foreground">
+        {"Assistant"}
+      </span>
       <Bubble>
         <BubbleContent>{"Hi! How can I help you today?"}</BubbleContent>
       </Bubble>
@@ -158,13 +185,19 @@ Combine **Bubble** with [Message](/docs/components/message) for a full conversat
     <div className="flex flex-col items-end gap-2">
       <span className="text-xs font-medium text-muted-foreground">{"You"}</span>
       <Bubble align="end" variant="muted">
-        <BubbleContent>{"Why is my dashboard taking 4 seconds to load?"}</BubbleContent>
+        <BubbleContent>
+          {"Why is my dashboard taking 4 seconds to load?"}
+        </BubbleContent>
       </Bubble>
     </div>
     <div className="flex flex-col gap-2">
-      <span className="text-xs font-medium text-muted-foreground">{"Assistant"}</span>
+      <span className="text-xs font-medium text-muted-foreground">
+        {"Assistant"}
+      </span>
       <Bubble>
-        <BubbleContent>{"Two problems compound. Let me trace them."}</BubbleContent>
+        <BubbleContent>
+          {"Two problems compound. Let me trace them."}
+        </BubbleContent>
       </Bubble>
     </div>
   </div>

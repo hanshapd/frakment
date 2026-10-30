@@ -1,7 +1,8 @@
 "use client";
 
-import { useEffect, useState } from "react";
 import { CircleCheckIcon } from "lucide-react";
+import { useEffect, useState } from "react";
+
 import {
   Trace,
   TraceCollapsible,
@@ -26,7 +27,9 @@ function ChainOfThought({
   const [open, setOpen] = useState(defaultOpen || !done);
 
   useEffect(() => {
-    if (done) setOpen(false);
+    if (done) {
+      setOpen(false);
+    }
   }, [done]);
 
   return (

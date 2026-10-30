@@ -385,10 +385,7 @@ export const mdxComponents = {
   ),
   tr: ({ className, ...props }: React.ComponentProps<"tr">) => (
     <tr
-      className={cn(
-        "border-b transition-colors hover:bg-muted/30",
-        className
-      )}
+      className={cn("border-b transition-colors hover:bg-muted/30", className)}
       {...props}
     />
   ),
