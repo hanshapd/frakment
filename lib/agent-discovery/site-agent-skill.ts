@@ -43,7 +43,18 @@ Browse:
 
 ## MCP
 
-A frakment MCP server is planned. Until then, use this skill or the registry JSON directly.
+A frakment MCP server ships with this project. Run it with:
+
+\`\`\`
+npx -y frakment-mcp
+\`\`\`
+
+Exposed tools: \`list_components\`, \`view_component\`, \`search_components\`, \`get_install_command\`.
+
+## Skills
+
+- Site skill: ${SITE.URL}/.well-known/agent-skills/site-skill.md
+- \`frakment-usage\`: ${SITE.URL}/skills/frakment-usage/SKILL.md
 `;
 
 export const siteAgentSkillDigest = (): string => {
