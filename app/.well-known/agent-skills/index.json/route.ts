@@ -8,7 +8,10 @@ import { siteAgentSkillDigest } from "@/lib/agent-discovery/site-agent-skill";
 
 async function fileDigest(source: string): Promise<string | null> {
   try {
-    const content = await readFile(path.join(process.cwd(), source), "utf-8");
+    const content = await readFile(
+      path.join(/*turbopackIgnore: true*/ process.cwd(), source),
+      "utf-8"
+    );
     const hex = createHash("sha256").update(content, "utf-8").digest("hex");
     return `sha256:${hex}`;
   } catch {

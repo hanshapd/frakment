@@ -24,6 +24,17 @@ export default defineConfig({
     "eslint/require-await": "off",
     "eslint/no-unused-vars": "off",
   },
+  overrides: [
+    {
+      files: [
+        "app/.well-known/agent-skills/index.json/route.ts",
+        "lib/read-file.ts",
+      ],
+      rules: {
+        "no-inline-comments": "off",
+      },
+    },
+  ],
   ignorePatterns: [
     "public/r/**",
     "public/skills/**",
