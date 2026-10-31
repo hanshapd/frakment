@@ -78,9 +78,9 @@ The dev server runs at `http://localhost:3000`.
 
 ## Commercial use
 
-One merged pull request satisfies the commercial-use requirement described in [LICENSE](./LICENSE) Section 4. The contribution can be as small as a typo fix, a doc correction, or a test. There is no minimum size.
+One merged pull request is the only path to commercial use under [LICENSE](./LICENSE) Section 4. The contribution can be as small as a typo fix, a doc correction, or a test. There is no minimum size.
 
-If you would rather not contribute, you can satisfy the requirement with a single GitHub Sponsorship (any amount) or by requesting written permission.
+There is no sponsorship option and no written permission option for commercial use. If you cannot or will not contribute a pull request, you cannot use Frakment commercially.
 
 ## Questions
 

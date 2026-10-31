@@ -15,13 +15,13 @@ If you are unsure whether your attribution is visible enough, open an issue and 
 
 ## Commercial use
 
-Before using Frakment for commercial purposes, satisfy **one** of the following:
+Before using Frakment for commercial purposes, get **one pull request merged** into [hanshapd/frakment](https://github.com/hanshapd/frakment).
 
-1. **Get one pull request merged** into [hanshapd/frakment](https://github.com/hanshapd/frakment). Any substantive change counts: typo, docs, test, translation, bug fix, feature.
-2. **Sponsor the project once** via [GitHub Sponsors](https://github.com/sponsors/hanshapd). Any amount from $1.
-3. **Get written permission** from [hanshapd](https://github.com/hanshapd) on GitHub.
+Any substantive change counts: typo fix, docs correction, test addition, translation, bug fix, or new feature. There is no minimum size.
 
-After **one** qualifying contribution, commercial use is permanently allowed for you (or your entity). No repeat contribution is needed for future projects.
+After the pull request is merged, commercial use is permanently allowed for you (or your entity). No repeat contribution is needed for future projects.
+
+This is the only path to commercial use. There is no sponsorship option and no written permission option.
 
 See [LICENSE](./LICENSE) Section 4 for the exact rules.
 
