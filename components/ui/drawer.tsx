@@ -1,11 +1,9 @@
 "use client";
 
 import * as React from "react";
-import { useCallback, useEffect, useRef } from "react";
+import { useEffect, useRef } from "react";
 import { Drawer as DrawerPrimitive } from "vaul";
-
-import { drawerClose, drawerOpen } from "@/audio/core";
-import { useFeedback } from "@/hooks/use-feedback";
+import { useCallback } from "react";
 import { cn } from "@/lib/utils";
 
 const Drawer = ({
@@ -15,8 +13,8 @@ const Drawer = ({
 }: React.ComponentProps<typeof DrawerPrimitive.Root> & {
   sounds?: boolean;
 }) => {
-  const playOpen = useFeedback({ soundDef: drawerOpen });
-  const playClose = useFeedback({ soundDef: drawerClose });
+  const playOpen = useCallback(() => {}, []);
+  const playClose = useCallback(() => {}, []);
   const isControlled = props.open !== undefined;
   const lastOpen = useRef(props.open ?? props.defaultOpen ?? false);
 

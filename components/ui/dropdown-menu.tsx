@@ -3,10 +3,6 @@
 import { CheckIcon, ChevronRightIcon, CircleIcon } from "lucide-react";
 import { DropdownMenu as DropdownMenuPrimitive } from "radix-ui";
 import { useCallback, useEffect, useRef } from "react";
-
-import { dropdownClose, dropdownOpen } from "@/audio/core";
-import type { FeedbackType } from "@/hooks/use-feedback";
-import { useFeedback } from "@/hooks/use-feedback";
 import { cn } from "@/lib/utils";
 
 const DropdownMenu = ({
@@ -16,8 +12,8 @@ const DropdownMenu = ({
 }: React.ComponentProps<typeof DropdownMenuPrimitive.Root> & {
   sounds?: boolean;
 }) => {
-  const playOpen = useFeedback({ soundDef: dropdownOpen });
-  const playClose = useFeedback({ soundDef: dropdownClose });
+  const playOpen = useCallback(() => {}, []);
+  const playClose = useCallback(() => {}, []);
   const isControlled = props.open !== undefined;
   const lastOpen = useRef(props.open ?? props.defaultOpen ?? false);
 
@@ -120,10 +116,10 @@ const DropdownMenuItem = ({
 }: React.ComponentProps<typeof DropdownMenuPrimitive.Item> & {
   inset?: boolean;
   variant?: "default" | "destructive";
-  sound?: FeedbackType;
+  sound?: string;
   haptic?: boolean;
 }) => {
-  const play = useFeedback({ haptic, sound });
+  const play = useCallback(() => {}, []);
 
   const handleClick = (e: React.MouseEvent<HTMLDivElement>) => {
     play();
