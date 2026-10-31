@@ -52,7 +52,7 @@
     "shiki": "^4.5.0",
     "sonner": "^2.0.7",
     "tailwind-merge": "^3.5.0",
-    "ts-morph": "^26.0.0",
+    "ts-morph": "^28.0.0",
     "use-stick-to-bottom": "^1.1.6",
     "vaul": "^1.1.2",
     "web-haptics": "^0.0.6",
