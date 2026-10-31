@@ -23,6 +23,12 @@ export default defineConfig({
     "node/global-require": "off",
     "eslint/require-await": "off",
     "eslint/no-unused-vars": "off",
+    "react/function-component-definition": "off",
+    "react/no-danger": "off",
+    "eslint/no-await-in-loop": "off",
+    "eslint/require-unicode-regexp": "off",
+    "eslint/prefer-named-capture-group": "off",
+    "eslint/no-react-children": "off",
   },
   overrides: [
     {
