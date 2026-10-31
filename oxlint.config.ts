@@ -26,6 +26,7 @@ export default defineConfig({
   },
   ignorePatterns: [
     "public/r/**",
+    "public/skills/**",
     ".agents/**",
     ".cursor/**",
     ".changeset/**",

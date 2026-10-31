@@ -15,6 +15,7 @@ export default defineConfig({
   extends: [ultracite],
   ignorePatterns: [
     "public/r/**",
+    "public/skills/**",
     ".agents/**",
     ".cursor/**",
     ".changeset/**",
