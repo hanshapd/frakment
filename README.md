@@ -55,3 +55,5 @@ Contributions are welcome - typo fixes, docs, tests, translations, or new compon
 ## License
 
 Source-available. Free for personal and educational use. Commercial use requires one qualifying contribution - see [LICENSE](./LICENSE) Section 4. Attribution required - see [ATTRIBUTION.md](./ATTRIBUTION.md).
+
+<!-- test: payloadguard fix -->
