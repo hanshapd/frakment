@@ -1,0 +1,12 @@
+name: diff-sentry
+on: pull_request
+permissions:
+  contents: read
+jobs:
+  scan:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: qazbnm456/diff-sentry@v0.5.0
