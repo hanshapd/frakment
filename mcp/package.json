@@ -13,8 +13,8 @@
   "bugs": {
     "url": "https://github.com/hanshapd/frakment/issues"
   },
-  "license": "MIT",
-  "author": "hanshapd",
+  "license": "SEE LICENSE IN ../LICENSE",
+  "author": "hanshapd (https://github.com/hanshapd)",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/hanshapd/frakment.git",

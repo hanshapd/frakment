@@ -1,21 +1,235 @@
-MIT License
+Frakment License
+Version 1.0
 
-Copyright (c) 2026 hanshapd
+Copyright (c) 2026 hanshapd <https://github.com/hanshapd>
 
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
+This is a source-available license. It is NOT an open-source license
+as defined by the Open Source Initiative (OSI).
 
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
+In short:
 
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-SOFTWARE.
+  - Use Frakment freely for personal, educational, and non-commercial
+    purposes. Just keep the attribution.
+
+  - Use Frakment commercially after you contribute something back.
+    A merged pull request, a sponsorship, or written permission all
+    count as contribution.
+
+  - Always keep the attribution. Always mark modifications.
+
+====================================================================
+1. DEFINITIONS
+====================================================================
+
+"Software" means the source code, components, CLI, MCP server, agent
+skills, documentation, and any associated files in this repository,
+whether used in original or modified form.
+
+"Personal Use" means use by an individual for personal projects,
+learning, experimentation, hobby work, or internal tools that do not
+generate revenue.
+
+"Educational Use" means use by students, teachers, or institutions
+for teaching, coursework, academic research, or non-commercial
+educational activities.
+
+"Commercial Use" means any use that:
+
+  (a) is part of a product, service, or website that generates revenue
+      directly or indirectly (including ads, subscriptions, paid
+      features, consulting, or paid support);
+  (b) is deployed in production by a for-profit entity; or
+  (c) is used to build something that is sold, licensed, or monetized
+      in any form.
+
+"Contribution" means any of the following, evidenced in writing:
+
+  (a) A pull request that has been reviewed and merged into this
+      repository. Size and type do not matter: a bug fix, a typo
+      correction in docs, a test, a translation, or a new feature all
+      count equally.
+  (b) A financial sponsorship of any amount through the project's
+      official sponsorship channel.
+  (c) Explicit written permission from hanshapd, granted for the
+      specific use case.
+
+====================================================================
+2. GRANT OF RIGHTS
+====================================================================
+
+Subject to the terms of this license, you are granted permission to:
+
+  (a) View, read, and study the source code.
+  (b) Fork, clone, and copy the repository.
+  (c) Modify the source code.
+  (d) Distribute the original or modified version.
+
+These rights apply without additional conditions for Personal Use and
+Educational Use, provided you satisfy the Attribution Requirements in
+Section 3.
+
+These rights apply for Commercial Use only after you have satisfied
+the Contribution Requirement in Section 4, in addition to the
+Attribution Requirements.
+
+====================================================================
+3. ATTRIBUTION REQUIREMENTS (ALWAYS)
+====================================================================
+
+Any use, copy, modification, or distribution of the Software, in
+whole or in part, for Personal, Educational, or Commercial Use, must:
+
+  (a) Include the following attribution in the README, documentation,
+      footer, or another reasonably visible user-facing location:
+
+        Based on Frakment by hanshapd
+        https://github.com/hanshapd/frakment
+
+  (b) Include this LICENSE file unmodified in all copies and
+      derivative works.
+
+  (c) Clearly mark any modified versions as modified, with a brief
+      description of the changes (e.g., in a CHANGELOG or README).
+
+====================================================================
+4. CONTRIBUTION REQUIREMENT (COMMERCIAL USE ONLY)
+====================================================================
+
+Before using the Software for any Commercial Use, you (or the legal
+entity you represent) must satisfy exactly ONE of the following
+qualifying contributions. No more than one is required.
+
+--------------------------------------------------------------------
+4.1  QUALIFYING CONTRIBUTIONS
+--------------------------------------------------------------------
+
+(a)  ONE MERGED PULL REQUEST
+
+     A pull request that has been merged into the main branch of
+     github.com/hanshapd/frakment, where all of the following are
+     true:
+
+       - The commit author is you (your GitHub username or email is
+         recorded in the commit metadata).
+       - The pull request makes at least one substantive change:
+         fixes a bug, adds a feature, adds or corrects documentation,
+         adds a test, translates content, or fixes a typo.
+       - The pull request has not been reverted within 30 days of
+         being merged.
+
+     There is no minimum number of lines changed. A single-line
+     typo fix qualifies. A documentation clarification qualifies.
+     A test addition qualifies.
+
+     A pull request that was closed without merging does NOT
+     qualify. A pull request that was merged and later reverted
+     within 30 days does NOT qualify.
+
+(b)  ONE PAID SPONSORSHIP
+
+     A single paid sponsorship transaction through the official
+     GitHub Sponsors page for hanshapd, of any amount from USD 1
+     upward. You must retain the receipt or the transaction ID
+     issued by GitHub Sponsors.
+
+(c)  WRITTEN PERMISSION
+
+     A written statement from hanshapd - in a GitHub issue, a
+     GitHub discussion, or a direct message on GitHub - that
+     explicitly authorizes your commercial use of the Software
+     and names Frakment. Verbal permission does NOT qualify. The
+     statement must be in writing and must be retrievable by
+     hanshapd on request.
+
+--------------------------------------------------------------------
+4.2  SCOPE OF SATISFACTION
+--------------------------------------------------------------------
+
+Once a qualifying contribution under 4.1(a), (b), or (c) has been
+made, the contribution requirement is satisfied permanently for:
+
+  - the individual who made the contribution, OR
+  - the legal entity (company, organization, or team) on whose
+    behalf the contribution was made,
+
+for all future Commercial Use of the Software by that individual
+or entity. No further contributions are required for future
+commercial use by the same party.
+
+--------------------------------------------------------------------
+4.3  EVIDENCE ON REQUEST
+--------------------------------------------------------------------
+
+If hanshapd requests proof that the contribution requirement has
+been satisfied, you must provide, within 30 days:
+
+  - For 4.1(a): a link to the merged pull request on GitHub.
+  - For 4.1(b): the sponsorship receipt or transaction ID.
+  - For 4.1(c): a link or screenshot of the written permission.
+
+Refusal or failure to provide evidence on request voids the
+permission for Commercial Use until evidence is provided.
+
+--------------------------------------------------------------------
+4.4  NO CONTRIBUTION REQUIRED FOR NON-COMMERCIAL USE
+--------------------------------------------------------------------
+
+Personal Use and Educational Use do NOT require any contribution.
+Attribution (Section 3) is the only requirement for those uses.
+
+--------------------------------------------------------------------
+4.5  ALTERNATIVE ARRANGEMENTS
+--------------------------------------------------------------------
+
+If you cannot or do not wish to contribute, and you still want to
+use the Software for Commercial Use, contact hanshapd on GitHub
+(https://github.com/hanshapd) to arrange an alternative license.
+
+====================================================================
+5. RESTRICTIONS
+====================================================================
+
+You may not:
+
+  (a) Remove, hide, or alter copyright notices or the attribution
+      required by Section 3.
+  (b) Claim authorship of this Software or of any derivative work.
+  (c) Use the names "Frakment", "frakment", or "hanshapd", or any
+      associated logos or branding, to endorse or promote derivative
+      works without prior written permission.
+  (d) Sublicense this Software under different terms. Any party that
+      receives a copy from you does so subject to this same license.
+
+====================================================================
+6. NO TRADEMARK LICENSE
+====================================================================
+
+This license does not grant any rights to use the names "Frakment",
+"frakment", or "hanshapd", or any associated logos or marks, except
+as strictly necessary for the attribution described in Section 3.
+
+====================================================================
+7. WARRANTY
+====================================================================
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, AND
+NON-INFRINGEMENT.
+
+IN NO EVENT SHALL THE AUTHOR OR COPYRIGHT HOLDER BE LIABLE FOR ANY
+CLAIM, DAMAGES, OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT,
+TORT, OR OTHERWISE, ARISING FROM, OUT OF, OR IN CONNECTION WITH THE
+SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+
+====================================================================
+8. ACCEPTANCE
+====================================================================
+
+By accessing, using, copying, modifying, or distributing this project,
+you agree to be bound by the terms above. If you do not agree, you are
+not granted permission to use this project and must delete all copies
+in your possession.
+
+For permission requests or questions about this license, contact
+hanshapd on GitHub: https://github.com/hanshapd
