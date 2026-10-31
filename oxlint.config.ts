@@ -28,7 +28,6 @@ export default defineConfig({
     "eslint/no-await-in-loop": "off",
     "eslint/require-unicode-regexp": "off",
     "eslint/prefer-named-capture-group": "off",
-    "eslint/no-react-children": "off",
   },
   overrides: [
     {
