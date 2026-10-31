@@ -80,9 +80,7 @@ async function main() {
     if (component.sourceDir) {
       const srcDir = path.resolve(path.dirname(manifestPath), component.sourceDir);
       const dirFiles = await walkFiles(srcDir);
-      const targetBase =
-        component.targetDir ??
-        component.sourceDir.replace(/^components\/ui\//, "components/ui/");
+      const targetBase = component.targetDir ?? component.sourceDir;
 
       for (const f of dirFiles) {
         const content = await fs.readFile(f.fullPath, "utf8");
