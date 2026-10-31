@@ -4,14 +4,14 @@
 pre-commit:
   parallel: false
   jobs:
-    # 1. Auto-format staged files
+    # 1. Auto-format staged files (formatter only, no linter)
     - name: format
-      run: npm run fix {staged_files}
+      run: npx oxfmt {staged_files}
       glob:
-        - "**/*.{js,jsx,ts,tsx,mjs,md,mdx,json,jsonc,css,yml,yaml}"
+        - "**/*.{js,jsx,ts,tsx,mjs,cjs,md,mdx,json,jsonc,css,yml,yaml}"
       stage_fixed: true
 
-    # 2. Full lint check (all files, fast)
+    # 2. Full lint check (all files, includes format check + lint)
     - name: lint
       run: npm run check
 
