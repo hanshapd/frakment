@@ -1,5 +1,7 @@
 {
   "name": "spinner",
+  "version": "0.1.0",
+  "deprecated": false,
   "title": "Spinner",
   "description": "A small animated loading indicator.",
   "dependencies": [

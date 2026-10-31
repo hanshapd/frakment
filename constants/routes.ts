@@ -9,6 +9,7 @@ export const ROUTES = {
   DOCS_AI_ELEMENTS: "/docs/ai-elements",
   DOCS_INSTALLATION: "/docs/installation",
   DOCS_SKILLS: "/docs/skills",
+  DOCS_CHANGELOG: "/docs/changelog",
   DOCS_MCP: "/docs/mcp",
   HOME: "/",
   DOCS_LLMS: "/docs/llms",

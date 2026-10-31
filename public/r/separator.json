@@ -1,5 +1,7 @@
 {
   "name": "separator",
+  "version": "0.1.0",
+  "deprecated": false,
   "title": "Separator",
   "description": "A visual divider between content sections.",
   "dependencies": [

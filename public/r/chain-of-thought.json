@@ -1,5 +1,7 @@
 {
   "name": "chain-of-thought",
+  "version": "0.1.0",
+  "deprecated": false,
   "title": "chain-of-thought",
   "description": "",
   "dependencies": [

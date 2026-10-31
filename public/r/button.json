@@ -1,5 +1,7 @@
 {
   "name": "button",
+  "version": "0.1.0",
+  "deprecated": false,
   "title": "Button",
   "description": "A monochrome button with six variants and six sizes.",
   "dependencies": [

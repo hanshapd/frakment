@@ -17,6 +17,7 @@ const navItems = [
   { href: ROUTES.DOCS, label: "Docs" },
   { href: ROUTES.DOCS_COMPONENTS, label: "Components" },
   { href: ROUTES.DOCS_AI_ELEMENTS, label: "AI Elements" },
+  { href: "/docs/changelog", label: "Changelog" },
 ];
 
 export const SiteHeader = () => (

@@ -1,5 +1,7 @@
 {
   "name": "bubble",
+  "version": "0.1.0",
+  "deprecated": false,
   "title": "Bubble",
   "description": "Chat bubble surface with variants, alignment, and optional reactions.",
   "dependencies": [

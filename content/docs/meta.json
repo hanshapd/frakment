@@ -1,4 +1,12 @@
 {
   "root": true,
-  "pages": ["(root)", "skills", "mcp", "components", "ai-elements", "llms"]
+  "pages": [
+    "(root)",
+    "skills",
+    "mcp",
+    "components",
+    "ai-elements",
+    "changelog",
+    "llms"
+  ]
 }

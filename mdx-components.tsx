@@ -1,9 +1,10 @@
-import * as React from "react";
 import type { LucideIcon } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
+import * as React from "react";
 
 import { Callout } from "@/components/callout";
+import { ChangelogList } from "@/components/changelog-list";
 import { CodeBlockCommand } from "@/components/code-block-command";
 import { CodeCollapsibleWrapper } from "@/components/code-collapsible-wrapper";
 import { CodeTabs } from "@/components/code-tabs";
@@ -63,6 +64,7 @@ export const mdxComponents = {
   AspectRatio,
   Button,
   Callout,
+  ChangelogList,
   CodeCollapsibleWrapper,
   CodeTabs,
   ComponentPreview,
@@ -274,10 +276,14 @@ export const mdxComponents = {
       </figcaption>
     );
   },
-  figure: ({ className, children, ...props }: React.ComponentProps<"figure">) => {
+  figure: ({
+    className,
+    children,
+    ...props
+  }: React.ComponentProps<"figure">) => {
     const childArray = React.Children.toArray(children);
     const hasCaption = childArray.some((c) => {
-      if (!React.isValidElement(c)) return false;
+      if (!React.isValidElement(c)) {return false;}
       const p = c.props as Record<string, unknown>;
       return (
         c.type === "figcaption" ||
@@ -286,12 +292,16 @@ export const mdxComponents = {
     });
 
     if (hasCaption) {
-      return <figure className={cn(className)} {...props}>{children}</figure>;
+      return (
+        <figure className={cn(className)} {...props}>
+          {children}
+        </figure>
+      );
     }
 
     let lang: string | undefined;
     const findLang = (node: React.ReactNode): void => {
-      if (!React.isValidElement(node) || lang) return;
+      if (!React.isValidElement(node) || lang) {return;}
       const p = node.props as Record<string, unknown>;
       if (typeof p?.["data-language"] === "string") {
         lang = p["data-language"] as string;
@@ -299,11 +309,17 @@ export const mdxComponents = {
       }
       React.Children.forEach(p?.children as React.ReactNode, findLang);
     };
-    childArray.forEach(findLang);
+    for (const child of childArray) {
+      findLang(child);
+    }
 
     const title = lang ? LANGUAGE_TITLES[lang] : undefined;
     if (!lang || !title) {
-      return <figure className={cn(className)} {...props}>{children}</figure>;
+      return (
+        <figure className={cn(className)} {...props}>
+          {children}
+        </figure>
+      );
     }
 
     return (

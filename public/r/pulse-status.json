@@ -1,5 +1,7 @@
 {
   "name": "pulse-status",
+  "version": "0.1.0",
+  "deprecated": false,
   "title": "Pulse Status",
   "description": "A status badge for service health, used inside Pulse.",
   "dependencies": [

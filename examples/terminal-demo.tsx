@@ -93,8 +93,6 @@ const chat = createChat<ChatMessage>()
     writer.text("Registry built and bubble installed.");
   });
 
-const transcript = chat.get();
-const [question] = chat.get(1);
 const transport = chat.transport({ delayMs: 20 });
 
 function getOutput(message: ChatMessage, toolCallId: string) {

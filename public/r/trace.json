@@ -1,5 +1,7 @@
 {
   "name": "trace",
+  "version": "0.1.0",
+  "deprecated": false,
   "title": "Trace",
   "description": "A list of lines for the steps an agent takes.",
   "dependencies": [

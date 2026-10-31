@@ -70,3 +70,4 @@ public/avatars/*.png
 # CLI dependencies (install via: cd cli && npm install)
 cli/node_modules/
 *.bak-*
+

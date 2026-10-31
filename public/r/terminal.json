@@ -1,5 +1,7 @@
 {
   "name": "terminal",
+  "version": "0.1.0",
+  "deprecated": false,
   "title": "Terminal",
   "description": "A live terminal that streams commands and output with a typewriter effect.",
   "dependencies": [

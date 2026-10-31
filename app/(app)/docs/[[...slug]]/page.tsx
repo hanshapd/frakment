@@ -13,12 +13,47 @@ import { DocsTocFooter } from "@/components/docs-toc-footer";
 import { PageTransition } from "@/components/page-transition";
 import { Badge } from "@/components/ui/badge";
 import { ROUTES } from "@/constants/routes";
+import { getChangelogPages } from "@/lib/changelog";
 import { formatTitleFromSlug } from "@/lib/docs";
 import { getPageImage, getPageMarkdownUrl, source } from "@/lib/source";
 import { absoluteUrl } from "@/lib/utils";
 import { mdxComponents } from "@/mdx-components";
 import { BreadcrumbJsonLd } from "@/seo/json-ld";
 import { createPageMetadata } from "@/seo/metadata";
+
+const getChangelogNeighbours = (url: string) => {
+  const pages = getChangelogPages()
+    .filter((p) => p.url !== "/docs/changelog")
+    .map((p) => ({
+      name: p.data.title,
+      url: p.url,
+    }));
+  const idx = pages.findIndex((p) => p.url === url);
+  if (idx === -1) {
+    return { previous: null, next: null };
+  }
+  return {
+    previous: pages[idx + 1] ?? null,
+    next: pages[idx - 1] ?? null,
+  };
+};
+
+const SEQUENTIAL_SECTIONS = new Set(["components", "ai-elements", "changelog"]);
+
+const getNeighbours = (slug: string[] | undefined, pageUrl: string) => {
+  const section = slug?.[0];
+  const slugLength = slug?.length ?? 0;
+
+  if (!section || slugLength < 2 || !SEQUENTIAL_SECTIONS.has(section)) {
+    return { previous: null, next: null };
+  }
+
+  if (section === "changelog") {
+    return getChangelogNeighbours(pageUrl);
+  }
+
+  return findNeighbour(source.pageTree, pageUrl);
+};
 
 export const revalidate = false;
 export const dynamic = "force-static";
@@ -82,7 +117,8 @@ const Page = async (props: { params: Promise<{ slug?: string[] }> }) => {
 
   const doc = page.data;
   const MdxContent = doc.body;
-  const neighbours = findNeighbour(source.pageTree, page.url);
+  const isChangelog = params.slug?.[0] === "changelog";
+  const neighbours = getNeighbours(params.slug, page.url);
   const markdownUrl = getPageMarkdownUrl(page).url;
 
   const { links } = doc as { links?: { doc?: string; api?: string } };

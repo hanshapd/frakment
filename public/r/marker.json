@@ -1,5 +1,7 @@
 {
   "name": "marker",
+  "version": "0.1.0",
+  "deprecated": false,
   "title": "Marker",
   "description": "A small inline status row with icon, content, and separator variants.",
   "dependencies": [

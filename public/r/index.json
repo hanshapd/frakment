@@ -4,76 +4,106 @@
   "components": [
     {
       "name": "badge",
+      "version": "0.1.0",
+      "deprecated": false,
       "title": "Badge",
       "description": "A small label for statuses, categories, or counts."
     },
     {
       "name": "button",
+      "version": "0.1.0",
+      "deprecated": false,
       "title": "Button",
       "description": "A monochrome button with six variants and six sizes."
     },
     {
       "name": "chain-of-thought",
+      "version": "0.1.0",
+      "deprecated": false,
       "title": "chain-of-thought",
       "description": ""
     },
     {
       "name": "pulse-status",
+      "version": "0.1.0",
+      "deprecated": false,
       "title": "Pulse Status",
       "description": "A status badge for service health, used inside Pulse."
     },
     {
       "name": "pulse",
+      "version": "0.1.0",
+      "deprecated": false,
       "title": "Pulse",
       "description": "A daily status timeline for service uptime, with inline incident logs."
     },
     {
       "name": "trace",
+      "version": "0.1.0",
+      "deprecated": false,
       "title": "Trace",
       "description": "A list of lines for the steps an agent takes."
     },
     {
       "name": "terminal",
+      "version": "0.1.0",
+      "deprecated": false,
       "title": "Terminal",
       "description": "A live terminal that streams commands and output with a typewriter effect."
     },
     {
       "name": "bubble",
+      "version": "0.1.0",
+      "deprecated": false,
       "title": "Bubble",
       "description": "Chat bubble surface with variants, alignment, and optional reactions."
     },
     {
       "name": "code-block",
+      "version": "0.1.0",
+      "deprecated": false,
       "title": "Code Block",
       "description": "A scrollable code container with header, copy button, line numbers, and diff highlighting."
     },
     {
       "name": "message",
+      "version": "0.1.0",
+      "deprecated": false,
       "title": "Message",
       "description": "A chat message layout with alignment, avatar, header, and footer."
     },
     {
       "name": "avatar",
+      "version": "0.1.0",
+      "deprecated": false,
       "title": "Avatar",
       "description": "A circular user image with fallback, badge, and stacking group."
     },
     {
       "name": "marker",
+      "version": "0.1.0",
+      "deprecated": false,
       "title": "Marker",
       "description": "A small inline status row with icon, content, and separator variants."
     },
     {
       "name": "spinner",
+      "version": "0.1.0",
+      "deprecated": false,
       "title": "Spinner",
       "description": "A small animated loading indicator."
     },
     {
       "name": "separator",
+      "version": "0.1.0",
+      "deprecated": false,
       "title": "Separator",
       "description": "A visual divider between content sections."
     },
     {
       "name": "item",
+      "version": "0.1.0",
+      "deprecated": false,
       "title": "Item",
       "description": "A flexible row for grouping media, content, and actions."
     }

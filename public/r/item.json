@@ -1,5 +1,7 @@
 {
   "name": "item",
+  "version": "0.1.0",
+  "deprecated": false,
   "title": "Item",
   "description": "A flexible row for grouping media, content, and actions.",
   "dependencies": [

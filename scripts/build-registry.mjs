@@ -135,6 +135,8 @@ async function main() {
 
     const payload = {
       name: component.name,
+      version: component.version ?? "0.0.0",
+      deprecated: component.deprecated ?? false,
       title: component.title,
       description: component.description,
       dependencies,
@@ -158,6 +160,8 @@ async function main() {
     homepage: manifest.homepage,
     components: manifest.components.map((c) => ({
       name: c.name,
+      version: c.version ?? "0.0.0",
+      deprecated: c.deprecated ?? false,
       title: c.title,
       description: c.description,
     })),

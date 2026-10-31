@@ -1,5 +1,7 @@
 {
   "name": "pulse",
+  "version": "0.1.0",
+  "deprecated": false,
   "title": "Pulse",
   "description": "A daily status timeline for service uptime, with inline incident logs.",
   "dependencies": [

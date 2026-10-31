@@ -9,6 +9,7 @@ export const EXCLUDED_SECTIONS = new Set([
   "(root)",
   "skills",
   "mcp",
+  "changelog",
 ]);
 
 export const isComponentsFolder = (folder: PageTreeFolder) =>
