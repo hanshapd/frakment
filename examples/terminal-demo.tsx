@@ -193,7 +193,7 @@ function OutputLineRow({ line }: { line: OutputLine }) {
           </motion.span>
         </AnimatePresence>
       </span>
-      <span className={`${textClass} leading-none transition-colors duration-300`}>
+      <span className={`text-sm ${textClass} leading-none transition-colors duration-300`}>
         <SmoothTypewriter text={line.text} />
       </span>
     </div>

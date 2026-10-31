@@ -29,7 +29,7 @@ export const GET = async (
       </div>
       <div tw="flex flex-col absolute w-[896px] justify-center inset-32">
         <div
-          tw="tracking-tight flex-grow-1 flex flex-col justify-center leading-[1.1]"
+          tw="text-base tracking-tight flex-grow-1 flex flex-col justify-center leading-[1.1]"
           style={{
             fontSize: title && title.length > 20 ? 64 : 80,
             fontWeight: 600,
