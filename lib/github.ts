@@ -7,6 +7,125 @@ interface Stargazer {
   avatar_url: string;
 }
 
+export interface Contributor {
+  login: string;
+  avatar_url: string;
+  html_url: string;
+  contributions: number;
+  type?: string;
+}
+
+export interface Sponsor {
+  login: string;
+  avatar_url: string;
+  name: string;
+  url: string;
+  logo?: string;
+  type: "User" | "Organization";
+}
+
+export const getContributors = unstable_cache(
+  async (): Promise<Contributor[]> => {
+    try {
+      const res = await fetch(
+        `https://api.github.com/repos/${GITHUB.org}/${GITHUB.repo}/contributors?per_page=100`,
+        {
+          headers: {
+            Accept: "application/vnd.github+json",
+            "X-GitHub-Api-Version": "2022-11-28",
+          },
+        }
+      );
+      if (!res.ok) {
+        return [];
+      }
+      const data = (await res.json()) as Contributor[];
+      return data.filter((c) => c.login !== GITHUB.user && c.type !== "Bot");
+    } catch {
+      return [];
+    }
+  },
+  ["github-contributors"],
+  { revalidate: 86_400 }
+);
+
+const SPONSOR_QUERY = `
+  query($login: String!) {
+    user(login: $login) {
+      sponsorshipsAsMaintainer(first: 100, activeOnly: true) {
+        nodes {
+          sponsorEntity {
+            __typename
+            ... on User { login avatarUrl name url }
+            ... on Organization { login avatarUrl name url }
+          }
+        }
+      }
+    }
+  }
+`;
+
+export const getSponsors = unstable_cache(
+  async (): Promise<Sponsor[]> => {
+    const token = process.env.GITHUB_TOKEN;
+    if (!token) {
+      return [];
+    }
+
+    try {
+      const res = await fetch("https://api.github.com/graphql", {
+        method: "POST",
+        headers: {
+          Authorization: `Bearer ${token}`,
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          query: SPONSOR_QUERY,
+          variables: { login: GITHUB.user },
+        }),
+      });
+
+      if (!res.ok) {
+        return [];
+      }
+
+      const json = (await res.json()) as {
+        data?: {
+          user?: {
+            sponsorshipsAsMaintainer?: {
+              nodes?: {
+                sponsorEntity?: {
+                  __typename: string;
+                  login: string;
+                  avatarUrl: string;
+                  name?: string | null;
+                  url: string;
+                } | null;
+              }[];
+            };
+          };
+        };
+      };
+
+      const nodes = json.data?.user?.sponsorshipsAsMaintainer?.nodes ?? [];
+
+      return nodes
+        .map((n) => n.sponsorEntity)
+        .filter((e): e is NonNullable<typeof e> => Boolean(e))
+        .map((e) => ({
+          login: e.login,
+          avatar_url: e.avatarUrl,
+          name: e.name || e.login,
+          url: e.url,
+          type: e.__typename === "Organization" ? "Organization" : "User",
+        }));
+    } catch {
+      return [];
+    }
+  },
+  ["github-sponsors"],
+  { revalidate: 86_400 }
+);
 export const getStargazers = unstable_cache(
   async (): Promise<Stargazer[]> => {
     try {
