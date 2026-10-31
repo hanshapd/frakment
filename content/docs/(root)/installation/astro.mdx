@@ -43,7 +43,7 @@ npx frakment@latest add button
 
 <Step>Use it</Step>
 
-```tsx
+```tsx title="src/components/Hello.tsx"
 // src/components/Hello.tsx
 import { Button } from "@/components/ui/button";
 
@@ -52,7 +52,7 @@ export default function Hello() {
 }
 ```
 
-```astro
+```js title="astro.config.mjs"
 ---
 import Hello from "@/components/Hello";
 ---
@@ -85,7 +85,7 @@ npx astro add tailwind
 
 In `tsconfig.json`:
 
-```json
+```json title="tsconfig.json"
 {
   "extends": "astro/tsconfigs/strict",
   "compilerOptions": {

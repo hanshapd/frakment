@@ -32,7 +32,7 @@ npm install class-variance-authority clsx tailwind-merge lucide-react radix-ui
 
 In `tsconfig.json`:
 
-```json
+```json title="tsconfig.json"
 {
   "compilerOptions": {
     "baseUrl": ".",
@@ -43,7 +43,7 @@ In `tsconfig.json`:
 
 <Step>Create lib/utils.ts</Step>
 
-```tsx
+```ts title="lib/utils.ts"
 import { clsx, type ClassValue } from "clsx";
 import { twMerge } from "tailwind-merge";
 

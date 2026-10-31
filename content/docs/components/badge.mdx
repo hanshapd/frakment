@@ -59,11 +59,11 @@ npx frakment add badge
 
 ## Usage
 
-```tsx
+```tsx title="badge.tsx"
 import { Badge } from "@/components/ui/badge";
 ```
 
-```tsx
+```tsx title="badge.tsx"
 <Badge>New</Badge>
 ```
 
@@ -101,7 +101,7 @@ High-contrast surface for primary statuses or prominent counts.
   <Badge>Default</Badge>
 </ComponentPreview>
 
-```tsx
+```tsx title="badge.tsx"
 <Badge>Default</Badge>
 ```
 
@@ -113,7 +113,7 @@ Muted surface for secondary information.
   <Badge variant="secondary">Secondary</Badge>
 </ComponentPreview>
 
-```tsx
+```tsx title="badge.tsx"
 <Badge variant="secondary">Secondary</Badge>
 ```
 
@@ -125,7 +125,7 @@ Border only, no fill. Useful for neutral categories or filters.
   <Badge variant="outline">Outline</Badge>
 </ComponentPreview>
 
-```tsx
+```tsx title="badge.tsx"
 <Badge variant="outline">Outline</Badge>
 ```
 
@@ -137,7 +137,7 @@ Intended for error states, failed operations, or prohibited items.
   <Badge variant="destructive">Destructive</Badge>
 </ComponentPreview>
 
-```tsx
+```tsx title="badge.tsx"
 <Badge variant="destructive">Destructive</Badge>
 ```
 
@@ -166,7 +166,7 @@ The most common pattern. Icon on the left, label on the right.
   </div>
 </ComponentPreview>
 
-```tsx
+```tsx title="example.tsx"
 import { CheckIcon } from "lucide-react";
 
 <Badge>
@@ -193,7 +193,7 @@ A badge with just an icon. Provide an `aria-label` so screen readers can announc
   </div>
 </ComponentPreview>
 
-```tsx
+```tsx title="badge.tsx"
 <Badge aria-label="Verified">
   <CheckIcon />
 </Badge>
@@ -216,7 +216,7 @@ Render a spinner beside the label to indicate an in-progress state.
   </div>
 </ComponentPreview>
 
-```tsx
+```tsx title="example.tsx"
 import { LoaderCircleIcon } from "lucide-react";
 
 <Badge variant="secondary">
@@ -246,7 +246,7 @@ Use `asChild` to render the badge as an anchor. Hover states (`[a&]:hover:*`) ap
   </div>
 </ComponentPreview>
 
-```tsx
+```tsx title="badge.tsx"
 <Badge asChild>
   <a href="/changelog">View release</a>
 </Badge>
@@ -267,7 +267,7 @@ Badges are often used to display counts. Pair `secondary` with a number for comp
   </div>
 </ComponentPreview>
 
-```tsx
+```tsx title="badge.tsx"
 <Badge variant="secondary">12 issues</Badge>
 <Badge variant="secondary">
   <StarIcon />
@@ -296,7 +296,7 @@ Override the surface colors with custom classes. Pass `bg-*` and `text-*` utilit
   </div>
 </ComponentPreview>
 
-```tsx
+```tsx title="badge.tsx"
 <Badge className="bg-emerald-100 text-emerald-800 dark:bg-emerald-900 dark:text-emerald-100">
   Success
 </Badge>
@@ -336,7 +336,7 @@ Badges are designed to be composed. They sit inside headings, table cells, list 
   </div>
 </ComponentPreview>
 
-```tsx
+```tsx title="div.tsx"
 <div className="flex items-center justify-between">
   <span>Deploy v1.2.0</span>
   <Badge>

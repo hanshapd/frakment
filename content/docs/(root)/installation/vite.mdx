@@ -40,7 +40,7 @@ npx frakment@latest add button
 
 <Step>Use it</Step>
 
-```tsx
+```tsx title="src/App.tsx"
 // src/App.tsx
 import { Button } from "@/components/ui/button";
 
@@ -65,7 +65,7 @@ Follow the [Tailwind v4 guide for Vite](https://tailwindcss.com/docs/installatio
 
 <Step>Configure the import alias in tsconfig.json</Step>
 
-```json
+```json title="tsconfig.json"
 {
   "compilerOptions": {
     "baseUrl": ".",
@@ -76,7 +76,7 @@ Follow the [Tailwind v4 guide for Vite](https://tailwindcss.com/docs/installatio
 }
 ```
 
-```ts
+```ts title="vite.config.ts"
 import path from "path";
 import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react";

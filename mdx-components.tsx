@@ -1,3 +1,4 @@
+import * as React from "react";
 import type { LucideIcon } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
@@ -27,6 +28,28 @@ import { Kbd } from "@/components/ui/kbd";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { cn } from "@/lib/utils";
 
+const LANGUAGE_TITLES: Record<string, string> = {
+  tsx: "tsx",
+  ts: "ts",
+  jsx: "jsx",
+  js: "js",
+  typescript: "typescript",
+  javascript: "javascript",
+  json: "json",
+  jsonc: "json",
+  css: "css",
+  scss: "scss",
+  sass: "sass",
+  yaml: "yaml",
+  yml: "yaml",
+  astro: "astro",
+  md: "md",
+  mdx: "mdx",
+  html: "html",
+  xml: "xml",
+  svg: "svg",
+  diff: "diff",
+};
 export const mdxComponents = {
   Accordion,
   AccordionContent,
@@ -251,9 +274,52 @@ export const mdxComponents = {
       </figcaption>
     );
   },
-  figure: ({ className, ...props }: React.ComponentProps<"figure">) => (
-    <figure className={cn(className)} {...props} />
-  ),
+  figure: ({ className, children, ...props }: React.ComponentProps<"figure">) => {
+    const childArray = React.Children.toArray(children);
+    const hasCaption = childArray.some((c) => {
+      if (!React.isValidElement(c)) return false;
+      const p = c.props as Record<string, unknown>;
+      return (
+        c.type === "figcaption" ||
+        p?.["data-rehype-pretty-code-title"] !== undefined
+      );
+    });
+
+    if (hasCaption) {
+      return <figure className={cn(className)} {...props}>{children}</figure>;
+    }
+
+    let lang: string | undefined;
+    const findLang = (node: React.ReactNode): void => {
+      if (!React.isValidElement(node) || lang) return;
+      const p = node.props as Record<string, unknown>;
+      if (typeof p?.["data-language"] === "string") {
+        lang = p["data-language"] as string;
+        return;
+      }
+      React.Children.forEach(p?.children as React.ReactNode, findLang);
+    };
+    childArray.forEach(findLang);
+
+    const title = lang ? LANGUAGE_TITLES[lang] : undefined;
+    if (!lang || !title) {
+      return <figure className={cn(className)} {...props}>{children}</figure>;
+    }
+
+    return (
+      <figure className={cn(className)} {...props}>
+        <figcaption
+          data-rehype-pretty-code-title
+          data-language={lang}
+          className="text-code-foreground [&_svg]:text-code-foreground flex items-center gap-2 [&_svg]:size-4 [&_svg]:opacity-70"
+        >
+          {getIconForLanguageExtension(lang)}
+          {title}
+        </figcaption>
+        {children}
+      </figure>
+    );
+  },
   h1: ({ className, children, ...props }: React.ComponentProps<"h1">) => (
     <h1
       className={cn(

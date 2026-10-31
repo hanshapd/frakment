@@ -56,6 +56,14 @@
       "registryDependencies": []
     },
     {
+      "name": "terminal",
+      "title": "Terminal",
+      "description": "A live terminal that streams commands and output with a typewriter effect.",
+      "source": "registry/terminal.tsx",
+      "target": "components/ui/terminal.tsx",
+      "dependencies": ["lucide-react", "motion"],
+      "registryDependencies": ["trace", "code-block"]
+    },    {
       "name": "bubble",
       "title": "Bubble",
       "description": "Chat bubble surface with variants, alignment, and optional reactions.",

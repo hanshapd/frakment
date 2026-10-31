@@ -9,7 +9,17 @@
     "model-context-protocol",
     "registry"
   ],
+  "homepage": "https://github.com/hanshapd/frakment/tree/main/mcp#readme",
+  "bugs": {
+    "url": "https://github.com/hanshapd/frakment/issues"
+  },
   "license": "MIT",
+  "author": "hanshapd",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hanshapd/frakment.git",
+    "directory": "mcp"
+  },
   "bin": {
     "frakment-mcp": "./index.js"
   },
@@ -21,5 +31,8 @@
   "dependencies": {
     "@modelcontextprotocol/sdk": "^1.0.0",
     "zod": "^3.23.8"
+  },
+  "engines": {
+    "node": ">=18"
   }
 }

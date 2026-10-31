@@ -33,6 +33,11 @@
       "description": "A list of lines for the steps an agent takes."
     },
     {
+      "name": "terminal",
+      "title": "Terminal",
+      "description": "A live terminal that streams commands and output with a typewriter effect."
+    },
+    {
       "name": "bubble",
       "title": "Bubble",
       "description": "Chat bubble surface with variants, alignment, and optional reactions."

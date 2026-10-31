@@ -54,7 +54,7 @@ npx frakment add pulse
 
 ## Usage
 
-```tsx
+```tsx title="pulse.tsx"
 import Pulse from "@/components/ui/pulse";
 
 <Pulse />;
@@ -81,7 +81,7 @@ A Pulse instance has four visible parts.
 
 Pass a `services` array. Each service takes a `name`, an optional `incidents` map, and an optional `missing` count.
 
-```tsx
+```tsx title="pulse.tsx"
 <Pulse
   services={[
     {
@@ -146,7 +146,7 @@ A shorter range for a focused view of one service.
   </div>
 </ComponentPreview>
 
-```tsx
+```tsx title="pulse.tsx"
 <Pulse title="API status" days={14} services={[/* ... */]} />
 ```
 
@@ -160,7 +160,7 @@ A shorter range for a focused view of one service.
   </div>
 </ComponentPreview>
 
-```tsx
+```tsx title="pulse.tsx"
 <Pulse title="Last 30 days" days={30} />
 ```
 
@@ -177,7 +177,7 @@ When no incidents are recorded, every bar renders in the `up` state and the head
   </div>
 </ComponentPreview>
 
-```tsx
+```tsx title="pulse.tsx"
 <Pulse
   title="All services"
   services={[{ name: "Registry" }, { name: "Docs" }, { name: "CLI" }]}

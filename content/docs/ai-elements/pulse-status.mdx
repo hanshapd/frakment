@@ -49,7 +49,7 @@ npx frakment add pulse-status
 
 ## Usage
 
-```tsx
+```tsx title="example.tsx"
 import { PulseStatus } from "@/components/ui/pulse-status";
 
 <PulseStatus status="up" />;
@@ -96,7 +96,7 @@ Pass `count` to show the number of affected services instead of the default labe
   </div>
 </ComponentPreview>
 
-```tsx
+```tsx title="pulsestatus.tsx"
 <PulseStatus status="degraded" count={1} />
 // → "1 service affected"
 
@@ -116,7 +116,7 @@ Pass `label` to fully override the text. Useful when you have a specific message
   </div>
 </ComponentPreview>
 
-```tsx
+```tsx title="pulsestatus.tsx"
 <PulseStatus status="down" label="API is unreachable" />
 ```
 

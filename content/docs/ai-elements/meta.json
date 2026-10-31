@@ -9,6 +9,7 @@
     "pulse",
     "pulse-status",
     "spinner",
-    "trace"
+    "trace",
+    "terminal"
   ]
 }
