@@ -73,7 +73,7 @@ export const AgentsPopover = ({ className }: { className?: string }) => {
 
   if (isMobile) {
     return (
-      <Drawer open={isOpen} onOpenChange={setIsOpen} sounds>
+      <Drawer open={isOpen} onOpenChange={setIsOpen}>
         <DrawerTrigger asChild>{trigger}</DrawerTrigger>
         <DrawerContent className="rounded-t-[20px]" style={{ height: "40vh" }}>
           <DrawerHeader>
@@ -88,7 +88,7 @@ export const AgentsPopover = ({ className }: { className?: string }) => {
   }
 
   return (
-    <Dialog open={isOpen} onOpenChange={setIsOpen} sounds>
+    <Dialog open={isOpen} onOpenChange={setIsOpen}>
       <DialogTrigger asChild>{trigger}</DialogTrigger>
       <DialogContent className="w-fit max-w-[calc(100vw-2rem)] sm:max-w-fit">
         <DialogHeader>

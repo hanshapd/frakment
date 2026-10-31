@@ -88,7 +88,7 @@ export const MobileNav = ({
   const [open, setOpen] = useState(false);
 
   return (
-    <Popover sounds open={open} onOpenChange={setOpen}>
+    <Popover open={open} onOpenChange={setOpen}>
       <PopoverTrigger asChild>
         <Button
           variant="ghost"

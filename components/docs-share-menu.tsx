@@ -47,7 +47,7 @@ export const DocsShareMenu = ({
   const urlEncoded = encodeURIComponent(absoluteUrl);
 
   return (
-    <DropdownMenu sounds>
+    <DropdownMenu>
       <DropdownMenuTrigger asChild>
         <Button
           className="hidden sm:flex size-7 border-none active:scale-none"
@@ -67,7 +67,6 @@ export const DocsShareMenu = ({
         onCloseAutoFocus={(e) => e.preventDefault()}
       >
         <DropdownMenuItem
-          sound="copy"
           onClick={() => {
             copyToClipboard(absoluteUrl);
             toast.success("Link copied");
@@ -77,7 +76,7 @@ export const DocsShareMenu = ({
           Copy link
         </DropdownMenuItem>
 
-        <DropdownMenuItem asChild sound="click">
+        <DropdownMenuItem asChild>
           <a
             href={`https://x.com/intent/tweet?url=${urlEncoded}`}
             target="_blank"
@@ -88,7 +87,7 @@ export const DocsShareMenu = ({
           </a>
         </DropdownMenuItem>
 
-        <DropdownMenuItem asChild sound="click">
+        <DropdownMenuItem asChild>
           <a
             href={`https://www.linkedin.com/sharing/share-offsite?url=${urlEncoded}`}
             target="_blank"
@@ -101,7 +100,6 @@ export const DocsShareMenu = ({
 
         {typeof navigator !== "undefined" && "share" in navigator && (
           <DropdownMenuItem
-            sound="click"
             onClick={(e) => {
               e.preventDefault();
               navigator.share({ title, url: absoluteUrl });

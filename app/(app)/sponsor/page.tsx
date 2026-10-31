@@ -43,12 +43,7 @@ const SponsorPage = async () => {
             Any amount is genuinely appreciated. And if money&apos;s not your
             thing, starring the repo or sharing something you liked works too.
           </p>
-          <ExternalLinkButton
-            sound="heart"
-            size="lg"
-            className="mt-4"
-            href={LINK.SPONSOR}
-          >
+          <ExternalLinkButton size="lg" className="mt-4" href={LINK.SPONSOR}>
             <Heart />
             Sponsor on GitHub
             <ExternalLink className="size-3.5 opacity-60" />
@@ -203,15 +198,11 @@ const SponsorPage = async () => {
             </p>
           </div>
           <div className="flex items-center gap-3">
-            <ExternalLinkButton sound="heart" href={LINK.SPONSOR}>
+            <ExternalLinkButton href={LINK.SPONSOR}>
               <Heart />
               Become a Sponsor
             </ExternalLinkButton>
-            <ExternalLinkButton
-              sound="star"
-              variant="outline"
-              href={LINK.GITHUB}
-            >
+            <ExternalLinkButton variant="outline" href={LINK.GITHUB}>
               <Star />
               Star on GitHub
             </ExternalLinkButton>

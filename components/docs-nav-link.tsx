@@ -47,7 +47,6 @@ export const DocsNavLink = ({
       size={size}
       className={cn("shadow-none", className)}
       asChild
-      sound="click"
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
       {...props}

@@ -37,7 +37,6 @@ export const SiteHeader = () => (
             variant="ghost"
             size="icon"
             className="hidden size-8 lg:flex"
-            sound="click"
           >
             <Link href={ROUTES.HOME} transitionTypes={["nav-back"]}>
               <LogoMark className="size-5" />

@@ -85,7 +85,7 @@ export const DocsTableOfContents = ({
 
   if (variant === "dropdown") {
     return (
-      <DropdownMenu open={open} onOpenChange={setOpen} sounds>
+      <DropdownMenu open={open} onOpenChange={setOpen}>
         <DropdownMenuTrigger asChild>
           <Button
             variant="outline"
@@ -103,7 +103,6 @@ export const DocsTableOfContents = ({
             <DropdownMenuItem
               key={item.url}
               asChild
-              sound="click"
               onClick={handleClose}
               data-depth={item.depth}
               className="data-[depth=3]:pl-6 data-[depth=4]:pl-8"

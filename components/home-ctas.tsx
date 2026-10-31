@@ -25,7 +25,6 @@ const GetStartedButton = () => {
   return (
     <Button
       asChild
-      sound="click"
       className="px-4"
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
@@ -53,7 +52,6 @@ const BrowseComponentsButton = () => {
     <Button
       asChild
       variant="outline"
-      sound="click"
       className="px-4"
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
