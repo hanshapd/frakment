@@ -37,9 +37,7 @@ Response shape:
 {
   "name": "frakment",
   "homepage": "https://github.com/hanshapd/frakment",
-  "components": [
-    { "name": "button", "title": "Button", "description": "..." }
-  ]
+  "components": [{ "name": "button", "title": "Button", "description": "..." }]
 }
 ```
 
@@ -50,6 +48,7 @@ curl https://frakment.vercel.app/r/button.json
 ```
 
 Response has `files[]` (each with `path`, `content`, `target`, `type`), `dependencies[]` (npm), and `registryDependencies[]` (other Frakment components).
+
 ## Steps
 
 1. **Discover** - fetch `/r/index.json` and pick a component name from `components[].name`. Never invent a slug.
@@ -75,8 +74,8 @@ Response has `files[]` (each with `path`, `content`, `target`, `type`), `depende
 
 When listing components, return a markdown table:
 
-| Name | Description |
-| --- | --- |
+| Name   | Description                                          |
+| ------ | ---------------------------------------------------- |
 | button | A monochrome button with six variants and six sizes. |
 
 When suggesting an install, show the command in a code block, one line, no `$` prefix.

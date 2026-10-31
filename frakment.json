@@ -4,7 +4,7 @@
   "components": [
     {
       "name": "badge",
-"version": "0.1.0",
+      "version": "0.1.0",
       "title": "Badge",
       "description": "A small label for statuses, categories, or counts.",
       "source": "registry/badge.tsx",
@@ -14,7 +14,7 @@
     },
     {
       "name": "button",
-"version": "0.1.0",
+      "version": "0.1.0",
       "title": "Button",
       "description": "A monochrome button with six variants and six sizes.",
       "source": "registry/button.tsx",
@@ -24,7 +24,7 @@
     },
     {
       "name": "chain-of-thought",
-"version": "0.1.0",
+      "version": "0.1.0",
       "title": "chain-of-thought",
       "description": "",
       "source": "registry/chain-of-thought.tsx",
@@ -34,7 +34,7 @@
     },
     {
       "name": "pulse-status",
-"version": "0.1.0",
+      "version": "0.1.0",
       "title": "Pulse Status",
       "description": "A status badge for service health, used inside Pulse.",
       "source": "registry/pulse-status.tsx",
@@ -44,7 +44,7 @@
     },
     {
       "name": "pulse",
-"version": "0.1.0",
+      "version": "0.1.0",
       "title": "Pulse",
       "description": "A daily status timeline for service uptime, with inline incident logs.",
       "source": "registry/pulse.tsx",
@@ -53,7 +53,7 @@
     },
     {
       "name": "trace",
-"version": "0.1.0",
+      "version": "0.1.0",
       "title": "Trace",
       "description": "A list of lines for the steps an agent takes.",
       "source": "registry/trace.tsx",
@@ -63,16 +63,17 @@
     },
     {
       "name": "terminal",
-"version": "0.1.0",
+      "version": "0.1.0",
       "title": "Terminal",
       "description": "A live terminal that streams commands and output with a typewriter effect.",
       "source": "registry/terminal.tsx",
       "target": "components/ui/terminal.tsx",
       "dependencies": ["lucide-react", "motion"],
       "registryDependencies": ["trace", "code-block"]
-    },    {
+    },
+    {
       "name": "bubble",
-"version": "0.1.0",
+      "version": "0.1.0",
       "title": "Bubble",
       "description": "Chat bubble surface with variants, alignment, and optional reactions.",
       "source": "registry/bubble.tsx",
@@ -80,7 +81,7 @@
     },
     {
       "name": "code-block",
-"version": "0.1.0",
+      "version": "0.1.0",
       "title": "Code Block",
       "description": "A scrollable code container with header, copy button, line numbers, and diff highlighting.",
       "source": "registry/code-block.tsx",
@@ -88,7 +89,7 @@
     },
     {
       "name": "message",
-"version": "0.1.0",
+      "version": "0.1.0",
       "title": "Message",
       "description": "A chat message layout with alignment, avatar, header, and footer.",
       "source": "registry/message.tsx",
@@ -96,7 +97,7 @@
     },
     {
       "name": "avatar",
-"version": "0.1.0",
+      "version": "0.1.0",
       "title": "Avatar",
       "description": "A circular user image with fallback, badge, and stacking group.",
       "source": "registry/avatar.tsx",
@@ -131,7 +132,7 @@
     },
     {
       "name": "marker",
-"version": "0.1.0",
+      "version": "0.1.0",
       "title": "Marker",
       "description": "A small inline status row with icon, content, and separator variants.",
       "source": "registry/marker.tsx",
@@ -139,7 +140,7 @@
     },
     {
       "name": "spinner",
-"version": "0.1.0",
+      "version": "0.1.0",
       "title": "Spinner",
       "description": "A small animated loading indicator.",
       "source": "registry/spinner.tsx",
@@ -147,7 +148,7 @@
     },
     {
       "name": "separator",
-"version": "0.1.0",
+      "version": "0.1.0",
       "title": "Separator",
       "description": "A visual divider between content sections.",
       "source": "registry/separator.tsx",
@@ -155,7 +156,7 @@
     },
     {
       "name": "item",
-"version": "0.1.0",
+      "version": "0.1.0",
       "title": "Item",
       "description": "A flexible row for grouping media, content, and actions.",
       "source": "registry/item.tsx",

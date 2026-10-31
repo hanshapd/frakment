@@ -35,17 +35,17 @@ For Cursor, add the same block to `~/.cursor/mcp.json`.
 
 ## Tools
 
-| Tool | Input | Output |
-| --- | --- | --- |
-| `list_components` | none | List of every component with name and description. |
-| `view_component` | `{ "name": "button" }` | Full source, npm dependencies, registry dependencies. |
-| `search_components` | `{ "query": "chat" }` | Components matching name or description substring. |
-| `get_install_command` | `{ "name": "button" }` | The exact `npx frakment@latest add <name>` command. |
+| Tool                  | Input                  | Output                                                |
+| --------------------- | ---------------------- | ----------------------------------------------------- |
+| `list_components`     | none                   | List of every component with name and description.    |
+| `view_component`      | `{ "name": "button" }` | Full source, npm dependencies, registry dependencies. |
+| `search_components`   | `{ "query": "chat" }`  | Components matching name or description substring.    |
+| `get_install_command` | `{ "name": "button" }` | The exact `npx frakment@latest add <name>` command.   |
 
 ## Environment
 
-| Variable | Default | Purpose |
-| --- | --- | --- |
+| Variable            | Default                       | Purpose                                                                                       |
+| ------------------- | ----------------------------- | --------------------------------------------------------------------------------------------- |
 | `FRAKMENT_REGISTRY` | `https://frakment.vercel.app` | Override the registry base URL. Useful for local development against `http://localhost:3000`. |
 
 ## Development

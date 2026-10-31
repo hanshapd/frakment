@@ -27,10 +27,10 @@ public/sponsors/{github-login}.svg
 
 Examples:
 
-| GitHub login | File to save |
-| --- | --- |
-| `vercel` | `public/sponsors/vercel.svg` |
-| `acme-corp` | `public/sponsors/acme-corp.svg` |
+| GitHub login | File to save                     |
+| ------------ | -------------------------------- |
+| `vercel`     | `public/sponsors/vercel.svg`     |
+| `acme-corp`  | `public/sponsors/acme-corp.svg`  |
 | `sarah-chen` | `public/sponsors/sarah-chen.svg` |
 
 ### 3. Register in the mapping
@@ -39,7 +39,7 @@ Open `lib/sponsor-logos.ts` and add one line per sponsor:
 
 ```ts
 export const SPONSOR_LOGOS: Record<string, string> = {
-  "vercel": "/sponsors/vercel.svg",
+  vercel: "/sponsors/vercel.svg",
   "acme-corp": "/sponsors/acme-corp.svg",
   "sarah-chen": "/sponsors/sarah-chen.svg",
 };
@@ -57,14 +57,14 @@ Open `/sponsor`. The new logo appears in a white circle. Sponsors without a regi
 
 ## File Rules
 
-| Rule | Required |
-| --- | --- |
-| Format: `.svg` | Preferred |
-| Format: `.png` | Works, but less sharp on retina |
-| Background: transparent | Strongly recommended |
-| File name: lowercase GitHub login | Yes |
-| File size: under 20 KB | Recommended |
-| Aspect ratio: any | Works, `object-contain` handles scaling |
+| Rule                              | Required                                |
+| --------------------------------- | --------------------------------------- |
+| Format: `.svg`                    | Preferred                               |
+| Format: `.png`                    | Works, but less sharp on retina         |
+| Background: transparent           | Strongly recommended                    |
+| File name: lowercase GitHub login | Yes                                     |
+| File size: under 20 KB            | Recommended                             |
+| Aspect ratio: any                 | Works, `object-contain` handles scaling |
 
 Why transparent background matters: logos render inside a white circle on light mode and stay readable on dark mode. A logo with its own white box will show as a **box inside a circle**.
 

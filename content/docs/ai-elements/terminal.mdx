@@ -62,10 +62,7 @@ import { Terminal, TerminalCommand } from "@/components/ui/terminal";
 
 ```tsx title="terminal.tsx"
 <Terminal>
-  <TerminalCommand
-    command="npm run build"
-    output="✓ compiled successfully"
-  />
+  <TerminalCommand command="npm run build" output="✓ compiled successfully" />
 </Terminal>
 ```
 
@@ -127,15 +124,24 @@ A terminal has three visible parts.
 
 <ComponentPreview name="terminal" title="terminal.tsx">
   <Terminal>
-    <TerminalCommand command="npm run registry:build" output="✓ Built 15 components" />
-    <TerminalCommand command="npx frakment add bubble" output="✓ bubble added" />
+    <TerminalCommand
+      command="npm run registry:build"
+      output="✓ Built 15 components"
+    />
+    <TerminalCommand
+      command="npx frakment add bubble"
+      output="✓ bubble added"
+    />
     <TerminalCommand command="npm run dev" output="▲ Next.js ready on :3000" />
   </Terminal>
 </ComponentPreview>
 
 ```tsx title="terminal.tsx"
 <Terminal>
-  <TerminalCommand command="npm run registry:build" output="✓ Built 15 components" />
+  <TerminalCommand
+    command="npm run registry:build"
+    output="✓ Built 15 components"
+  />
   <TerminalCommand command="npx frakment add bubble" output="✓ bubble added" />
   <TerminalCommand command="npm run dev" output="▲ Next.js ready on :3000" />
 </Terminal>
@@ -183,7 +189,8 @@ A terminal has three visible parts.
       name: "status",
       type: `"running" | "done" | "error"`,
       default: `"done"`,
-      description: "Controls the trigger icon. Running shows a spinner, done shows a checkmark, error shows a destructive icon.",
+      description:
+        "Controls the trigger icon. Running shows a spinner, done shows a checkmark, error shows a destructive icon.",
     },
     {
       name: "defaultOpen",

@@ -6,7 +6,8 @@ description: "Run Frakment as a Model Context Protocol server so any MCP-capable
 import { DownloadIcon, ListIcon, SearchIcon, TerminalIcon } from "lucide-react";
 
 <Callout type="success" title="One line to start">
-  `npx -y frakment-mcp`. No install, no config file, just a working MCP server on stdio.
+  `npx -y frakment-mcp`. No install, no config file, just a working MCP server
+  on stdio.
 </Callout>
 
 Frakment ships an MCP server that exposes the registry as tools. Agents call the tools instead of scraping HTML or writing custom HTTP glue.
@@ -131,7 +132,8 @@ Returns the exact CLI command.
 ## Client configuration
 
 <Callout type="info" title="stdio transport">
-  Frakment MCP speaks stdio. Launch it from any MCP client that spawns subprocesses.
+  Frakment MCP speaks stdio. Launch it from any MCP client that spawns
+  subprocesses.
 </Callout>
 
 ### Claude Desktop
@@ -180,7 +182,8 @@ frakment-mcp
       name: "FRAKMENT_REGISTRY",
       type: "string",
       default: "https://frakment.vercel.app",
-      description: "Override the registry base URL. Useful for local dev against http://localhost:3000.",
+      description:
+        "Override the registry base URL. Useful for local dev against http://localhost:3000.",
     },
   ]}
 />
@@ -190,30 +193,31 @@ frakment-mcp
 <Accordion type="single" collapsible>
 
 <AccordionItem value="404">
-<AccordionTrigger>Tool returns HTTP 404</AccordionTrigger>
-<AccordionContent>
-The component name does not exist in the registry. Call `list_components` first to get a valid slug.
-</AccordionContent>
+  <AccordionTrigger>Tool returns HTTP 404</AccordionTrigger>
+  <AccordionContent>
+    The component name does not exist in the registry. Call `list_components`
+    first to get a valid slug.
+  </AccordionContent>
 </AccordionItem>
 
 <AccordionItem value="fetch-failed">
-<AccordionTrigger>fetch failed</AccordionTrigger>
-<AccordionContent>
-The registry is unreachable. Check `FRAKMENT_REGISTRY` or your network. For local dev, run `FRAKMENT_REGISTRY=http://localhost:3000 npx frakment-mcp`.
-</AccordionContent>
+  <AccordionTrigger>fetch failed</AccordionTrigger>
+  <AccordionContent>
+    The registry is unreachable. Check `FRAKMENT_REGISTRY` or your network. For
+    local dev, run `FRAKMENT_REGISTRY=http://localhost:3000 npx frakment-mcp`.
+  </AccordionContent>
 </AccordionItem>
 
 <AccordionItem value="agent-blind">
-<AccordionTrigger>Agent does not see the tools</AccordionTrigger>
-<AccordionContent>
-Verify the client config JSON parses, and that `npx -y frakment-mcp` runs from a terminal without errors.
-</AccordionContent>
+  <AccordionTrigger>Agent does not see the tools</AccordionTrigger>
+  <AccordionContent>
+    Verify the client config JSON parses, and that `npx -y frakment-mcp` runs
+    from a terminal without errors.
+  </AccordionContent>
 </AccordionItem>
 
 </Accordion>
 
-
 ## Source
 
 The MCP server lives in the [`mcp/` directory](https://github.com/hanshapd/frakment/tree/main/mcp) of the Frakment repo. It is a thin wrapper over the registry JSON with no interpretation logic. Browse the source on [GitHub](https://github.com/hanshapd/frakment/tree/main/mcp).
-

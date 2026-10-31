@@ -283,7 +283,9 @@ export const mdxComponents = {
   }: React.ComponentProps<"figure">) => {
     const childArray = React.Children.toArray(children);
     const hasCaption = childArray.some((c) => {
-      if (!React.isValidElement(c)) {return false;}
+      if (!React.isValidElement(c)) {
+        return false;
+      }
       const p = c.props as Record<string, unknown>;
       return (
         c.type === "figcaption" ||
@@ -301,7 +303,9 @@ export const mdxComponents = {
 
     let lang: string | undefined;
     const findLang = (node: React.ReactNode): void => {
-      if (!React.isValidElement(node) || lang) {return;}
+      if (!React.isValidElement(node) || lang) {
+        return;
+      }
       const p = node.props as Record<string, unknown>;
       if (typeof p?.["data-language"] === "string") {
         lang = p["data-language"] as string;

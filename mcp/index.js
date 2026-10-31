@@ -12,7 +12,9 @@ const REGISTRY = (
 
 async function fetchJson(path) {
   const res = await fetch(`${REGISTRY}${path}`);
-  if (!res.ok) {throw new Error(`HTTP ${res.status} from ${REGISTRY}${path}`);}
+  if (!res.ok) {
+    throw new Error(`HTTP ${res.status} from ${REGISTRY}${path}`);
+  }
   return res.json();
 }
 
