@@ -3,9 +3,9 @@
 import { motion } from "motion/react";
 import { useRef } from "react";
 
+import { AgentsPopover } from "@/components/agents-popover";
 import { CopyButton } from "@/components/copy-button";
 import { getIconForPackageManager } from "@/components/icons";
-import { RegistryAddButton } from "@/components/registry-add-button";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { TextFlip } from "@/components/ui/text-flip";
 import { SITE } from "@/constants/site";
@@ -99,12 +99,7 @@ export const CommandBox = ({ className }: { className?: string }) => {
         </pre>
       </Tabs>
 
-      <RegistryAddButton
-        registry={SITE.REGISTRY}
-        className="absolute top-2 right-10 z-10 w-7 h-7 sm:w-auto gap-1.5 border-none px-2 opacity-70 hover:opacity-100 focus-visible:opacity-100 [&_svg:not([class*='size-'])]:size-4 sm:[&_svg:not([class*='size-'])]:size-3.5"
-        variant="ghost"
-        size="sm"
-      />
+      <AgentsPopover className="absolute top-2 right-10 z-10 w-7 h-7 sm:w-auto gap-1.5 border-none px-2 opacity-70 hover:opacity-100 focus-visible:opacity-100 [&_svg:not([class*='size-'])]:size-4 sm:[&_svg:not([class*='size-'])]:size-3.5" />
 
       <CopyButton
         className="absolute top-2 right-2 z-10 size-7 opacity-70 hover:opacity-100 focus-visible:opacity-100"

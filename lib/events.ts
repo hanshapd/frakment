@@ -3,6 +3,8 @@ import { z } from "zod";
 
 const eventSchema = z.object({
   name: z.enum([
+    "copy_mcp_command",
+    "copy_skills_command",
     "copy_npm_command",
     "copy_usage_import_code",
     "copy_usage_code",

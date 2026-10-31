@@ -312,17 +312,21 @@ function CommandRow({
 
 export function TerminalDemo() {
   const { messages, sendMessage, setMessages, status } = useChat({
-    messages: transcript,
+    messages: [],
     transport,
   });
+  React.useEffect(() => {
+    sendMessage({ text: "Build the registry and add the bubble component." });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
   const busy = status === "submitted" || status === "streaming";
 
   return (
     <div className="flex min-h-72 w-full max-w-sm flex-col gap-4 py-6 text-sm">
-      {messages.map((message) => {
+      {messages.map((message, msgIdx) => {
         if (message.role === "user") {
           return (
-            <Message key={message.id} align="end">
+            <Message key={`user-${msgIdx}`} align="end">
               <MessageContent>
                 <Bubble align="end" variant="muted">
                   <BubbleContent>{getMessageText(message)}</BubbleContent>
@@ -339,7 +343,7 @@ export function TerminalDemo() {
         const text = getMessageText(message);
 
         return (
-          <Message key={message.id}>
+          <Message key={`assistant-${msgIdx}`}>
             <MessageContent className="gap-4">
               {tools.length > 0 && (
                 <Trace>
@@ -381,7 +385,7 @@ export function TerminalDemo() {
             className="mt-auto self-start"
             onClick={() => {
               setMessages([]);
-              sendMessage(question);
+              sendMessage({ text: "Build the registry and add the bubble component." });
             }}
           >
             Replay

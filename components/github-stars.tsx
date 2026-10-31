@@ -13,6 +13,15 @@ import { useFeedback } from "@/hooks/use-feedback";
 import { addQueryParams } from "@/lib/url";
 import { cn } from "@/lib/utils";
 
+const formatStars = (count: number): string => {
+  if (count >= 1000) {
+    const k = count / 1000;
+    const formatted =
+      k >= 10 ? Math.round(k).toString() : k.toFixed(1).replace(/\.0$/, "");
+    return `${formatted}K+`;
+  }
+  return count.toString();
+};
 export const GitHubStars = ({
   stargazersCount,
 }: {
@@ -31,14 +40,11 @@ export const GitHubStars = ({
           target="_blank"
         >
           <GithubIcon className="-translate-y-px" />
-          <span className="text-muted-foreground text-xs tabular-nums">
-            {new Intl.NumberFormat("en-US", {
-              compactDisplay: "short",
-              notation: "compact",
-            })
-              .format(stargazersCount)
-              .toLowerCase()}
-          </span>
+          {stargazersCount >= 100 && (
+            <span className="text-muted-foreground text-xs tabular-nums">
+              {formatStars(stargazersCount)}
+            </span>
+          )}
         </a>
       </TooltipTrigger>
       <TooltipContent>

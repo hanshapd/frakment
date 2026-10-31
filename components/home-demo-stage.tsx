@@ -16,6 +16,7 @@ import {
   MessageFooter,
 } from "@/components/ui/message";
 import { ChainOfThoughtDemo } from "@/examples/chain-of-thought-demo";
+import { TerminalDemo } from "@/examples/terminal-demo";
 import { cn } from "@/lib/utils";
 
 const TYPE_SPEED = 18;
@@ -154,62 +155,6 @@ const AnimatedMessage = ({
   </Message>
 );
 
-const AnimatedBubble = ({
-  align = "start",
-  variant = "default",
-  text,
-  reaction,
-}: {
-  align?: "start" | "end";
-  variant?: "default" | "muted";
-  text: string;
-  reaction?: React.ReactNode;
-}) => (
-  <MotionBubble align={align} variant={variant} hasReaction={!!reaction}>
-    <BubbleContent>
-      <Typewriter text={text} />
-    </BubbleContent>
-    {reaction && <Reaction delay={typeDuration(text)}>{reaction}</Reaction>}
-  </MotionBubble>
-);
-const AnimatedBubbleDemo = () => {
-  const [tick, setTick] = useState(0);
-  const [step, setStep] = useState(0);
-  useEffect(() => {
-    setStep(0);
-    const timers: ReturnType<typeof setTimeout>[] = [
-      setTimeout(() => setStep(1), 150),
-      setTimeout(() => setStep(2), 950),
-      setTimeout(() => setStep(3), 1800),
-      setTimeout(() => setStep(4), 3400),
-      setTimeout(() => setTick((t) => t + 1), 5600),
-    ];
-    return () => {
-      for (const id of timers) {
-        clearTimeout(id);
-      }
-    };
-  }, [tick]);
-  return (
-    <div className="flex w-full max-w-sm flex-col gap-3 py-6">
-      {step >= 1 && <AnimatedBubble align="end" text="Hey there! what's up?" />}
-      {step >= 2 && (
-        <AnimatedBubble variant="muted" text="Hey! Want to see chat bubbles?" />
-      )}
-      {step >= 3 && (
-        <AnimatedBubble
-          variant="muted"
-          text="I can group messages, switch sides, and keep the whole thread easy to scan."
-          reaction={<span>👍</span>}
-        />
-      )}
-      {step >= 4 && (
-        <AnimatedBubble align="end" text="Sure. Hit me with your best demo." />
-      )}
-    </div>
-  );
-};
-
 const AnimatedMessageDemo = () => {
   const [tick, setTick] = useState(0);
   const [step, setStep] = useState(0);
@@ -297,8 +242,21 @@ const AutoLoopChainOfThought = () => {
     return () => clearInterval(id);
   }, []);
   return (
-    <div className="[&_button.mt-auto]:hidden">
+    <div className="flex w-full max-w-sm justify-center [&_button.mt-auto]:hidden">
       <ChainOfThoughtDemo key={tick} />
+    </div>
+  );
+};
+
+const AutoLoopTerminal = () => {
+  const [tick, setTick] = useState(0);
+  useEffect(() => {
+    const id = setInterval(() => setTick((t) => t + 1), 7200);
+    return () => clearInterval(id);
+  }, []);
+  return (
+    <div className="flex w-full max-w-sm justify-center [&_button.mt-auto]:hidden">
+      <TerminalDemo key={tick} />
     </div>
   );
 };
@@ -310,7 +268,7 @@ export const HomeDemoStage = ({ className }: { className?: string }) => (
       className
     )}
   >
-    <AnimatedBubbleDemo />
+    <AutoLoopTerminal />
     <AnimatedMessageDemo />
     <AutoLoopChainOfThought />
   </div>

@@ -22,14 +22,58 @@ const SPRING_SHARP = {
 };
 
 const FILE_COLORS: Record<string, string> = {
+  // Config / data
   json: "text-amber-600 dark:text-amber-400",
+  jsonc: "text-amber-600 dark:text-amber-400",
+  yaml: "text-amber-600 dark:text-amber-400",
+  yml: "text-amber-600 dark:text-amber-400",
+  toml: "text-red-600 dark:text-red-400",
+  env: "text-yellow-600 dark:text-yellow-400",
+  lock: "text-muted-foreground",
+
+  // Styles
   css: "text-sky-600 dark:text-sky-400",
+  scss: "text-pink-600 dark:text-pink-400",
+  sass: "text-pink-600 dark:text-pink-400",
+
+  // Code
   ts: "text-blue-600 dark:text-blue-400",
   tsx: "text-blue-600 dark:text-blue-400",
-  js: "text-amber-600 dark:text-amber-400",
-  jsx: "text-amber-600 dark:text-amber-400",
-  md: "text-muted-foreground",
-  mdx: "text-muted-foreground",
+  js: "text-amber-500 dark:text-amber-400",
+  jsx: "text-amber-500 dark:text-amber-400",
+  mjs: "text-amber-500 dark:text-amber-400",
+  cjs: "text-amber-500 dark:text-amber-400",
+
+  // Frameworks
+  astro: "text-orange-500 dark:text-orange-400",
+  html: "text-orange-600 dark:text-orange-400",
+  vue: "text-emerald-600 dark:text-emerald-400",
+  svelte: "text-orange-600 dark:text-orange-400",
+
+  // Scripts
+  sh: "text-green-600 dark:text-green-400",
+  bash: "text-green-600 dark:text-green-400",
+  zsh: "text-green-600 dark:text-green-400",
+
+  // Markdown
+  md: "text-slate-500 dark:text-slate-400",
+  mdx: "text-slate-500 dark:text-slate-400",
+
+  // Assets
+  svg: "text-purple-600 dark:text-purple-400",
+  png: "text-pink-600 dark:text-pink-400",
+  jpg: "text-pink-600 dark:text-pink-400",
+  jpeg: "text-pink-600 dark:text-pink-400",
+  avif: "text-pink-600 dark:text-pink-400",
+  webp: "text-pink-600 dark:text-pink-400",
+
+  // Fonts / misc
+  woff: "text-muted-foreground",
+  woff2: "text-muted-foreground",
+  ttf: "text-muted-foreground",
+  otf: "text-muted-foreground",
+  txt: "text-muted-foreground",
+  gitignore: "text-orange-500 dark:text-orange-400",
 };
 
 function FileTree({ className, ...props }: React.ComponentProps<"div">) {
