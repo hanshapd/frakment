@@ -12,6 +12,24 @@ export const EXCLUDED_SECTIONS = new Set([
   "changelog",
 ]);
 
+export interface TopLevelSection {
+  href: string;
+  name: string;
+}
+
+export const TOP_LEVEL_SECTIONS: TopLevelSection[] = [
+  { href: ROUTES.DOCS, name: "Introduction" },
+  { href: ROUTES.DOCS_INSTALLATION, name: "Installation" },
+  { href: ROUTES.DOCS_THEMING, name: "Theming" },
+  { href: ROUTES.DOCS_COMPONENTS, name: "Components" },
+  { href: ROUTES.DOCS_AI_ELEMENTS, name: "AI Elements" },
+  { href: ROUTES.DOCS_SKILLS, name: "Skills" },
+  { href: ROUTES.DOCS_MCP, name: "MCP" },
+  { href: ROUTES.DOCS_CHANGELOG, name: "Changelog" },
+  { href: ROUTES.DOCS_BRAND, name: "Brand" },
+  { href: ROUTES.DOCS_LLMS, name: "llms.txt" },
+];
+
 export const isComponentsFolder = (folder: PageTreeFolder) =>
   folder.$id === "components" || folder.name === "Components";
 

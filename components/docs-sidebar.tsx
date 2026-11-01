@@ -15,27 +15,9 @@ import {
   SidebarMenuItem,
 } from "@/components/ui/sidebar";
 import { ROUTES } from "@/constants/routes";
-import { EXCLUDED_SECTIONS, isComponentsFolder } from "@/lib/docs";
+import { EXCLUDED_SECTIONS, isComponentsFolder, TOP_LEVEL_SECTIONS, type TopLevelSection } from "@/lib/docs";
 import { getAllPagesFromFolder, getPagesFromFolder } from "@/lib/page-tree";
 import type { source } from "@/lib/source";
-
-interface SidebarSection {
-  href: string;
-  name: string;
-}
-
-const TOP_LEVEL_SECTIONS: SidebarSection[] = [
-  { href: ROUTES.DOCS, name: "Introduction" },
-  { href: ROUTES.DOCS_INSTALLATION, name: "Installation" },
-  { href: ROUTES.DOCS_THEMING, name: "Theming" },
-  { href: ROUTES.DOCS_COMPONENTS, name: "Components" },
-  { href: ROUTES.DOCS_AI_ELEMENTS, name: "AI Elements" },
-  { href: ROUTES.DOCS_SKILLS, name: "Skills" },
-  { href: ROUTES.DOCS_MCP, name: "MCP" },
-  { href: ROUTES.DOCS_CHANGELOG, name: "Changelog" },
-  { href: ROUTES.DOCS_BRAND, name: "Brand" },
-  { href: ROUTES.DOCS_LLMS, name: "llms.txt" },
-];
 
 const MENU_BUTTON_CLS =
   "relative h-[30px] w-fit overflow-visible border border-transparent text-[0.8rem] font-medium after:absolute after:inset-x-0 after:-inset-y-1 after:z-0 after:rounded-md data-[active=true]:border-accent data-[active=true]:bg-accent 3xl:fixed:w-full 3xl:fixed:max-w-48";
@@ -85,8 +67,8 @@ export const DocsSidebar = ({
   ...props
 }: React.ComponentProps<typeof Sidebar> & { tree: typeof source.pageTree }) => {
   const pathname = usePathname();
-  const sections = useMemo<SidebarSection[]>(() => {
-    const base: SidebarSection[] = [...TOP_LEVEL_SECTIONS];
+  const sections = useMemo<TopLevelSection[]>(() => {
+    const base: TopLevelSection[] = [...TOP_LEVEL_SECTIONS];
     const shownHrefs = new Set(base.map((s) => s.href));
 
     for (const item of tree.children) {

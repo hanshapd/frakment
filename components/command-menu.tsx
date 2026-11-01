@@ -37,7 +37,7 @@ import { useFeedback } from "@/hooks/use-feedback";
 import { useIsMac } from "@/hooks/use-is-mac";
 import { useMutationObserver } from "@/hooks/use-mutation-observer";
 import { usePackageManager } from "@/hooks/use-package-manager";
-import { EXCLUDED_SECTIONS, isComponentsFolder } from "@/lib/docs";
+import { EXCLUDED_SECTIONS, isComponentsFolder, TOP_LEVEL_SECTIONS } from "@/lib/docs";
 import { trackEvent } from "@/lib/events";
 import { getAllPagesFromFolder, getPagesFromFolder } from "@/lib/page-tree";
 import { cn } from "@/lib/utils";
@@ -47,19 +47,6 @@ type DocUrlKind =
   | { kind: "component"; slug: string }
   | { kind: "template"; slug: string }
   | { kind: "page" };
-
-const TOP_LEVEL_SECTIONS = [
-  { href: ROUTES.DOCS, name: "Introduction" },
-  { href: ROUTES.DOCS_INSTALLATION, name: "Installation" },
-  { href: ROUTES.DOCS_THEMING, name: "Theming" },
-  { href: ROUTES.DOCS_COMPONENTS, name: "Components" },
-  { href: ROUTES.DOCS_AI_ELEMENTS, name: "AI Elements" },
-  { href: ROUTES.DOCS_SKILLS, name: "Skills" },
-  { href: ROUTES.DOCS_MCP, name: "MCP" },
-  { href: ROUTES.DOCS_CHANGELOG, name: "Changelog" },
-  { href: "/docs/brand", name: "Brand" },
-  { href: ROUTES.DOCS_LLMS, name: "llms.txt" },
-];
 
 const GROUP_HEADING_CLS =
   "!p-0 [&_[cmdk-group-heading]]:scroll-mt-16 [&_[cmdk-group-heading]]:!p-3 [&_[cmdk-group-heading]]:!pb-1";

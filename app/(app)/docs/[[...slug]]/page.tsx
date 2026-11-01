@@ -14,7 +14,7 @@ import { PageTransition } from "@/components/page-transition";
 import { Badge } from "@/components/ui/badge";
 import { ROUTES } from "@/constants/routes";
 import { getChangelogPages } from "@/lib/changelog";
-import { formatTitleFromSlug } from "@/lib/docs";
+import { formatTitleFromSlug, TOP_LEVEL_SECTIONS } from "@/lib/docs";
 import { getPageImage, getPageMarkdownUrl, source } from "@/lib/source";
 import { absoluteUrl } from "@/lib/utils";
 import { mdxComponents } from "@/mdx-components";
@@ -38,18 +38,30 @@ const getChangelogNeighbours = (url: string) => {
   };
 };
 
-const SEQUENTIAL_SECTIONS = new Set(["components", "ai-elements", "changelog"]);
+const getTopLevelNeighbours = (pageUrl: string) => {
+  const idx = TOP_LEVEL_SECTIONS.findIndex((s) => s.href === pageUrl);
+  if (idx === -1) {
+    return { previous: null, next: null };
+  }
+  const prev = idx > 0 ? TOP_LEVEL_SECTIONS[idx - 1] : null;
+  const next =
+    idx < TOP_LEVEL_SECTIONS.length - 1 ? TOP_LEVEL_SECTIONS[idx + 1] : null;
+  return {
+    previous: prev ? { name: prev.name, url: prev.href } : null,
+    next: next ? { name: next.name, url: next.href } : null,
+  };
+};
 
 const getNeighbours = (slug: string[] | undefined, pageUrl: string) => {
   const section = slug?.[0];
   const slugLength = slug?.length ?? 0;
 
-  if (!section || slugLength < 2 || !SEQUENTIAL_SECTIONS.has(section)) {
-    return { previous: null, next: null };
+  if (section === "changelog" && slugLength >= 2) {
+    return getChangelogNeighbours(pageUrl);
   }
 
-  if (section === "changelog") {
-    return getChangelogNeighbours(pageUrl);
+  if (slugLength < 2) {
+    return getTopLevelNeighbours(pageUrl);
   }
 
   return findNeighbour(source.pageTree, pageUrl);
