@@ -20,6 +20,7 @@ const HeartHandshakeIcon = forwardRef<
   HeartHandshakeIconProps
 >(({ onMouseEnter, onMouseLeave, className, size = 28, ...props }, ref) => {
   const controls = useAnimation();
+  const sizeClass = className?.match(/\b(?:(?:sm|md|lg|xl|2xl):)?size-[^\s]+/g)?.join(" ");
   const isControlledRef = useRef(false);
 
   useImperativeHandle(ref, () => {
@@ -54,13 +55,14 @@ const HeartHandshakeIcon = forwardRef<
 
   return (
     <div
-      className={cn(className)}
+      className={cn("inline-flex items-center justify-center", className)}
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
       {...props}
     >
       <motion.svg
         animate={controls}
+        className={sizeClass}
         fill="none"
         height={size}
         initial="normal"

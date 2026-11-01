@@ -28,8 +28,8 @@ export const SponsorLink = () => {
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
     >
-      <Link href={ROUTES.SPONSOR}>
-        <HeartHandshakeIcon className="text-pink-500" ref={heartRef} />
+      <Link href={ROUTES.SPONSOR} className="inline-flex items-center gap-1.5">
+        <HeartHandshakeIcon className="size-5 sm:size-4.5 text-pink-500" ref={heartRef} />
         <span className="max-sm:sr-only">Sponsor</span>
       </Link>
     </Button>
