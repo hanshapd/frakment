@@ -16,14 +16,24 @@ import { cn } from "@/lib/utils";
 
 interface ChainOfThoughtProps extends React.ComponentProps<"div"> {
   defaultOpen?: boolean;
+  done?: boolean;
 }
 
 function ChainOfThought({
   className,
   defaultOpen = true,
+  done = false,
   children,
   ...props
 }: ChainOfThoughtProps) {
+
+  const [open, setOpen] = React.useState(defaultOpen || !done);
+
+  React.useEffect(() => {
+    if (done) {
+      setOpen(false);
+    }
+  }, [done]);
   return (
     <div
       data-slot="chain-of-thought"
@@ -31,7 +41,7 @@ function ChainOfThought({
       {...props}
     >
       <Trace>
-        <TraceCollapsible defaultOpen={defaultOpen}>
+        <TraceCollapsible open={open} onOpenChange={setOpen}>
           {children}
         </TraceCollapsible>
       </Trace>

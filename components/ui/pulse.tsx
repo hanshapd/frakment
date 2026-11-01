@@ -1,8 +1,8 @@
 "use client";
 
 import { X } from "lucide-react";
-import { useCallback, useEffect, useMemo, useRef, useState } from "react";
-import type { KeyboardEvent, PointerEvent } from "react";
+import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
+import type { KeyboardEvent, PointerEvent } from 'react';
 
 import { Badge } from "@/components/ui/badge";
 import { PulseStatus } from "@/components/ui/pulse-status";
@@ -52,19 +52,19 @@ const DEFAULT_SERVICES: PulseService[] = [
         title: "Elevated error rates on install",
         updates: [
           {
+            time: "14:02",
             label: "Investigating",
             note: "5xx on POST /r/* rose to 2%.",
-            time: "14:02",
           },
           {
+            time: "14:11",
             label: "Identified",
             note: "A bad cache invalidation push.",
-            time: "14:11",
           },
           {
+            time: "14:20",
             label: "Resolved",
             note: "Rolled back; error rates normal.",
-            time: "14:20",
           },
         ],
       },
@@ -74,16 +74,16 @@ const DEFAULT_SERVICES: PulseService[] = [
         title: "Slow responses in eu-west",
         updates: [
           {
+            time: "09:41",
             label: "Investigating",
             note: "p95 latency up 3x in eu-west.",
-            time: "09:41",
           },
           {
+            time: "09:52",
             label: "Monitoring",
             note: "Added capacity to the pool.",
-            time: "09:52",
           },
-          { label: "Resolved", time: "10:04" },
+          { time: "10:04", label: "Resolved" },
         ],
       },
     },
@@ -96,11 +96,11 @@ const DEFAULT_SERVICES: PulseService[] = [
         status: "degraded",
         title: "Search results failing to load",
         updates: [
-          { label: "Investigating", time: "18:30" },
+          { time: "18:30", label: "Investigating" },
           {
+            time: "18:42",
             label: "Resolved",
             note: "A CDN cache rule was reverted.",
-            time: "18:42",
           },
         ],
       },
@@ -115,19 +115,19 @@ const DEFAULT_SERVICES: PulseService[] = [
         title: "Downloads delayed",
         updates: [
           {
+            time: "02:15",
             label: "Investigating",
             note: "The npm mirror stopped syncing.",
-            time: "02:15",
           },
           {
+            time: "02:38",
             label: "Identified",
             note: "A worker deploy failed health checks.",
-            time: "02:38",
           },
           {
+            time: "03:03",
             label: "Resolved",
             note: "Backlog synced in order.",
-            time: "03:03",
           },
         ],
       },
@@ -142,14 +142,14 @@ const DEFAULT_SERVICES: PulseService[] = [
         title: "Preview builds stalled",
         updates: [
           {
+            time: "22:07",
             label: "Investigating",
             note: "Build workers stopped accepting jobs.",
-            time: "22:07",
           },
           {
+            time: "22:16",
             label: "Resolved",
             note: "Promoted a backup worker pool.",
-            time: "22:16",
           },
         ],
       },
