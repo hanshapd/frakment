@@ -1,5 +1,12 @@
-export const GET = () => {
-  const svg = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="size-4"><path d="M11 21.73a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73z" /><path d="M12 22V12" /><polyline points="3.29 7 12 12 20.71 7" /><path d="m7.5 4.27 9 5.15" /></svg>`;
+export const GET = (request: Request) => {
+  const prefersDark = request.headers.get("Sec-CH-Prefers-Color-Scheme");
+  const color = prefersDark === "light" ? "#000000" : "#ffffff";
+
+  const svg = `
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 4040 4040" fill="none">
+      <path d="M3109.01 2470H3106.4L3766.11 3129.71L3129.71 3766.11L2470 3106.4V4040H1570V3105.5L909.396 3766.11L273 3129.71L932.712 2470H928.184L2018.59 1379.59L3109.01 2470ZM2470 932.711L3129.71 273L3766.11 909.396L3105.5 1570H4040V2470H3307L2020 1183L2019.07 1183.92L2017.67 1182.52L730.193 2470H0V1570H933.604L273 909.396L909.396 273L1570 933.604V0H2470V932.711Z" fill="${color}"/>
+    </svg>
+  `;
 
   return new Response(svg, {
     headers: {

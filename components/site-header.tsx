@@ -37,9 +37,13 @@ export const SiteHeader = () => (
             asChild
             variant="ghost"
             size="icon"
-            className="hidden size-8 lg:flex"
+            className="hidden size-8 text-foreground lg:flex"
           >
-            <Link href={ROUTES.HOME} transitionTypes={["nav-back"]}>
+            <Link
+              href={ROUTES.HOME}
+              transitionTypes={["nav-back"]}
+              className="text-foreground"
+            >
               <FrakmentMark className="size-5" />
               <span className="sr-only">{SITE.NAME}</span>
             </Link>

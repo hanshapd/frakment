@@ -1,5 +1,3 @@
-"use client";
-
 import { forwardRef } from "react";
 import type { SVGProps } from "react";
 
@@ -11,27 +9,39 @@ export interface FrakmentMarkProps extends SVGProps<SVGSVGElement> {
 
 export const FrakmentMark = forwardRef<SVGSVGElement, FrakmentMarkProps>(
   (
-    { size = 32, color = "currentColor", title = "Frakment", ...props },
+    {
+      color = "currentColor",
+      title = "Frakment",
+      size,
+      width,
+      height,
+      ...props
+    },
     ref
-  ) => (
-    <svg
-      ref={ref}
-      width={size}
-      height={size}
-      viewBox="0 0 32 32"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-      role="img"
-      aria-label={title}
-      {...props}
-    >
-      <title>{title}</title>
-      <path
-        d="M3109.01 2470H3106.4L3766.11 3129.71L3129.71 3766.11L2470 3106.4V4040H1570V3105.5L909.396 3766.11L273 3129.71L932.712 2470H928.184L2018.59 1379.59L3109.01 2470ZM2470 932.711L3129.71 273L3766.11 909.396L3105.5 1570H4040V2470H3307L2020 1183L2019.07 1183.92L2017.67 1182.52L730.193 2470H0V1570H933.604L273 909.396L909.396 273L1570 933.604V0H2470V932.711Z"
-        fill={color}
-      />
-    </svg>
-  )
+  ) => {
+    const resolvedWidth = width ?? size ?? 32;
+    const resolvedHeight = height ?? size ?? 32;
+
+    return (
+      <svg
+        ref={ref}
+        width={resolvedWidth}
+        height={resolvedHeight}
+        viewBox="0 0 4040 4040"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+        role="img"
+        aria-label={title}
+        {...props}
+      >
+        <title>{title}</title>
+        <path
+          d="M3109.01 2470H3106.4L3766.11 3129.71L3129.71 3766.11L2470 3106.4V4040H1570V3105.5L909.396 3766.11L273 3129.71L932.712 2470H928.184L2018.59 1379.59L3109.01 2470ZM2470 932.711L3129.71 273L3766.11 909.396L3105.5 1570H4040V2470H3307L2020 1183L2019.07 1183.92L2017.67 1182.52L730.193 2470H0V1570H933.604L273 909.396L909.396 273L1570 933.604V0H2470V932.711Z"
+          fill={color}
+        />
+      </svg>
+    );
+  }
 );
 
 FrakmentMark.displayName = "FrakmentMark";
