@@ -3,6 +3,7 @@
 import type { Root as PageTreeRoot } from "fumadocs-core/page-tree";
 import type { LinkProps } from "next/link";
 import Link from "next/link";
+import { motion } from "motion/react";
 import { useRouter } from "next/navigation";
 import { useCallback, useEffect, useState } from "react";
 
@@ -16,7 +17,7 @@ import { ROUTES } from "@/constants/routes";
 import { useFeedback } from "@/hooks/use-feedback";
 // NOTE: This component mirrors components/docs-sidebar.tsx.'s structure.
 // Both render TOP_LEVEL_SECTIONS (flat) + tree.children grouped, filtered by
-// EXCLUDED_SECTIONS. If you change one, change the other — or better, hoist
+// EXCLUDED_SECTIONS. If you change one, change the other â€” or better, hoist
 // the shared logic into a helper.
 import {
   EXCLUDED_SECTIONS,
@@ -115,35 +116,39 @@ export const MobileNav = ({
       <PopoverTrigger asChild>
         <Button
           variant="ghost"
+          size="icon"
           className={cn(
-            "extend-touch-target h-8 touch-manipulation items-center justify-start gap-2.5 !p-0 hover:bg-transparent focus-visible:bg-transparent focus-visible:ring-0 active:bg-transparent dark:hover:bg-transparent",
+            "size-8 touch-manipulation hover:bg-transparent focus-visible:bg-transparent focus-visible:ring-0 active:bg-transparent dark:hover:bg-transparent",
             className
           )}
         >
-          <div className="relative flex h-8 w-4 items-center justify-center">
-            <div className="relative size-4">
-              <span
-                className={cn(
-                  "bg-foreground absolute left-0 block h-0.5 w-4 transition-all duration-100",
-                  open ? "top-[0.4rem] -rotate-45" : "top-1"
-                )}
-              />
-              <span
-                className={cn(
-                  "bg-foreground absolute left-0 block h-0.5 w-4 transition-all duration-100",
-                  open ? "top-[0.4rem] rotate-45" : "top-2.5"
-                )}
-              />
-            </div>
-            <span className="sr-only">Toggle Menu</span>
+          <div className="relative size-4">
+            <motion.span
+              className="bg-foreground absolute left-0 block h-px w-4"
+              style={{ top: 4 }}
+              initial={false}
+              animate={{ y: open ? 3 : 0, rotate: open ? -45 : 0 }}
+              transition={{
+                y: { duration: 0.12, ease: "easeOut", delay: open ? 0 : 0.15 },
+                rotate: { duration: 0.15, ease: "easeOut", delay: open ? 0.12 : 0 },
+              }}
+            />
+            <motion.span
+              className="bg-foreground absolute left-0 block h-px w-4"
+              style={{ top: 12 }}
+              initial={false}
+              animate={{ y: open ? -5 : 0, rotate: open ? 45 : 0 }}
+              transition={{
+                y: { duration: 0.12, ease: "easeOut", delay: open ? 0 : 0.15 },
+                rotate: { duration: 0.15, ease: "easeOut", delay: open ? 0.12 : 0 },
+              }}
+            />
           </div>
-          <span className="flex h-8 items-center text-lg leading-none font-medium">
-            Menu
-          </span>
+          <span className="sr-only">Toggle Menu</span>
         </Button>
       </PopoverTrigger>
       <PopoverContent
-        className="bg-background/90 no-scrollbar h-(--radix-popper-available-height) w-(--radix-popper-available-width) overflow-y-auto overscroll-contain rounded-none border-none p-0 shadow-none backdrop-blur duration-100"
+        className="bg-background/90 no-scrollbar h-(--radix-popper-available-height) w-(--radix-popper-available-width) overflow-y-auto overscroll-contain rounded-none border-none p-0 shadow-none backdrop-blur"
         align="start"
         side="bottom"
         alignOffset={-16}
@@ -192,6 +197,16 @@ export const MobileNav = ({
               />
             );
           })}
+          <div className="flex flex-col gap-4">
+            <div className="text-muted-foreground text-sm font-medium">
+              Support
+            </div>
+            <div className="flex flex-col gap-3">
+              <MobileLink href={ROUTES.SPONSOR} onOpenChange={setOpen}>
+                Support
+              </MobileLink>
+            </div>
+          </div>
         </div>
       </PopoverContent>
     </Popover>
