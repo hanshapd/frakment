@@ -21,37 +21,48 @@ export function CodeTabs({
   const configValue = config.installationType;
 
   React.useEffect(() => {
-    if (activeValue !== undefined) return;
+    if (activeValue !== undefined) {
+      return;
+    }
     const container = wrapperRef.current;
-    if (!container) return;
-    const tabs = Array.from(
-      container.querySelectorAll<HTMLElement>('[role="tab"]')
-    );
-    if (tabs.length === 0) return;
+    if (!container) {
+      return;
+    }
+    const tabs = [...container.querySelectorAll<HTMLElement>('[role="tab"]')];
+    if (tabs.length === 0) {
+      return;
+    }
     const values = tabs
       .map(extractValue)
       .filter((v): v is string => v !== null);
-    if (values.length === 0) return;
+    if (values.length === 0) {
+      return;
+    }
     const resolved =
       configValue && values.includes(configValue) ? configValue : values[0];
     setActiveValue(resolved);
   }, [activeValue, configValue]);
 
   React.useEffect(() => {
-    if (!configValue || !INSTALLATION_VALUES.has(configValue)) return;
-    if (activeValue === configValue) return;
+    if (!configValue || !INSTALLATION_VALUES.has(configValue)) {
+      return;
+    }
+    if (activeValue === configValue) {
+      return;
+    }
     const container = wrapperRef.current;
-    if (!container) return;
-    const tabs = Array.from(
-      container.querySelectorAll<HTMLElement>('[role="tab"]')
-    );
+    if (!container) {
+      return;
+    }
+    const tabs = [...container.querySelectorAll<HTMLElement>('[role="tab"]')];
     const values = tabs
       .map(extractValue)
       .filter((v): v is string => v !== null);
-    if (!values.includes(configValue)) return;
+    if (!values.includes(configValue)) {
+      return;
+    }
     setActiveValue(configValue);
   }, [configValue, activeValue]);
-
 
   const handleValueChange = (value: string) => {
     setActiveValue(value);
@@ -63,9 +74,9 @@ export function CodeTabs({
   return (
     <div ref={wrapperRef}>
       <Tabs
-        {...(activeValue !== undefined
-          ? { value: activeValue, onValueChange: handleValueChange }
-          : {})}
+        {...(activeValue === undefined
+          ? {}
+          : { value: activeValue, onValueChange: handleValueChange })}
         className="relative mt-6 w-full"
         {...props}
       >

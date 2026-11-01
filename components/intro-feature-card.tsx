@@ -25,8 +25,12 @@ export const IntroFeatureCard = ({
       <Icon className="size-5 text-foreground sm:size-6" />
     </div>
     <div className="flex flex-col gap-1 px-3 py-3 sm:px-4 sm:py-3.5">
-      <span className="text-xs font-semibold text-foreground sm:text-sm">{title}</span>
-      <p className="text-[11px] leading-snug text-foreground/70 sm:text-[13px]">{description}</p>
+      <span className="text-xs font-semibold text-foreground sm:text-sm">
+        {title}
+      </span>
+      <p className="text-[11px] leading-snug text-foreground/70 sm:text-[13px]">
+        {description}
+      </p>
     </div>
   </div>
 );

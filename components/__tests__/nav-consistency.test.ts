@@ -1,11 +1,11 @@
 import { readFileSync } from "node:fs";
-import { join } from "node:path";
+import path from "node:path";
 
 import { describe, expect, it } from "vitest";
 
-const root = join(__dirname, "..", "..");
+const root = path.join(__dirname, "..", "..");
 
-const read = (p: string) => readFileSync(join(root, p), "utf8");
+const read = (p: string) => readFileSync(path.join(root, p), "utf-8");
 
 describe("nav consistency", () => {
   it("mobile-nav and docs-sidebar both import TOP_LEVEL_SECTIONS", () => {

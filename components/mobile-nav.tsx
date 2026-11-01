@@ -4,7 +4,7 @@ import type { Root as PageTreeRoot } from "fumadocs-core/page-tree";
 import type { LinkProps } from "next/link";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { useCallback, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 
 import { Button } from "@/components/ui/button";
 import {
@@ -18,7 +18,11 @@ import { useFeedback } from "@/hooks/use-feedback";
 // Both render TOP_LEVEL_SECTIONS (flat) + tree.children grouped, filtered by
 // EXCLUDED_SECTIONS. If you change one, change the other — or better, hoist
 // the shared logic into a helper.
-import { EXCLUDED_SECTIONS, isComponentsFolder, TOP_LEVEL_SECTIONS } from "@/lib/docs";
+import {
+  EXCLUDED_SECTIONS,
+  isComponentsFolder,
+  TOP_LEVEL_SECTIONS,
+} from "@/lib/docs";
 import { getAllPagesFromFolder, getPagesFromFolder } from "@/lib/page-tree";
 import { cn } from "@/lib/utils";
 
@@ -88,6 +92,23 @@ export const MobileNav = ({
   className?: string;
 }) => {
   const [open, setOpen] = useState(false);
+  useEffect(() => {
+    if (!open) {
+      return;
+    }
+    const originalOverflow = document.body.style.overflow;
+    const originalPaddingRight = document.body.style.paddingRight;
+    const scrollbarWidth =
+      window.innerWidth - document.documentElement.clientWidth;
+    document.body.style.overflow = "hidden";
+    if (scrollbarWidth > 0) {
+      document.body.style.paddingRight = `${scrollbarWidth}px`;
+    }
+    return () => {
+      document.body.style.overflow = originalOverflow;
+      document.body.style.paddingRight = originalPaddingRight;
+    };
+  }, [open]);
 
   return (
     <Popover open={open} onOpenChange={setOpen}>
@@ -122,7 +143,7 @@ export const MobileNav = ({
         </Button>
       </PopoverTrigger>
       <PopoverContent
-        className="bg-background/90 no-scrollbar h-(--radix-popper-available-height) w-(--radix-popper-available-width) overflow-y-auto rounded-none border-none p-0 shadow-none backdrop-blur duration-100"
+        className="bg-background/90 no-scrollbar h-(--radix-popper-available-height) w-(--radix-popper-available-width) overflow-y-auto overscroll-contain rounded-none border-none p-0 shadow-none backdrop-blur duration-100"
         align="start"
         side="bottom"
         alignOffset={-16}

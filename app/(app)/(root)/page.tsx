@@ -20,9 +20,9 @@ export default function IndexPage() {
             </h1>
 
             <p className="max-w-md text-sm text-pretty text-muted-foreground leading-tight">
-              From an agent&apos;s first chat message to its millionth production
-              render, Frakment is the thread in between: neutral by nature, precise
-              by design, and copy-pasted from one registry.
+              From an agent&apos;s first chat message to its millionth
+              production render, Frakment is the thread in between: neutral by
+              nature, precise by design, and copy-pasted from one registry.
             </p>
 
             <CommandBox className="mt-4 w-full max-w-xl" />

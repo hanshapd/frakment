@@ -20,7 +20,9 @@ const HeartHandshakeIcon = forwardRef<
   HeartHandshakeIconProps
 >(({ onMouseEnter, onMouseLeave, className, size = 28, ...props }, ref) => {
   const controls = useAnimation();
-  const sizeClass = className?.match(/\b(?:(?:sm|md|lg|xl|2xl):)?size-[^\s]+/g)?.join(" ");
+  const sizeClass = className
+    ?.match(/\b(?:(?:sm|md|lg|xl|2xl):)?size-[^\s]+/g)
+    ?.join(" ");
   const isControlledRef = useRef(false);
 
   useImperativeHandle(ref, () => {

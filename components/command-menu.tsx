@@ -37,7 +37,11 @@ import { useFeedback } from "@/hooks/use-feedback";
 import { useIsMac } from "@/hooks/use-is-mac";
 import { useMutationObserver } from "@/hooks/use-mutation-observer";
 import { usePackageManager } from "@/hooks/use-package-manager";
-import { EXCLUDED_SECTIONS, isComponentsFolder, TOP_LEVEL_SECTIONS } from "@/lib/docs";
+import {
+  EXCLUDED_SECTIONS,
+  isComponentsFolder,
+  TOP_LEVEL_SECTIONS,
+} from "@/lib/docs";
 import { trackEvent } from "@/lib/events";
 import { getAllPagesFromFolder, getPagesFromFolder } from "@/lib/page-tree";
 import { cn } from "@/lib/utils";

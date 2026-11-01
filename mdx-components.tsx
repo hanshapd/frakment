@@ -1,4 +1,3 @@
-import { IntroFeatureCard } from "@/components/intro-feature-card";
 import type { LucideIcon } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
@@ -17,6 +16,7 @@ import { ComponentsList } from "@/components/components-list";
 import { CopyButton } from "@/components/copy-button";
 import { FileTree, FileTreeFolder, FileTreeFile } from "@/components/file-tree";
 import { getIconForLanguageExtension } from "@/components/icons";
+import { IntroFeatureCard } from "@/components/intro-feature-card";
 import { PropsTable } from "@/components/props-table";
 import {
   Accordion,
