@@ -43,6 +43,32 @@ jobs:
       - name: Typecheck
         run: npm run typecheck
 
+  registry-drift:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+
+      - name: Setup
+        uses: ./.github/actions/setup
+
+      - name: Build registry
+        run: npm run registry:build
+
+      - name: Check for drift
+        run: |
+          if [ -n "$(git status --porcelain public/r public/skills)" ]; then
+            echo "::error::Registry artifacts are stale."
+            echo "::error::Run 'npm run registry:build' locally and commit the result."
+            echo ""
+            echo "Changed files:"
+            git status --porcelain public/r public/skills
+            echo ""
+            echo "Diff:"
+            git diff public/r public/skills
+            exit 1
+          fi
+          echo "Registry artifacts are in sync with source."
+
   test:
     runs-on: ubuntu-latest
     steps:
