@@ -71,3 +71,4 @@ public/avatars/*.png
 cli/node_modules/
 *.bak-*
 
+mcp/node_modules/

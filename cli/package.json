@@ -21,10 +21,13 @@
                  ],
     "dependencies":  {
                          "@clack/prompts":  "^1.8.1",
-                         "commander":  "^12.0.0",
+                         "commander":  "^15.0.0",
                          "execa":  "^10.2.1",
                          "picocolors":  "^1.0.0"
                      },
     "license":  "SEE LICENSE IN ../../LICENSE",
-    "author":  "hanshapd (https://github.com/hanshapd)"
+    "author":  "hanshapd (https://github.com/hanshapd)",
+    "engines":  {
+                    "node":  "\u003e=22.12.0"
+                }
 }
