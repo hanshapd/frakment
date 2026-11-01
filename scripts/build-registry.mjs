@@ -83,7 +83,7 @@ async function main() {
       const targetBase = component.targetDir ?? component.sourceDir;
 
       for (const f of dirFiles) {
-        const content = await fs.readFile(f.fullPath, "utf8");
+        const content = (await fs.readFile(f.fullPath, "utf8")).replace(/\r\n/g, "\n");
         files.push({
           path: `${targetBase}/${f.relativePath}`.replace(/\/+/g, "/"),
           content,
@@ -96,7 +96,7 @@ async function main() {
       }
     } else if (component.source) {
       const srcPath = path.resolve(path.dirname(manifestPath), component.source);
-      const content = await fs.readFile(srcPath, "utf8");
+      const content = (await fs.readFile(srcPath, "utf8")).replace(/\r\n/g, "\n");
       files.push({ path: component.target, content });
       const detected = detectImports(content);
       detected.external.forEach((x) => autoExternal.add(x));
@@ -177,7 +177,7 @@ async function main() {
     const skillIndex = [];
     for (const skill of manifest.skills) {
       const srcPath = path.resolve(path.dirname(manifestPath), skill.source);
-      const content = await fs.readFile(srcPath, "utf8");
+      const content = (await fs.readFile(srcPath, "utf8")).replace(/\r\n/g, "\n");
       const skillDir = path.join(skillsOutDir, skill.name);
       await fs.mkdir(skillDir, { recursive: true });
       await fs.writeFile(path.join(skillDir, "SKILL.md"), content);
