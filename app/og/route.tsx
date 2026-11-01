@@ -1,6 +1,6 @@
 import { ImageResponse } from "next/og";
 
-import { LogoMark } from "@/components/logo";
+import { FrakmentMark } from "@/components/brand/frakment-mark";
 import { SITE } from "@/constants/site";
 
 export const GET = (request: Request) => {
@@ -15,7 +15,7 @@ export const GET = (request: Request) => {
       <div tw="flex border absolute border-stone-700 inset-x-0 h-[1px] top-16" />
       <div tw="flex border absolute border-stone-700 inset-x-0 h-[1px] bottom-16" />
       <div tw="flex absolute flex-row bottom-24 right-24 text-white">
-        <LogoMark width={48} height={48} />
+        <FrakmentMark width={48} height={48} />
       </div>
       <div tw="flex flex-col absolute w-[896px] justify-center inset-32">
         <div

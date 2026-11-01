@@ -1,7 +1,7 @@
 import { notFound } from "next/navigation";
 import { ImageResponse } from "next/og";
 
-import { LogoMark } from "@/components/logo";
+import { FrakmentMark } from "@/components/brand/frakment-mark";
 import { getPageImage, source } from "@/lib/source";
 
 export const revalidate = false;
@@ -25,7 +25,7 @@ export const GET = async (
       <div tw="flex border absolute border-stone-700 inset-x-0 h-[1px] top-16" />
       <div tw="flex border absolute border-stone-700 inset-x-0 h-[1px] bottom-16" />
       <div tw="flex absolute flex-row bottom-24 right-24 text-white">
-        <LogoMark width={48} height={48} />
+        <FrakmentMark width={48} height={48} />
       </div>
       <div tw="flex flex-col absolute w-[896px] justify-center inset-32">
         <div
