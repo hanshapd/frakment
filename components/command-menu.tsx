@@ -158,12 +158,10 @@ const CommandMenuItem = ({
 
 export const CommandMenu = ({
   blocks,
-  navItems,
   tree,
   ...props
 }: React.ComponentProps<typeof Dialog> & {
   blocks?: { name: string; description: string; categories: string[] }[];
-  navItems: { href: string; label: string }[];
   tree: PageTreeRoot;
 }) => {
   const router = useRouter();
