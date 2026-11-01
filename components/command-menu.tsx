@@ -361,16 +361,16 @@ export const CommandMenu = ({
     <Dialog open={open} onOpenChange={setOpen}>
       <DialogTrigger asChild>
         <Button
-          variant="secondary"
+          variant="ghost"
           className={cn(
-            "bg-surface text-surface-foreground/60 dark:bg-card relative h-8 w-full justify-start gap-2 pl-2.5 font-normal shadow-none md:w-40 lg:w-56 xl:w-64"
+            "text-surface-foreground/60 relative size-8 justify-center p-0 font-normal shadow-none hover:bg-accent md:h-8 md:w-40 md:justify-start md:gap-2 md:bg-surface md:pl-2.5 dark:md:bg-card lg:w-56 xl:w-64"
           )}
           onClick={handleOpenClick}
           {...props}
         >
-          <SearchIcon className="size-3.5 shrink-0" />
+          <SearchIcon className="size-4.5 shrink-0 text-foreground md:size-3.5" />
           <span className="hidden lg:inline-flex">Search documentation...</span>
-          <span className="inline-flex lg:hidden">Search...</span>
+          <span className="hidden md:inline-flex lg:hidden">Search...</span>
         </Button>
       </DialogTrigger>
       <DialogContent

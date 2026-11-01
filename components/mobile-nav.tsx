@@ -1,9 +1,9 @@
 "use client";
 
 import type { Root as PageTreeRoot } from "fumadocs-core/page-tree";
+import { motion } from "motion/react";
 import type { LinkProps } from "next/link";
 import Link from "next/link";
-import { motion } from "motion/react";
 import { useRouter } from "next/navigation";
 import { useCallback, useEffect, useState } from "react";
 
@@ -130,7 +130,11 @@ export const MobileNav = ({
               animate={{ y: open ? 3 : 0, rotate: open ? -45 : 0 }}
               transition={{
                 y: { duration: 0.12, ease: "easeOut", delay: open ? 0 : 0.15 },
-                rotate: { duration: 0.15, ease: "easeOut", delay: open ? 0.12 : 0 },
+                rotate: {
+                  duration: 0.15,
+                  ease: "easeOut",
+                  delay: open ? 0.12 : 0,
+                },
               }}
             />
             <motion.span
@@ -140,7 +144,11 @@ export const MobileNav = ({
               animate={{ y: open ? -5 : 0, rotate: open ? 45 : 0 }}
               transition={{
                 y: { duration: 0.12, ease: "easeOut", delay: open ? 0 : 0.15 },
-                rotate: { duration: 0.15, ease: "easeOut", delay: open ? 0.12 : 0 },
+                rotate: {
+                  duration: 0.15,
+                  ease: "easeOut",
+                  delay: open ? 0.12 : 0,
+                },
               }}
             />
           </div>
@@ -152,7 +160,7 @@ export const MobileNav = ({
         align="start"
         side="bottom"
         alignOffset={-16}
-        sideOffset={14}
+        sideOffset={0}
       >
         <div className="flex flex-col gap-12 overflow-auto px-6 py-6">
           <div className="flex flex-col gap-4">

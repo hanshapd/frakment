@@ -43,13 +43,12 @@ export const SiteHeader = () => (
   >
     <div className="container-wrapper 3xl:fixed:px-0 px-6">
       <div className="3xl:fixed:container flex h-(--header-height) items-center gap-2">
-        <MobileNav tree={source.pageTree} className="flex lg:hidden" />
         <BrandContextMenu>
           <Button
             asChild
             variant="ghost"
             size="icon"
-            className="hidden size-8 text-foreground lg:flex"
+            className="-ml-1.5 flex size-8 text-foreground md:ml-0"
           >
             <Link
               href={ROUTES.HOME}
@@ -63,12 +62,18 @@ export const SiteHeader = () => (
         </BrandContextMenu>
         <MainNav items={navItems} className="hidden lg:flex" />
         <div className="ml-auto flex items-center gap-2 md:flex-1 md:justify-end">
-          <div className="hidden w-full flex-1 md:flex md:w-auto md:flex-none">
+          <NavItemGithub />
+          <div className="w-auto flex-none md:order-first md:w-full md:flex-1">
             <CommandMenu tree={source.pageTree} />
           </div>
-          <NavItemGithub />
-          <SponsorLink />
-          <ModeSwitcher />
+          <div className="hidden md:flex md:items-center md:gap-2">
+            <SponsorLink />
+            <ModeSwitcher />
+          </div>
+          <MobileNav
+            tree={source.pageTree}
+            className="-mr-1.5 flex lg:hidden md:mr-0"
+          />
         </div>
       </div>
     </div>
