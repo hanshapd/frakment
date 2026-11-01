@@ -28,6 +28,6 @@
     "license":  "SEE LICENSE IN ../../LICENSE",
     "author":  "hanshapd (https://github.com/hanshapd)",
     "engines":  {
-                    "node":  "\u003e=22.12.0"
+                    "node":  ">=22.12.0"
                 }
 }
