@@ -14,7 +14,11 @@ import {
 } from "@/components/ui/popover";
 import { ROUTES } from "@/constants/routes";
 import { useFeedback } from "@/hooks/use-feedback";
-import { EXCLUDED_SECTIONS, isComponentsFolder } from "@/lib/docs";
+// NOTE: This component mirrors components/docs-sidebar.tsx.'s structure.
+// Both render TOP_LEVEL_SECTIONS (flat) + tree.children grouped, filtered by
+// EXCLUDED_SECTIONS. If you change one, change the other — or better, hoist
+// the shared logic into a helper.
+import { EXCLUDED_SECTIONS, isComponentsFolder, TOP_LEVEL_SECTIONS } from "@/lib/docs";
 import { getAllPagesFromFolder, getPagesFromFolder } from "@/lib/page-tree";
 import { cn } from "@/lib/utils";
 
@@ -77,11 +81,9 @@ const MobileNavGroup = ({
 };
 
 export const MobileNav = ({
-  items,
   tree,
   className,
 }: {
-  items: { href: string; label: string }[];
   tree: PageTreeRoot;
   className?: string;
 }) => {
@@ -135,13 +137,13 @@ export const MobileNav = ({
               <MobileLink href={ROUTES.HOME} onOpenChange={setOpen}>
                 Home
               </MobileLink>
-              {items.map((item) => (
+              {TOP_LEVEL_SECTIONS.map((item) => (
                 <MobileLink
                   key={item.href}
                   href={item.href}
                   onOpenChange={setOpen}
                 >
-                  {item.label}
+                  {item.name}
                 </MobileLink>
               ))}
             </div>

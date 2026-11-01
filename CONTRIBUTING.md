@@ -85,3 +85,14 @@ There is no sponsorship option and no written permission option for commercial u
 ## Questions
 
 Open a GitHub issue or reach out to [@hanshapd](https://github.com/hanshapd) directly.
+
+## Navigation consistency
+
+Navigation sources are centralized to prevent sidebar / mobile menu / search drift:
+
+- `lib/docs.ts#TOP_LEVEL_SECTIONS` — single source of truth for top-level docs sections
+- `components/docs-sidebar.tsx` and `components/mobile-nav.tsx` both consume it plus the same `tree.children` grouping and `EXCLUDED_SECTIONS` filter
+- `components/command-menu.tsx` also uses it for the "Pages" group in search
+- `components/site-header.tsx` derives `navItems` for the desktop `MainNav` from `pageTree`
+
+If you add a new top-level docs section, add it to `TOP_LEVEL_SECTIONS` — not to the individual consumers. The `nav-consistency` test guards against regressions.

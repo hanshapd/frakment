@@ -43,11 +43,7 @@ export const SiteHeader = () => (
   >
     <div className="container-wrapper 3xl:fixed:px-0 px-6">
       <div className="3xl:fixed:container flex h-(--header-height) items-center gap-2">
-        <MobileNav
-          items={navItems}
-          tree={source.pageTree}
-          className="flex lg:hidden"
-        />
+        <MobileNav tree={source.pageTree} className="flex lg:hidden" />
         <BrandContextMenu>
           <Button
             asChild

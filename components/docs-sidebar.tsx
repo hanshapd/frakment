@@ -15,6 +15,10 @@ import {
   SidebarMenuItem,
 } from "@/components/ui/sidebar";
 import { ROUTES } from "@/constants/routes";
+// NOTE: This component mirrors components/mobile-nav.tsx.'s structure.
+// Both render TOP_LEVEL_SECTIONS (flat) + tree.children grouped, filtered by
+// EXCLUDED_SECTIONS. If you change one, change the other — or better, hoist
+// the shared logic into a helper.
 import { EXCLUDED_SECTIONS, isComponentsFolder, TOP_LEVEL_SECTIONS, type TopLevelSection } from "@/lib/docs";
 import { getAllPagesFromFolder, getPagesFromFolder } from "@/lib/page-tree";
 import type { source } from "@/lib/source";

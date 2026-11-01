@@ -17,6 +17,9 @@ export interface TopLevelSection {
   name: string;
 }
 
+// SINGLE SOURCE OF TRUTH for top-level docs sections.
+// Used by docs-sidebar.tsx, command-menu.tsx, and (via navItems in
+// site-header) mobile-nav.tsx. Add new sections here, not in the consumers.
 export const TOP_LEVEL_SECTIONS: TopLevelSection[] = [
   { href: ROUTES.DOCS, name: "Introduction" },
   { href: ROUTES.DOCS_INSTALLATION, name: "Installation" },
