@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { useMemo } from "react";
 
 import {
   Sidebar,
@@ -18,7 +19,12 @@ import { EXCLUDED_SECTIONS, isComponentsFolder } from "@/lib/docs";
 import { getAllPagesFromFolder, getPagesFromFolder } from "@/lib/page-tree";
 import type { source } from "@/lib/source";
 
-const TOP_LEVEL_SECTIONS = [
+interface SidebarSection {
+  href: string;
+  name: string;
+}
+
+const TOP_LEVEL_SECTIONS: SidebarSection[] = [
   { href: ROUTES.DOCS, name: "Introduction" },
   { href: ROUTES.DOCS_INSTALLATION, name: "Installation" },
   { href: ROUTES.DOCS_THEMING, name: "Theming" },
@@ -79,6 +85,36 @@ export const DocsSidebar = ({
   ...props
 }: React.ComponentProps<typeof Sidebar> & { tree: typeof source.pageTree }) => {
   const pathname = usePathname();
+  const sections = useMemo<SidebarSection[]>(() => {
+    const base: SidebarSection[] = [...TOP_LEVEL_SECTIONS];
+    const shownHrefs = new Set(base.map((s) => s.href));
+
+    for (const item of tree.children) {
+      if (item.type !== "folder") {
+        continue;
+      }
+      if (EXCLUDED_SECTIONS.has(item.$id ?? "")) {
+        continue;
+      }
+      if (!item.index) {
+        continue;
+      }
+      if (shownHrefs.has(item.index.url)) {
+        continue;
+      }
+
+      const pages = getPagesFromFolder(item);
+      const realChildren = pages.filter((p) => p.url !== item.index?.url);
+      if (realChildren.length === 0) {
+        base.push({
+          href: item.index.url,
+          name: typeof item.name === "string" ? item.name : String(item.name),
+        });
+      }
+    }
+
+    return base;
+  }, [tree]);
 
   return (
     <Sidebar
@@ -96,7 +132,7 @@ export const DocsSidebar = ({
           </SidebarGroupLabel>
           <SidebarGroupContent>
             <SidebarMenu>
-              {TOP_LEVEL_SECTIONS.map(({ name, href }) => (
+              {sections.map(({ name, href }) => (
                 <SidebarMenuItem key={name}>
                   <SidebarMenuButton
                     asChild

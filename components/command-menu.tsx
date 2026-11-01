@@ -5,6 +5,7 @@ import {
   ArrowRightIcon,
   CornerDownLeftIcon,
   CircleDashedIcon,
+  SearchIcon,
   SquareDashedIcon,
 } from "lucide-react";
 import { useRouter } from "next/navigation";
@@ -46,6 +47,19 @@ type DocUrlKind =
   | { kind: "component"; slug: string }
   | { kind: "template"; slug: string }
   | { kind: "page" };
+
+const TOP_LEVEL_SECTIONS = [
+  { href: ROUTES.DOCS, name: "Introduction" },
+  { href: ROUTES.DOCS_INSTALLATION, name: "Installation" },
+  { href: ROUTES.DOCS_THEMING, name: "Theming" },
+  { href: ROUTES.DOCS_COMPONENTS, name: "Components" },
+  { href: ROUTES.DOCS_AI_ELEMENTS, name: "AI Elements" },
+  { href: ROUTES.DOCS_SKILLS, name: "Skills" },
+  { href: ROUTES.DOCS_MCP, name: "MCP" },
+  { href: ROUTES.DOCS_CHANGELOG, name: "Changelog" },
+  { href: "/docs/brand", name: "Brand" },
+  { href: ROUTES.DOCS_LLMS, name: "llms.txt" },
+];
 
 const GROUP_HEADING_CLS =
   "!p-0 [&_[cmdk-group-heading]]:scroll-mt-16 [&_[cmdk-group-heading]]:!p-3 [&_[cmdk-group-heading]]:!pb-1";
@@ -174,6 +188,8 @@ export const CommandMenu = ({
   const treeGroups = useMemo(() => {
     const groups: { label: string; pages: { url: string; name: string }[] }[] =
       [];
+    const seenUrls = new Set<string>();
+
     for (const item of tree.children) {
       if (item.type !== "folder") {
         continue;
@@ -188,10 +204,19 @@ export const CommandMenu = ({
               (page) => page.url !== ROUTES.DOCS_COMPONENTS
             )
           : getPagesFromFolder(item)
-      ).map((p) => ({
-        name: typeof p.name === "string" ? p.name : String(p.name),
-        url: p.url,
-      }));
+      )
+        .map((p) => ({
+          name: typeof p.name === "string" ? p.name : String(p.name),
+          url: p.url,
+        }))
+        .filter((page) => {
+          if (seenUrls.has(page.url)) {
+            return false;
+          }
+          seenUrls.add(page.url);
+          return true;
+        });
+
       if (pages.length > 0) {
         groups.push({
           label: typeof item.name === "string" ? item.name : String(item.name),
@@ -199,7 +224,39 @@ export const CommandMenu = ({
         });
       }
     }
+
     return groups;
+  }, [tree]);
+
+  const sections = useMemo(() => {
+    const base = [...TOP_LEVEL_SECTIONS];
+    const shownHrefs = new Set(base.map((s) => s.href));
+
+    for (const item of tree.children) {
+      if (item.type !== "folder") {
+        continue;
+      }
+      if (EXCLUDED_SECTIONS.has(item.$id ?? "")) {
+        continue;
+      }
+      if (!item.index) {
+        continue;
+      }
+      if (shownHrefs.has(item.index.url)) {
+        continue;
+      }
+
+      const pages = getPagesFromFolder(item);
+      const realChildren = pages.filter((p) => p.url !== item.index?.url);
+      if (realChildren.length === 0) {
+        base.push({
+          href: item.index.url,
+          name: typeof item.name === "string" ? item.name : String(item.name),
+        });
+      }
+    }
+
+    return base;
   }, [tree]);
 
   const handleDocPageHighlight = useCallback(
@@ -317,29 +374,26 @@ export const CommandMenu = ({
         <Button
           variant="secondary"
           className={cn(
-            "bg-surface text-surface-foreground/60 dark:bg-card relative h-8 w-full justify-start pl-2.5 font-normal shadow-none sm:pr-12 md:w-40 lg:w-56 xl:w-64"
+            "bg-surface text-surface-foreground/60 dark:bg-card relative h-8 w-full justify-start gap-2 pl-2.5 font-normal shadow-none md:w-40 lg:w-56 xl:w-64"
           )}
           onClick={handleOpenClick}
           {...props}
         >
+          <SearchIcon className="size-3.5 shrink-0" />
           <span className="hidden lg:inline-flex">Search documentation...</span>
           <span className="inline-flex lg:hidden">Search...</span>
-          <div className="absolute top-1.5 right-1.5 hidden gap-1 sm:flex">
-            <Kbd>{isMac ? "⌘" : "Ctrl"}</Kbd>
-            <Kbd className="aspect-square">K</Kbd>
-          </div>
         </Button>
       </DialogTrigger>
       <DialogContent
         showCloseButton={false}
-        className="rounded-xl border-none bg-clip-padding p-2 pb-11 shadow-2xl ring-4 ring-neutral-200/80 dark:bg-neutral-900 dark:ring-neutral-800"
+        className="rounded-xl border border-neutral-200 bg-white p-2 pb-11 shadow-2xl ring-4 ring-neutral-200/80 dark:border-neutral-700 dark:bg-neutral-900 dark:ring-neutral-800"
       >
         <DialogHeader className="sr-only">
           <DialogTitle>Search documentation...</DialogTitle>
           <DialogDescription>Search for a command to run...</DialogDescription>
         </DialogHeader>
         <Command
-          className="**:data-[slot=command-input-wrapper]:bg-input/50 **:data-[slot=command-input-wrapper]:border-input rounded-none bg-transparent **:data-[slot=command-input]:h-9! **:data-[slot=command-input]:py-0 **:data-[slot=command-input-wrapper]:mb-0 **:data-[slot=command-input-wrapper]:h-9! **:data-[slot=command-input-wrapper]:rounded-md **:data-[slot=command-input-wrapper]:border"
+          className="**:data-[slot=command-input-wrapper]:bg-sidebar/80 **:data-[slot=command-input-wrapper]:border-border **:data-[slot=command-input-wrapper]:ring-0 rounded-none bg-transparent **:data-[slot=command-input]:h-9! **:data-[slot=command-input]:py-0 **:data-[slot=command-input-wrapper]:mb-0 **:data-[slot=command-input-wrapper]:h-9! **:data-[slot=command-input-wrapper]:rounded-md **:data-[slot=command-input-wrapper]:border"
           filter={handleFilter}
         >
           <CommandInput placeholder="Search documentation..." />
@@ -347,25 +401,11 @@ export const CommandMenu = ({
             <CommandEmpty className="text-muted-foreground py-12 text-center text-sm">
               No results found.
             </CommandEmpty>
-            {navItems && navItems.length > 0 && (
-              <CommandGroup heading="Pages" className={GROUP_HEADING_CLS}>
-                {navItems.map((item) => (
-                  <CommandMenuItem
-                    key={item.href}
-                    value={`Navigation ${item.label}`}
-                    keywords={["nav", "navigation", item.label.toLowerCase()]}
-                    onHighlight={() => {
-                      setShowGoToPage(true);
-                      setCopyPayload("");
-                    }}
-                    onSelect={() => runCommand(() => router.push(item.href))}
-                  >
-                    <ArrowRightIcon />
-                    {item.label}
-                  </CommandMenuItem>
-                ))}
-              </CommandGroup>
-            )}
+            <CommandGroup heading="Pages" className={GROUP_HEADING_CLS}>
+              {sections.map((section) =>
+                renderDocPageItem(section.name, section.href, ["Pages"])
+              )}
+            </CommandGroup>
             {treeGroups.map((group) => (
               <CommandGroup
                 key={group.label}
