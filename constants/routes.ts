@@ -10,6 +10,7 @@ export const ROUTES = {
   DOCS_INSTALLATION: "/docs/installation",
   DOCS_SKILLS: "/docs/skills",
   DOCS_CHANGELOG: "/docs/changelog",
+  DOCS_BRAND: "/docs/brand",
   DOCS_MCP: "/docs/mcp",
   HOME: "/",
   DOCS_LLMS: "/docs/llms",

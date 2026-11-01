@@ -3,6 +3,8 @@ import Image from "next/image";
 import Link from "next/link";
 import * as React from "react";
 
+import { FrakmentMark } from "@/components/brand";
+import { BrandColorSwatch } from "@/components/brand-color-swatch";
 import { Callout } from "@/components/callout";
 import { ChangelogList } from "@/components/changelog-list";
 import { CodeBlockCommand } from "@/components/code-block-command";
@@ -52,6 +54,8 @@ const LANGUAGE_TITLES: Record<string, string> = {
   diff: "diff",
 };
 export const mdxComponents = {
+  FrakmentMark,
+  BrandColorSwatch,
   Accordion,
   AccordionContent,
   AccordionItem,
