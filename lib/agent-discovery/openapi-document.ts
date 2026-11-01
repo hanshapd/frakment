@@ -15,7 +15,7 @@ export const buildOpenApiDocument = (
       url: LINK.FRAKMENT_MCP_DOCS,
     },
     info: {
-      description: `Read-only HTTP surfaces for the ${SITE.NAME} documentation site and shadcn component registry.`,
+      description: `Read-only HTTP surfaces for the ${SITE.NAME} documentation site and component registry.`,
       title: `${SITE.NAME} public HTTP API`,
       version: "0.1.0",
     },
@@ -112,7 +112,7 @@ export const buildOpenApiDocument = (
               description: "Registry manifest",
             },
           },
-          summary: "shadcn/ui component registry index",
+          summary: "Frakment component registry index",
         },
       },
       [ROUTES.DOCS]: {

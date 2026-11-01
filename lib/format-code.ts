@@ -22,8 +22,6 @@ export const formatCode = async (code: string) => {
         scriptKind: ScriptKind.TSX,
       }
     );
-
-    // Transformers dari shadcn dihapus — kita pakai source code apa adanya
     const transformers: DisplayTransformer[] = [];
 
     await Promise.all(
