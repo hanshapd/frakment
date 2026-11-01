@@ -16,13 +16,13 @@ export default function IndexPage() {
         <section className="container-wrapper relative">
           <div className="container flex flex-col max-w-170 items-center gap-4 py-16 text-center md:py-20 lg:py-24">
             <h1 className="max-w-72.5 sm:max-w-full text-foreground text-2xl font-bold">
-              Infrastructure for APIs in the age of agents.
+              Fabric for interfaces in the age of agents.
             </h1>
 
             <p className="max-w-md text-sm text-pretty text-muted-foreground leading-tight">
-              From an agent&apos;s first read of your docs to its millionth
-              production call, Scalar is the layer in between: hosted, observed,
-              and kept in sync from one OpenAPI document.
+              From an agent&apos;s first chat message to its millionth production
+              render, Frakment is the thread in between: neutral by nature, precise
+              by design, and copy-pasted from one registry.
             </p>
 
             <CommandBox className="mt-4 w-full max-w-xl" />

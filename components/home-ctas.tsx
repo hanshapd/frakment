@@ -73,13 +73,13 @@ const BrowseComponentsButton = () => {
       type="button"
       variant="outline"
       className="rounded-full pl-2 pr-3"
-      onClick={() => copyToClipboard("npx frakment@latest init")}
+      onClick={() => copyToClipboard("npx frakment-mcp@latest")}
     >
       <span className="flex items-center gap-2">
         <AvatarGroup />
         <span>Onboard your agents</span>
         <span
-          aria-label="Copy install command"
+          aria-label="Copy MCP install command"
           className={cn(
             "flex size-4 items-center justify-center text-foreground/70 transition hover:text-foreground"
           )}
