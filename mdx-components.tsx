@@ -1,3 +1,4 @@
+import { IntroFeatureCard } from "@/components/intro-feature-card";
 import type { LucideIcon } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
@@ -77,6 +78,7 @@ export const mdxComponents = {
   FileTreeFolder,
   FileTreeFile,
   ComponentsList,
+  IntroFeatureCard,
   FeatureCard: ({
     icon: Icon,
     title,
